@@ -9,7 +9,7 @@
 	<title>Index</title>
 </head>
 <body>
-	<form action="http://google.com">
+	<form action="/">
 		<input type="submit" value="Home">
 	</form>
 	<form action="http://centrum.cz">

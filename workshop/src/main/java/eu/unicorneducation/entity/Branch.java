@@ -9,9 +9,9 @@ public class Branch {
 	
 	private String address;
 	
-	private Integer parrentBranch;
+	private Long parrentBranch;
 
-	public Branch(Long id, String name, String address, Integer parrentBranch) {
+	public Branch(Long id, String name, String address, Long parrentBranch) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -43,11 +43,11 @@ public class Branch {
 		this.address = address;
 	}
 
-	public Integer getParrentBranch() {
+	public Long getParrentBranch() {
 		return parrentBranch;
 	}
 
-	public void setParrentBranch(Integer parrentBranch) {
+	public void setParrentBranch(Long parrentBranch) {
 		this.parrentBranch = parrentBranch;
 	}
 	
