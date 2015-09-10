@@ -11,6 +11,7 @@ public class Branch {
 	
 	private Long parrentBranch;
 
+	
 	public Branch(Long id, String name, String address, Long parrentBranch) {
 		super();
 		this.id = id;
