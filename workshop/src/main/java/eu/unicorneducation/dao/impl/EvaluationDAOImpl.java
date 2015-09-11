@@ -5,10 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
+import org.springframework.stereotype.Component;
+
 import eu.unicorneducation.dao.EvaluationDAO;
 import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.entity.Evaluation;
-
+@Component
 public class EvaluationDAOImpl implements EvaluationDAO {
 	private EntityManager em;
 
@@ -35,7 +37,10 @@ public class EvaluationDAOImpl implements EvaluationDAO {
 		return true;
 	}
 
-	public List<Evaluation> readAll() {
-		return em.createQuery("SELECT e FROM Evaluation e",Evaluation.class).getResultList();
+	
+	
+	public List readAll() {
+		return em.createQuery("select e from Employee e", Employee.class).getResultList();
+		
 	}
 }

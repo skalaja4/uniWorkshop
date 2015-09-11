@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 
 import org.springframework.stereotype.Component;
 
+
 import eu.unicorneducation.dao.EmployeeDAO;
 import eu.unicorneducation.entity.Branch;
 import eu.unicorneducation.entity.Employee;
@@ -39,8 +40,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	public List<Employee> readAll() {
-		return em.createQuery("SELECT * FROM Employee",Employee.class).getResultList();
-
+		return em.createQuery("select e from Employee e",Employee.class).getResultList();
+		
 
 	}
 

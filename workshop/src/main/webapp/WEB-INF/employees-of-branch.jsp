@@ -40,7 +40,7 @@ table {
                 <td>${employees.get(i).getLastName()}</td>
                 <td>${employees.get(i).getBirthDate()}</td>
                 <td>${employees.get(i).getCategory()}</td>
-                <td><form action="employee.jsp"><input type="submit" value="Detail"></form></td>  
+                <td><form action="http://localhost:8085/workshop/detail"><input type="submit" value="Detail"></form></td>  
             </tr>
         <% } %> 
 
