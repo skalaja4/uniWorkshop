@@ -1,6 +1,8 @@
 <%@ page import="java.util.Properties" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <%
 	Properties prop = (Properties) request.getAttribute("properties");
@@ -15,16 +17,18 @@
 <body>
 	<%@ include file="menu.jspf"%>
 
-	<form action="/workshop/inicialization"  method="post">
+	<sf:form action="/workshop/inicialization"  method="post"  enctype="multipart/form-data">
 		<p>
-			<%= prop.getProperty("enterEmployees") %><br>
-			<input type="file" name="branchfile" size="40">
+			soubor<br>
+			<input type="file" name="file" size="40">
 		</p>
 		<div>
 			<input type="submit" value="Importovat pobočky">
 		</div>
-	</form>
-	<hr>
+	</sf:form>
+	
+	
+	<!-- <hr>
 	<form action="/workshop/inicialization"  method="post">
 		<p>
 			Vložte soubor se zaměstnanci:<br> <input type="file"
@@ -34,6 +38,8 @@
 			<input type="submit" value="Importovat zákazníky">
 		</div>
 	</form>
+	
+	-->
 
 </body>
 </html>
