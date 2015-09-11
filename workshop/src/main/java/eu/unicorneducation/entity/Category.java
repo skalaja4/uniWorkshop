@@ -1,6 +1,6 @@
 package eu.unicorneducation.entity;
 
-public enum BaPoCategory {
+public enum Category {
 
 	NEW,
 	

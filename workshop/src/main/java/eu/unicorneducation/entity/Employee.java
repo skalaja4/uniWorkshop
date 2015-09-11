@@ -2,15 +2,35 @@ package eu.unicorneducation.entity;
 
 import java.util.Date;
 
-public  abstract class Employee {
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="EMPLOYEE")
+public  class Employee {
 	
-	protected String  firstName ;
 	
-	protected String lastName;
+	@Id
+	@GeneratedValue
+	private String id;
 	
-	protected Date birthDate;
+	private String  firstName ;
 	
-	protected BaPoCategory kind;
+	private String lastName;
+	
+	private Date birthDate;
+	
+	
+	@OneToMany
+	private Branch branch;
+	
+	@Enumerated(EnumType.STRING)
+	private Category kind;
 	
 	
 	
