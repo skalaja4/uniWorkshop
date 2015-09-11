@@ -6,5 +6,7 @@ public enum Category {
 	
 	STABLE,
 	
-	SENIOR;
+	SENIOR,
+	
+	MANAGER;
 }

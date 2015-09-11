@@ -30,7 +30,7 @@ public  class Employee {
 	private Branch branch;
 	
 	@Enumerated(EnumType.STRING)
-	private Category kind;
+	private Category category;
 	
 	
 	
