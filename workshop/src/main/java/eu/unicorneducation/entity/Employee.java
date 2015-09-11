@@ -54,7 +54,7 @@ public  class Employee {
 	}
 
 	public Employee(String id, String firstName, String lastName,
-			Date birthDate, Branch branch, Category category) {
+			Branch branch, Date birthDate, Category category) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
