@@ -8,7 +8,6 @@ public interface EmployeeDAO {
 
 	public boolean create(Employee employee);
 	public Employee read(String id);
-	public boolean updeat(Employee employee);
 	public boolean delete(Employee employee);
 	public List<Employee> readAll();
 }
