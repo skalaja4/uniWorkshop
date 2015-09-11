@@ -5,10 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
+import org.springframework.stereotype.Component;
+
 import eu.unicorneducation.dao.EmployeeDAO;
 import eu.unicorneducation.entity.Branch;
 import eu.unicorneducation.entity.Employee;
-
+@Component
 public class EmployeeDAOImpl implements EmployeeDAO {
 
 	private EntityManager em;

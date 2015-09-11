@@ -3,12 +3,8 @@ package eu.unicorneducation.model;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 import eu.unicorneducation.entity.Branch;
+import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.entity.EvaluationPlan;
 import eu.unicroneducation.enumeration.Category;
@@ -33,6 +29,18 @@ public class EmployeeModel {
 	
 	
 	
+
+	public EmployeeModel(Employee e) {
+		super();
+		this.id = e.getId();
+		this.firstName = e.getFirstName();
+		this.lastName = e.getLastName();
+		this.plan = e.getPlan();
+		this.evaluation = e.getEvaluation();
+		this.branch = e.getBranch();
+		this.category = e.getCategory();
+		this.birthDate = e.getBirthDate();
+	}
 
 	public String getId() {
 		return id;

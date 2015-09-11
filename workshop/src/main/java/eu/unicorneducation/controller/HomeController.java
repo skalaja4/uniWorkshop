@@ -10,6 +10,7 @@ import java.util.Properties;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,11 +18,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+
+
+
+
+import eu.unicorneducation.facade.EmployeeFacade;
 import eu.unicorneducation.model.BranchModel;
+import eu.unicorneducation.model.EmployeeModel;
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
+	
+	@Autowired
+	private EmployeeFacade emplfacade;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String students(ModelMap model) {
@@ -64,6 +74,9 @@ public class HomeController {
 	@RequestMapping(value = "/employees", method = RequestMethod.GET)
 	public String employees(ModelMap model) {
 
+		List<EmployeeModel> list = emplfacade.readAll();
+		model.addAttribute("listofemployees", list);
+		
 		
 		return "employees-of-branch";
 	}

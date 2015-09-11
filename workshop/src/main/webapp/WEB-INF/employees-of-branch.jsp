@@ -1,4 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+
+<%@page import="eu.unicorneducation.model.EmployeeModel"%>
+<%
+	
+	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
+
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
@@ -25,7 +34,7 @@ table {
 <td width="200">Kategorie</td>
 <td width="50">Detail zaměstnance</td>
 </tr>
- <!-- <% //for(int i = 0; i < employees.size(); i++) { %>
+ <% for(int i = 0; i < employees.size(); i++) { %>
             <tr>      
                 <td>${employees.get(i).getFirstName()}</td>
                 <td>${employees.get(i).getLastName()}</td>
@@ -33,9 +42,9 @@ table {
                 <td>${employees.get(i).getCategory()}</td>
                 <td><form action="employee.jsp"><input type="submit" value="Detail"></form></td>  
             </tr>
-        <% //} %> -->
+        <% } %> 
 
- <% for(int i = 0; i < 5; i++) { %>
+ <!-- <% //for(int i = 0; i < 5; i++) { %>
             <tr>      
                 <td>Petr</td>
                 <td>Kupka</td>
@@ -43,7 +52,7 @@ table {
                 <td>NEW</td>
                 <td><form action="http://localhost:8085/workshop/detail"><input type="submit" value="Detail"></form></td>  
             </tr>
-        <% } %>
+        <% //} %> -->
 
 </table>
 
