@@ -1,4 +1,4 @@
-package eu.unicorneducation.entity;
+package eu.unicroneducation.enumeration;
 
 public enum Category {
 

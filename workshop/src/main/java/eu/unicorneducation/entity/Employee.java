@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import eu.unicroneducation.enumeration.Category;
+
 
 
 @Entity

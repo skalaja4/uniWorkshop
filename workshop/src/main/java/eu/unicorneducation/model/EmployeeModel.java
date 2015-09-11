@@ -9,9 +9,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import eu.unicorneducation.entity.Branch;
-import eu.unicorneducation.entity.Category;
 import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.entity.EvaluationPlan;
+import eu.unicroneducation.enumeration.Category;
 
 public class EmployeeModel {
 	
