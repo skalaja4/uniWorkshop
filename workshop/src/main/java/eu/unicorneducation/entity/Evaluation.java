@@ -34,7 +34,7 @@ public class Evaluation {
 	@ManyToOne
 	private Employee employee;
 	
-	public Evaluation(Long id, String name, Date fill_date, int otazka1,
+	public Evaluation(String name, Date fill_date, int otazka1,
 			int otazka2, int otazka3, int otazka4, int otazka5, int otazka6,
 			int otazka7, int otazka8, int otazka9, String otazka10) {
 		super();
