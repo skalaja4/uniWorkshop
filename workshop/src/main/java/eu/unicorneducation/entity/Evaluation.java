@@ -48,6 +48,7 @@ public class Evaluation {
 	@ManyToOne
 	private Employee employee;
 	
+	public Evaluation(){}
 	public Evaluation(String name, Date fill_date, int question1,
 			int question2, int question3, int question4, int question5, int question6,
 			int question7, int question8, int question9, String question10) {
