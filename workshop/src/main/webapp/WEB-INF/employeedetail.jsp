@@ -15,14 +15,16 @@
 
 <table border="1" cellpadding="5" width="600">
 <tr>
-<td width="120">Jméno :<br> Kupka</td>
-<td width="120">Příjmení: <br>Petr</td>
+<td width="120">Jméno :<br> Petr</td>
+<td width="120">Příjmení: <br>Kupka</td>
 <td width="120">Datum narození : <br>25.12.2015</td>
 <td width="120">Kategorie : <br>MANAGER</td></tr>
+</table>
+<h1>Hodnocení</h1>
 
  
 
-</table>
+
 
 
 
