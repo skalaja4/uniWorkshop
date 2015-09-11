@@ -62,15 +62,22 @@ public class HomeController {
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(ModelMap model) {
 
-		// model.addAttribute("studentsList", studentsFacade.findAll());
+
 
 		return "employeedetail";
 	}
 	@RequestMapping(value = "/plannedEvaluation", method = RequestMethod.GET)
 	public String plannedEvaluation(ModelMap model) {
 
-		// model.addAttribute("studentsList", studentsFacade.findAll());
+
 
 		return "plannedEvaluation";
+	}
+	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.GET)
+	public String fillEvaluation(ModelMap model) {
+
+
+
+		return "fillEvaluation";
 	}
 }
