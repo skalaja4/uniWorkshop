@@ -30,6 +30,17 @@ public class EvaluationPlan {
 	
 	public EvaluationPlan() {}
 
+	public EvaluationPlan(String name, Date expiration, Branch branch,
+			List<Employee> employees) {
+		super();
+		this.name = name;
+		this.expiration = expiration;
+		this.branch = branch;
+		this.employees = employees;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
