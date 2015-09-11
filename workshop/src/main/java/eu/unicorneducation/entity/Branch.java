@@ -25,7 +25,10 @@ public class Branch{
 	private String address;
 	
 	@OneToOne
-	private String parrentBranch;
+	private Branch parrentBranch;
+	
+	@OneToOne
+	private Employee manager;
 	
 	
 	
@@ -36,7 +39,7 @@ public class Branch{
 		super();
 	}
 
-	public Branch(String id, String name, String address, String parrentBranch) {
+	public Branch(String id, String name, String address, Branch parrentBranch) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -68,11 +71,11 @@ public class Branch{
 		this.address = address;
 	}
 
-	public String getParrentBranch() {
+	public Branch getParrentBranch() {
 		return parrentBranch;
 	}
 
-	public void setParrentBranch(String parrentBranch) {
+	public void setParrentBranch(Branch parrentBranch) {
 		this.parrentBranch = parrentBranch;
 	}
 	
