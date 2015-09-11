@@ -34,26 +34,33 @@ table {
 <td width="200">Kategorie</td>
 <td width="50">Detail zaměstnance</td>
 </tr>
- <% for(int i = 0; i < employees.size(); i++) { %>
-            <tr>      
-            
-                <td>${employees.get(i).getFirstName()}</td>
-                <td>${employees.get(i).getLastName()}</td>
-                <td>${employees.get(i).getBirthDate()}</td>
-                <td>${employees.get(i).getCategory()}</td>
-                <td><form action="http://localhost:8085/workshop/detail"><input type="submit" value="Detail"></form></td>  
-            </tr>
-        <% } %> 
 
- <!-- <% //for(int i = 0; i < 5; i++) { %>
-            <tr>      
-                <td>Petr</td>
-                <td>Kupka</td>
-                <td>1.1.1900</td>
-                <td>NEW</td>
-                <td><form action="http://localhost:8085/workshop/detail"><input type="submit" value="Detail"></form></td>  
-            </tr>
-        <% //} %> -->
+<% for(EmployeeModel e : employees) { %>
+           <tr> <td> <%= e.getFirstName()%></td> 
+           <td> <%= e.getLastName()%> </td> 
+           <td> <%= e.getBirthDate()%> </td>
+           <td> <%= e.getCategory()%> </td>
+          <td><form action="http://localhost:8085/workshop/detail"><input type="submit" value="Detail"></input></form></td>
+           
+           
+           
+           
+           
+           </tr>
+        <% } %>
+
+
+
+
+
+
+
+
+
+
+ 
+
+
 
 </table>
 
