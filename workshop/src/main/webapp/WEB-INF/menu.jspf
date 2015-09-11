@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <style type="text/css">
-	form {display: inline;}
-	input {font-size:25px;}
+	form.menu {display: inline;}
+	input.menu {font-size:25px;}
 </style>
 <h1>System BAES</h1>
-<form action="/workshop/">
-		<input type="submit" value="Home">
+	<form class="menu" action="/workshop/">
+		<input class="menu" type="submit" value="Home">
 	</form>
-	<form action="http://centrum.cz">
-		<input type="submit" value="Import">
+	<form class="menu" action="http://centrum.cz">
+		<input class="menu" type="submit" value="Import">
 	</form>
-	<form action="http://seznam.cz">
-		<input type="submit" value="Pobočky">
+	<form class="menu" action="http://seznam.cz">
+		<input class="menu" type="submit" value="Pobočky">
 	</form>
-	<form action="http://idnes.cz">
-		<input type="submit" value="Hodnocení">
+	<form class="menu" action="http://idnes.cz">
+		<input class="menu" type="submit" value="Hodnocení">
 	</form>

@@ -20,6 +20,11 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/inicialization", method = RequestMethod.GET)
+	public String inicialization() {
+		return "inicialization";
+	}
+	
 //	@RequestMapping(value = "/student", method = RequestMethod.GET)
 //	public ModelAndView students() {
 //		return new ModelAndView("new_student", "command", new StudentModel());

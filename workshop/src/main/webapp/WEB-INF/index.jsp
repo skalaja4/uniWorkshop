@@ -1,12 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <html>
 <head>
-	<title>Index</title>
+<title>Index</title>
 </head>
 <body>
 	<div id="header">
-    <%@ include file="menu.jspf" %>
-</div>
+		<%@ include file="menu.jspf"%>
+	</div>
+	
+	<br />
+	<a href="/workshop/inicialization"> /workshop/inicialization</a> <br />
 </body>
 </html>
