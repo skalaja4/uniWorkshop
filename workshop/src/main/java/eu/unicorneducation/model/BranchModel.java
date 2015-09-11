@@ -2,13 +2,13 @@ package eu.unicorneducation.model;
 
 import java.util.List;
 
-public class BranchDTO {
+public class BranchModel {
 	
 	private String id;
 	private String name;
 	private String address;
 	private String parrentBranch;
-	private List<EmployeeDTO> employees;
+	private List<EmployeeModel> employees;
 	
 	public String getId() {
 		return id;
