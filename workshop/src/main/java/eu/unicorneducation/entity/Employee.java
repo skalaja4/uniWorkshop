@@ -28,15 +28,15 @@ public  class Employee {
 	private Date birthDate;
 	
 	
-	@OneToMany
+	@ManyToOne
 	private EvaluationPlan plan;
 	
 	
-	@ManyToOne
+	@OneToMany(mappedBy="employee")
 	private List<Evaluation> evaluation;
 	
 	
-	@OneToMany
+	@ManyToOne
 	private Branch branch;
 	
 	@Enumerated(EnumType.STRING)
