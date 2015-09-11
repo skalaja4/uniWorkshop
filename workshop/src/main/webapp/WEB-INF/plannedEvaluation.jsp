@@ -2,8 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PlannedEvaluation</title>
 </head>
 <body>
 <%@ include file="menu.jspf" %>
@@ -27,6 +27,16 @@
                 <td>${allFestivals.get(i).getURL()}</td>  
             </tr>
         <% //} %> -->
+        
+        <% for(int i = 0; i < 5; i++) { %>
+            <tr>      
+                <td>22.11.2015</td>
+                <td>Hodnoceni1</td>
+                <td>123321</td>
+                
+                <td><form action="http://localhost:8085/workshop/"><input type="submit" value="Detail"></form></td>  
+            </tr>
+        <% } %>
 
 
 
