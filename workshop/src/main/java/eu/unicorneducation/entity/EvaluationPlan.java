@@ -3,6 +3,7 @@ package eu.unicorneducation.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,10 @@ public class EvaluationPlan {
 	@SequenceGenerator(name="sequence1", sequenceName="evaluation_plan_sequence", allocationSize=1)
 	private Long id;
 	
+	@Column(nullable=false)
 	private String name;
+	
+	@Column(nullable=false)
 	private Date expiration;
 	
 	@ManyToOne

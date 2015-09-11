@@ -3,6 +3,7 @@ package eu.unicorneducation.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,10 +22,13 @@ public  class Employee {
 	@Id
 	private String id;
 	
+	@Column(nullable=false)
 	private String  firstName ;
 	
+	@Column(nullable=false)
 	private String lastName;
 	
+	@Column(nullable=false)
 	private Date birthDate;
 	
 	
@@ -40,6 +44,7 @@ public  class Employee {
 	private Branch branch;
 	
 	@Enumerated(EnumType.STRING)
+	@Column(nullable=false)
 	private Category category;
 	
 	public Employee() {

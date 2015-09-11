@@ -2,6 +2,7 @@ package eu.unicorneducation.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,17 +19,30 @@ public class Evaluation {
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="SEQUENCE1")
 	@SequenceGenerator(name="SEQUENCE1", sequenceName="SEQUENCE1", allocationSize=1)
 	private Long id;
+	
+	@Column(nullable=false)
 	private String name;
+	@Column(nullable=false)
 	private Date fill_date;
+	@Column(nullable=false)
 	private int question1;
+	@Column(nullable=false)
 	private int question2;
+	@Column(nullable=false)
 	private int question3;
+	@Column(nullable=false)
 	private int question4;
+	@Column(nullable=false)
 	private int question5;
+	@Column(nullable=false)
 	private int question6;
+	@Column(nullable=false)
 	private int question7;
+	@Column(nullable=false)
 	private int question8;
+	@Column(nullable=false)
 	private int question9;
+	@Column(nullable=false)
 	private String question10;
 	
 	@ManyToOne

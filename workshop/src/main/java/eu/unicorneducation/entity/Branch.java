@@ -15,7 +15,6 @@ import javax.persistence.Table;
 public class Branch{
 
 	@Id
-	@Column(nullable=false)
 	private String id;
 	
 	@Column(nullable=false)
