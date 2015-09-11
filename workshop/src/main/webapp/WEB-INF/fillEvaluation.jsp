@@ -4,6 +4,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script>
+	$(function() {
+		$("#accordion").accordion();
+	});
+</script>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -13,27 +25,36 @@
 
 
 	<form action="/workshop/">
-	<%
+		<div id="accordion">
+		<%
 			for (int j = 1; j < 10; j++) {
 		%>
-		<br>
-		<br>
-		Jaroslav Dvořák:
-		<%
-			for (int i = 1; i < 10; i++) {
-		%>
-		<br>
-		Otazka<%=i %>
-		<select>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-		</select>
-		<%
-			}}
-		%>
+		  <h3>Jaroslav Dvořák:</h3>
+		  <div>
+				<%
+					for (int i = 1; i < 10; i++) {
+				%>
+				<br>
+				Otazka<%=i %>
+				<select>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+				
+				<%
+					}
+				%>
+				<br>
+					<textarea rows="4" cols="50"></textarea>
+			</div>
+				<%
+					}
+				%>
+
+		</div>
 		<br> <br> <input type="submit" value="Odeslat">
 	</form>
 </body>

@@ -11,6 +11,6 @@
 	</div>
 	
 	<br />
-	<a href="/workshop/inicialization"> /workshop/inicialization</a> <br />
+<!-- 	<a href="/workshop/inicialization"> /workshop/inicialization</a> <br /> -->
 </body>
 </html>

@@ -8,7 +8,7 @@
 	<form class="menu" action="/workshop/">
 		<input class="menu" type="submit" value="Home">
 	</form>
-	<form class="menu" action="http://centrum.cz">
+	<form class="menu" action="/workshop/inicialization">
 		<input class="menu" type="submit" value="Import">
 	</form>
 	<form class="menu" action="/workshop/branches/">
