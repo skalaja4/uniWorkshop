@@ -26,8 +26,7 @@ public class Branch{
 	
 	private String parrentBranch;
 	
-	@OneToOne
-	private String manager;
+	
 	
 	@OneToMany(mappedBy="branch",cascade = CascadeType.ALL)
 	private List<Employee> employees;	

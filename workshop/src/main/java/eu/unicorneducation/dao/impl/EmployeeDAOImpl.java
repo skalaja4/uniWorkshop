@@ -39,7 +39,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	public List<Employee> readAll() {
-		return em.createQuery("SELECT e FROM Employee e",Employee.class).getResultList();
+		return em.createQuery("SELECT * FROM Employee",Employee.class).getResultList();
 
 
 	}
