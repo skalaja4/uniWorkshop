@@ -11,7 +11,7 @@
 	<form class="menu" action="http://centrum.cz">
 		<input class="menu" type="submit" value="Import">
 	</form>
-	<form class="menu" action="http://seznam.cz">
+	<form class="menu" action="/workshop/branches/">
 		<input class="menu" type="submit" value="Pobočky">
 	</form>
 	<form class="menu" action="http://idnes.cz">
