@@ -35,5 +35,8 @@ public class HomeController {
 //		studentsFacade.save(student);
 //		return students(model);
 //	}
-	
+	@RequestMapping(value = "/branches/", method = RequestMethod.GET)
+	public String branches() {
+		return "branches";
+	}
 }
