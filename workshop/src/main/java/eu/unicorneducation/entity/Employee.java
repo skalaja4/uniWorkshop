@@ -1,14 +1,17 @@
 package eu.unicorneducation.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name="EMPLOYEE")
@@ -23,6 +26,14 @@ public  class Employee {
 	private String lastName;
 	
 	private Date birthDate;
+	
+	
+	@OneToMany
+	private EvaluationPlan plan;
+	
+	
+	@ManyToOne
+	private List<Evaluation> evaluation;
 	
 	
 	@OneToMany
@@ -92,6 +103,22 @@ public  class Employee {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public EvaluationPlan getPlan() {
+		return plan;
+	}
+
+	public void setPlan(EvaluationPlan plan) {
+		this.plan = plan;
+	}
+
+	public List<Evaluation> getEvaluation() {
+		return evaluation;
+	}
+
+	public void setEvaluation(List<Evaluation> evaluation) {
+		this.evaluation = evaluation;
 	}
 	
 	
