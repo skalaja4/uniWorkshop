@@ -16,7 +16,6 @@ public  class Employee {
 	
 	
 	@Id
-	@GeneratedValue
 	private String id;
 	
 	private String  firstName ;
@@ -31,6 +30,70 @@ public  class Employee {
 	
 	@Enumerated(EnumType.STRING)
 	private Category category;
+	
+	public Employee() {
+		
+	}
+
+	public Employee(String id, String firstName, String lastName,
+			Date birthDate, Branch branch, Category category) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthDate = birthDate;
+		this.branch = branch;
+		this.category = category;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public Branch getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	
 	
 	
 	
