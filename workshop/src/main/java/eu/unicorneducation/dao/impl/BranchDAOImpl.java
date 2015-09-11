@@ -27,20 +27,17 @@ public class BranchDAOImpl implements BranchDAO{
 	public Branch read(String id) {
 		return em.find(Branch.class, id);
 	}
-
-	public boolean updeat(Branch branch) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	public boolean delete(Branch branch) {
-		// TODO Auto-generated method stub
-		return false;
+		em.getTransaction().begin();
+		em.remove(branch);
+		em.getTransaction().commit();
+		return true;
 	}
 
 	public List<Branch> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		 return em.createQuery("SELECT b FROM Branch b",Branch.class).getResultList();
 	}
 
 }

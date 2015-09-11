@@ -6,7 +6,7 @@ import eu.unicorneducation.entity.EvaluationPlan;
 
 public interface EvaluationPlanDAO {
 	public boolean create(EvaluationPlan evaluationPlan);
-	public EvaluationPlan read(String id);
-	public boolean delete(EvaluationPlan valuationPlan);
+	public EvaluationPlan read(Long id);
+	public boolean delete(EvaluationPlan evaluationPlan);
 	public List<EvaluationPlan> readAll();
 }
