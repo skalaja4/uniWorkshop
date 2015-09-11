@@ -1,0 +1,12 @@
+BB_BRANCH_001,Praha 4 Kacerov,Praha 4 Krckska 14 140 00,EMP_001,BB_BRANCH_008
+BB_BRANCH_002,Praha 9 Fenix,Praha 9 Freyova 25 190 00,EMP_002,BB_BRANCH_008
+BB_BRANCH_003,Praha 4 Modrany,Praha 4 Sofijske namesti 1 143 00,EMP_003,BB_BRANCH_001
+BB_BRANCH_004,Praha 5 Barrandov,Praha 5 Geologicka 4 150 00,EMP_004,BB_BRANCH_009
+BB_BRANCH_005,Praha 5 Smichov,Praha 5 Nadrazni 31 151 00,EMP_005,BB_BRANCH_009
+BB_BRANCH_006,Praha 5 Andel,Praha 5 Zborovska 18 152 00,EMP_006,BB_BRANCH_005
+BB_BRANCH_007,Praha 5 Karlovo namesti,Praha 5 Palackeho 32 153 00,EMP_007,BB_BRANCH_006
+BB_BRANCH_008,Praha 1 Vaclavske namesti,Praha 1 Vaclavske namesti 1 110 00,EMP_008,NULL
+BB_BRANCH_009,Praha 1 Staromestska,Praha 1 Templarska 8 110 00,EMP_009,NULL
+BB_BRANCH_010,Praha 9 Liben,Praha 9 Libenska 61 190 00,EMP_010,BB_BRANCH_002
+BB_BRANCH_011,Praha 9 Kolbenova,Praha 9 Kolbenova 5 190 00,EMP_011,BB_BRANCH_002
+BB_BRANCH_012,Praha 9 Palmovka,Praha 9 Smaragdova 20 192 00,EMP_012,BB_BRANCH_002
