@@ -41,6 +41,6 @@
 
 
 </table>
-<form action="http://localhost:8085/workshop/"><input type="submit" value="Přidat hodnocení"></form>
+<form action="http://localhost:8085/workshop/addEvaluation"><input type="submit" value="Přidat hodnocení"></form>
 </body>
 </html>
