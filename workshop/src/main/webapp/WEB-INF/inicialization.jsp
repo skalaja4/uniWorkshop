@@ -19,7 +19,7 @@
 
 	<sf:form action="/workshop/inicialization"  method="post"  enctype="multipart/form-data">
 		<p>
-			soubor<br>
+			Vyber soubor:<br>
 			<input type="file" name="file" size="40">
 		</p>
 		<div>
