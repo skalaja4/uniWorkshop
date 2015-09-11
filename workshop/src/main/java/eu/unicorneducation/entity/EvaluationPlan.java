@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
+@Table(name="EVALUATIONPLAN")
 public class EvaluationPlan {
 
 	@Id
