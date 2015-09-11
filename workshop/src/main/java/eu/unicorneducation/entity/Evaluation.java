@@ -20,37 +20,37 @@ public class Evaluation {
 	private Long id;
 	private String name;
 	private Date fill_date;
-	private int otazka1;
-	private int otazka2;
-	private int otazka3;
-	private int otazka4;
-	private int otazka5;
-	private int otazka6;
-	private int otazka7;
-	private int otazka8;
-	private int otazka9;
-	private String otazka10;
+	private int question1;
+	private int question2;
+	private int question3;
+	private int question4;
+	private int question5;
+	private int question6;
+	private int question7;
+	private int question8;
+	private int question9;
+	private String question10;
 	
 	@ManyToOne
 	private Employee employee;
 	
-	public Evaluation(String name, Date fill_date, int otazka1,
-			int otazka2, int otazka3, int otazka4, int otazka5, int otazka6,
-			int otazka7, int otazka8, int otazka9, String otazka10) {
+	public Evaluation(String name, Date fill_date, int question1,
+			int question2, int question3, int question4, int question5, int question6,
+			int question7, int question8, int question9, String question10) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.fill_date = fill_date;
-		this.otazka1 = otazka1;
-		this.otazka2 = otazka2;
-		this.otazka3 = otazka3;
-		this.otazka4 = otazka4;
-		this.otazka5 = otazka5;
-		this.otazka6 = otazka6;
-		this.otazka7 = otazka7;
-		this.otazka8 = otazka8;
-		this.otazka9 = otazka9;
-		this.otazka10 = otazka10;
+		this.question1 = question1;
+		this.question2 = question2;
+		this.question3 = question3;
+		this.question4 = question4;
+		this.question5 = question5;
+		this.question6 = question6;
+		this.question7 = question7;
+		this.question8 = question8;
+		this.question9 = question9;
+		this.question10 = question10;
 	}
 
 	public Long getId() {
@@ -77,84 +77,84 @@ public class Evaluation {
 		this.fill_date = fill_date;
 	}
 
-	public int getOtazka1() {
-		return otazka1;
+	public int getquestion1() {
+		return question1;
 	}
 
-	public void setOtazka1(int otazka1) {
-		this.otazka1 = otazka1;
+	public void setquestion1(int question1) {
+		this.question1 = question1;
 	}
 
-	public int getOtazka2() {
-		return otazka2;
+	public int getquestion2() {
+		return question2;
 	}
 
-	public void setOtazka2(int otazka2) {
-		this.otazka2 = otazka2;
+	public void setquestion2(int question2) {
+		this.question2 = question2;
 	}
 
-	public int getOtazka3() {
-		return otazka3;
+	public int getquestion3() {
+		return question3;
 	}
 
-	public void setOtazka3(int otazka3) {
-		this.otazka3 = otazka3;
+	public void setquestion3(int question3) {
+		this.question3 = question3;
 	}
 
-	public int getOtazka4() {
-		return otazka4;
+	public int getquestion4() {
+		return question4;
 	}
 
-	public void setOtazka4(int otazka4) {
-		this.otazka4 = otazka4;
+	public void setquestion4(int question4) {
+		this.question4 = question4;
 	}
 
-	public int getOtazka5() {
-		return otazka5;
+	public int getquestion5() {
+		return question5;
 	}
 
-	public void setOtazka5(int otazka5) {
-		this.otazka5 = otazka5;
+	public void setquestion5(int question5) {
+		this.question5 = question5;
 	}
 
-	public int getOtazka6() {
-		return otazka6;
+	public int getquestion6() {
+		return question6;
 	}
 
-	public void setOtazka6(int otazka6) {
-		this.otazka6 = otazka6;
+	public void setquestion6(int question6) {
+		this.question6 = question6;
 	}
 
-	public int getOtazka7() {
-		return otazka7;
+	public int getquestion7() {
+		return question7;
 	}
 
-	public void setOtazka7(int otazka7) {
-		this.otazka7 = otazka7;
+	public void setquestion7(int question7) {
+		this.question7 = question7;
 	}
 
-	public int getOtazka8() {
-		return otazka8;
+	public int getquestion8() {
+		return question8;
 	}
 
-	public void setOtazka8(int otazka8) {
-		this.otazka8 = otazka8;
+	public void setquestion8(int question8) {
+		this.question8 = question8;
 	}
 
-	public int getOtazka9() {
-		return otazka9;
+	public int getquestion9() {
+		return question9;
 	}
 
-	public void setOtazka9(int otazka9) {
-		this.otazka9 = otazka9;
+	public void setquestion9(int question9) {
+		this.question9 = question9;
 	}
 
-	public String getOtazka10() {
-		return otazka10;
+	public String getquestion10() {
+		return question10;
 	}
 
-	public void setOtazka10(String otazka10) {
-		this.otazka10 = otazka10;
+	public void setquestion10(String question10) {
+		this.question10 = question10;
 	}
 	
 	
