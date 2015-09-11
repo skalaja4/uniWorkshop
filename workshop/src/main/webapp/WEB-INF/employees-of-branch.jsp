@@ -36,6 +36,7 @@ table {
 </tr>
  <% for(int i = 0; i < employees.size(); i++) { %>
             <tr>      
+            
                 <td>${employees.get(i).getFirstName()}</td>
                 <td>${employees.get(i).getLastName()}</td>
                 <td>${employees.get(i).getBirthDate()}</td>
