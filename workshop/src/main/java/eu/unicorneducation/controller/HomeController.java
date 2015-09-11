@@ -66,4 +66,11 @@ public class HomeController {
 
 		return "employeedetail";
 	}
+	@RequestMapping(value = "/plannedEvaluation", method = RequestMethod.GET)
+	public String plannedEvaluation(ModelMap model) {
+
+		// model.addAttribute("studentsList", studentsFacade.findAll());
+
+		return "plannedEvaluation";
+	}
 }

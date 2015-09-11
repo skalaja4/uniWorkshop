@@ -14,6 +14,6 @@
 	<form class="menu" action="/workshop/branches/">
 		<input class="menu" type="submit" value="Pobočky">
 	</form>
-	<form class="menu" action="http://idnes.cz">
+	<form class="menu" action="/workshop/plannedEvaluation">
 		<input class="menu" type="submit" value="Hodnocení">
 	</form>
