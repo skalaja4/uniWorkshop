@@ -36,6 +36,14 @@ public class HomeController {
 		return "inicialization";
 	}
 
+	
+	
+	@RequestMapping(value = "/employees", method = RequestMethod.GET)
+	public String employees(ModelMap model) {
+
+		
+		return "employees-of-branch";
+	}
 	// @RequestMapping(value = "/student", method = RequestMethod.GET)
 	// public ModelAndView students() {
 	// return new ModelAndView("new_student", "command", new StudentModel());
