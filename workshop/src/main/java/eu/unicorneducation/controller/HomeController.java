@@ -58,4 +58,12 @@ public class HomeController {
 	public String branches() {
 		return "branches";
 	}
+	
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(ModelMap model) {
+
+		// model.addAttribute("studentsList", studentsFacade.findAll());
+
+		return "employeedetail";
+	}
 }
