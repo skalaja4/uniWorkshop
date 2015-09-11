@@ -34,11 +34,10 @@ public class BranchModel {
 	public void setParrentBranch(String parrentBranch) {
 		this.parrentBranch = parrentBranch;
 	}
-	public List<EmployeeDTO> getEmployees() {
+	public List<EmployeeModel> getEmployees() {
 		return employees;
 	}
-	public void setEmployees(List<EmployeeDTO> employees) {
+	public void setEmployees(List<EmployeeModel> employees) {
 		this.employees = employees;
-	}	
-
+	}
 }
