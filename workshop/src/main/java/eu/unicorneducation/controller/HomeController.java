@@ -1,7 +1,6 @@
 package eu.unicorneducation.controller;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -27,7 +26,7 @@ public class HomeController {
 
 		Properties prop = new Properties();
 		try {
-			prop.load(new FileInputStream("properties/inicializationTexts.config"));
+			prop.load(new FileInputStream("src/main/webapp/WEB-INF/properties/inicializationTexts.config"));
 		} catch (IOException e) {
 			System.err.println(e.getStackTrace());
 		}
@@ -55,7 +54,7 @@ public class HomeController {
 	// studentsFacade.save(student);
 	// return students(model);
 	// }
-	@RequestMapping(value = "/branches/", method = RequestMethod.GET)
+	@RequestMapping(value = "/branches", method = RequestMethod.GET)
 	public String branches() {
 		return "branches";
 	}
