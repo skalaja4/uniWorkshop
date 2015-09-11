@@ -10,6 +10,7 @@
 	<div id="header">
 		<%@ include file="menu.jspf"%>
 
+<h1>Pobočky</h1>
 		<br>
 		<ul>
 			<li><a href="/workshop/employees"> prvni hlavni pobocka</a></li>

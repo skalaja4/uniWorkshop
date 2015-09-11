@@ -34,12 +34,14 @@
                 <td>Hodnoceni1</td>
                 <td>123321</td>
                 
-                <td><form action="http://localhost:8085/workshop/"><input type="submit" value="Detail"></form></td>  
+                <td><form action="http://localhost:8085/workshop/"><input type="submit" value="Vyplnit"></form></td>  
             </tr>
         <% } %>
 
 
 
 </table>
+<br>
+<form action="http://localhost:8085/workshop/"><input type="submit" value="Přidat hodnocení"></form>
 </body>
 </html>
