@@ -24,10 +24,9 @@ public class Branch{
 	@Column(nullable=false)
 	private String address;
 	
+	@OneToOne
 	private String parrentBranch;
 	
-	@OneToOne
-	private Employee manager;
 	
 	
 	@OneToMany(mappedBy="branch",cascade = CascadeType.ALL)

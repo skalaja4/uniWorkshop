@@ -34,6 +34,9 @@ public class EvaluationPlan {
 	@OneToMany(mappedBy="plan")
 	List<Employee> employees;
 	
+	@Column(nullable=false)
+	boolean completed;
+	
 	public EvaluationPlan() {}
 
 	public EvaluationPlan(String name, Date expiration, Branch branch,
