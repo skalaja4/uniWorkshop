@@ -20,7 +20,7 @@
 <td width="120">Datum narození : <br>25.12.2015</td>
 <td width="120">Kategorie : <br>MANAGER</td></tr>
 </table>
-<h1>Hodnocení</h1>
+<h2>Hodnocení</h2>
 
  
 
