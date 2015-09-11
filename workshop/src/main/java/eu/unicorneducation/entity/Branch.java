@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -24,6 +25,9 @@ public class Branch{
 	private String address;
 	
 	private String parrentBranch;
+	
+	@OneToOne
+	private String manager;
 	
 	@OneToMany(mappedBy="branch",cascade = CascadeType.ALL)
 	private List<Employee> employees;	
