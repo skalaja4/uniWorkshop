@@ -10,31 +10,28 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="BRANCH")
-public class Branch{
+@Table(name = "BRANCH")
+public class Branch {
 
 	@Id
 	private String id;
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private String name;
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private String address;
-	
+
 	@OneToOne
 	private Branch parrentBranch;
-	
+
 	@OneToOne
 	private Employee manager;
-	
-	
-	
-	@OneToMany(mappedBy="branch",cascade = CascadeType.ALL)
-	private List<Employee> employees;	
-	
+
+	@OneToMany(mappedBy = "branch", cascade = CascadeType.ALL)
+	private List<Employee> employees;
+
 	public Branch() {
 		super();
 	}
@@ -78,7 +75,7 @@ public class Branch{
 	public void setParrentBranch(Branch parrentBranch) {
 		this.parrentBranch = parrentBranch;
 	}
-	
+
 	public List<Employee> getEmployees() {
 		return employees;
 	}
@@ -86,12 +83,27 @@ public class Branch{
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
 	}
+	
+	public Employee getManager() {
+		return manager;
+	}
+
+	public void setManager(Employee manager) {
+		this.manager = manager;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result
+				+ ((employees == null) ? 0 : employees.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((manager == null) ? 0 : manager.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result
+				+ ((parrentBranch == null) ? 0 : parrentBranch.hashCode());
 		return result;
 	}
 
@@ -104,10 +116,35 @@ public class Branch{
 		if (getClass() != obj.getClass())
 			return false;
 		Branch other = (Branch) obj;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
+		if (employees == null) {
+			if (other.employees != null)
+				return false;
+		} else if (!employees.equals(other.employees))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (manager == null) {
+			if (other.manager != null)
+				return false;
+		} else if (!manager.equals(other.manager))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (parrentBranch == null) {
+			if (other.parrentBranch != null)
+				return false;
+		} else if (!parrentBranch.equals(other.parrentBranch))
 			return false;
 		return true;
 	}

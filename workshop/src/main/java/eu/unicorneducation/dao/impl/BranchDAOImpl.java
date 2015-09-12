@@ -39,5 +39,23 @@ public class BranchDAOImpl implements BranchDAO{
 	public List<Branch> readAll() {
 		 return em.createQuery("SELECT b FROM Branch b",Branch.class).getResultList();
 	}
+	
+	@Override
+	public boolean createAll(List<Branch> branches) {
+		em.getTransaction().begin();
+		
+		for(Branch branch : branches) {
+			em.persist(branch);
+		}
+		
+		em.getTransaction().commit();
+		return true;
+	}
+	@Override
+	public void modify(Branch branch) {
+		em.getTransaction().begin();
+		em.merge(branch);
+		em.getTransaction().commit();
+	}
 
 }

@@ -15,8 +15,7 @@ public class EvaluationDAOImpl implements EvaluationDAO {
 	private EntityManager em;
 
 	public EvaluationDAOImpl() {
-		em = Persistence.createEntityManagerFactory("workshop")
-				.createEntityManager();
+		em = Persistence.createEntityManagerFactory("workshop").createEntityManager();
 	}
 
 	public boolean create(Evaluation evaluation) {

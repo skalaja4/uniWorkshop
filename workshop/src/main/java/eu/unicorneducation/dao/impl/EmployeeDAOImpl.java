@@ -44,5 +44,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		
 
 	}
+	@Override
+	public boolean createAll(List<Employee> employees) {
+		em.getTransaction().begin();
+		
+		for(Employee employee : employees) {
+			em.persist(employee);
+		}
+		
+		em.getTransaction().commit();
+		return true;
+	}
 
 }
