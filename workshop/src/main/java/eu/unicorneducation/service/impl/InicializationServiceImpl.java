@@ -57,7 +57,7 @@ public class InicializationServiceImpl implements InicializationService {
 					continue;
 
 				Branch daughter = branchDao.read(removeZeros(r.get(0)));
-				daughter.setParrentBranch(branchDao.read(removeZeros(r.get(4))));
+				daughter.setParrentBranch(branchDao.read(removeZeros(r.get(4))).getId()); //---------TADY----------
 				branchDao.modify(daughter);
 			}
 

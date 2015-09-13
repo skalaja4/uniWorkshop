@@ -30,10 +30,11 @@ public class EvaluationPlanFacadeImpl implements EvaluationPlanFacade {
 	@Override
 	public boolean create(EvaluationPlanModel evaPlanModel, String[] employeeIDs) {
 
-		evaPlanModel.getBranch();
+		evaPlanModel.getBranch()
 		Branch branch = new Branch(evaPlanModel.getBranch().getId(), evaPlanModel.getBranch().getName(),
 				evaPlanModel.getBranch().getAddress(), evaPlanModel.getBranch().getParrentBranch());
 
+		
 		return evaPlanService.create(new EvaluationPlan(evaPlanModel.getName(), evaPlanModel.getExpiration(), branch,
 				employeeService.readByIds(employeeIDs), false));
 	}
