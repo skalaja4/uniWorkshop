@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import eu.unicorneducation.facade.EmployeeFacade;
+import eu.unicorneducation.facade.ImportFacade;
 import eu.unicorneducation.facade.InicializationFacade;
 import eu.unicorneducation.model.BranchModel;
 import eu.unicorneducation.model.EmployeeModel;
@@ -35,31 +36,38 @@ public class HomeController {
 	
 	@Autowired
 	private InicializationFacade iniFacade;
+	
+	@Autowired
+	private ImportFacade importFacade;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String students(ModelMap model) {
+	public String students(ModelMap model, HttpServletRequest request) {
 
-		// model.addAttribute("studentsList", studentsFacade.findAll());
-
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		return "index";
 	}
+	
+	@RequestMapping(value = "/import", method = RequestMethod.GET)
+	public String importForm(ModelMap model, HttpServletRequest request) {
 
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "import.properties"));
+		return "import";
+	}
+
+	@RequestMapping(value = "/import_employees", method = RequestMethod.POST)
+	public String importEmployees(@RequestParam("file") MultipartFile file) {
+
+		importFacade.importEmployees(file);
+
+		return "inicialization";
+	}
+	
 	@RequestMapping(value = "/inicialization", method = RequestMethod.GET)
 	public String inicialization(ModelMap model, HttpServletRequest request) {
 
-		Properties prop = new Properties();
-		try (InputStream in = request
-				.getSession()
-				.getServletContext()
-				.getResourceAsStream("/WEB-INF/properties/inicializationTexts.config")) {
-			prop.load(in);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-
-		}
-
-		model.addAttribute("properties", prop);
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));
 		return "inicialization";
 	}
 
@@ -80,9 +88,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/employees", method = RequestMethod.GET)
-	public String employees(ModelMap model) {
+	public String employees(ModelMap model, HttpServletRequest request) {
 
 		List<EmployeeModel> list = emplfacade.readAll();
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
 
 		return "employees-of-branch";
@@ -100,30 +109,28 @@ public class HomeController {
 	// return students(model);
 	// }
 	@RequestMapping(value = "/branches", method = RequestMethod.GET)
-	public String branches() {
+	public String branches(ModelMap model, HttpServletRequest request) {
+		
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		return "branches";
 	}
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String detail(ModelMap model) {
+	public String detail(ModelMap model, HttpServletRequest request) {
+		
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		return "employeedetail";
 	}
 
 	@RequestMapping(value = "/plannedEvaluation", method = RequestMethod.GET)
-	public String plannedEvaluation(ModelMap model) {
+	public String plannedEvaluation(ModelMap model, HttpServletRequest request) {
+		
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		return "plannedEvaluation";
 	}
 
 	@RequestMapping(value = "/addEvaluation", method = RequestMethod.GET)
-	public String addEvaluation(ModelMap model) {
-
-		Properties prop = new Properties();
-		try {
-			prop.load(new FileInputStream(
-					"src/main/webapp/WEB-INF/addEvaluation.jsp"));
-		} catch (IOException e) {
-			System.err.println(e.getStackTrace());
-		}
+	public String addEvaluation(ModelMap model, HttpServletRequest request) {
 
 		List<BranchModel> branches = new ArrayList<BranchModel>();
 		BranchModel b = new BranchModel();
@@ -139,13 +146,30 @@ public class HomeController {
 		branches.add(b);
 		branches.add(p);
 
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("branches", branches);
-		model.addAttribute("properties", prop);
+		model.addAttribute("properties", loadProperties(request, "addEvaluation.properties"));
 		return "addEvaluation";
 	}
 
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.GET)
-	public String fillEvaluation(ModelMap model) {
+	public String fillEvaluation(ModelMap model, HttpServletRequest request) {
+		
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		return "fillEvaluation";
+	}
+	
+	private Properties loadProperties(HttpServletRequest request, String propertiesName) {
+		Properties prop = new Properties();
+		try (InputStream in = request
+				.getSession()
+				.getServletContext()
+				.getResourceAsStream("/WEB-INF/properties/" + propertiesName)) {
+			prop.load(in);
+		} catch (IOException e) {
+			prop = null;
+			e.printStackTrace();
+		}
+		return prop;
 	}
 }

@@ -20,18 +20,6 @@
 	<sf:form action="/workshop/inicializate_branches" method="post"
 		enctype="multipart/form-data">
 		<p>
-			<%= prop.get("enterBranches") %><br>
-			<input type="file" name="file" size="40">
-		</p>
-		<div>
-			<input type="submit" value="<%= prop.get("submitBranches") %>">
-		</div>
-	</sf:form>
-
-
-	<hr>
-	<sf:form action="/workshop/inicializate_employees" method="post">
-		<p>
 			<%= prop.get("enterEmployees") %><br>
 			<input type="file" name="file" size="40">
 		</p>

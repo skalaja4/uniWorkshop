@@ -30,6 +30,12 @@ public class InicializationServiceImpl implements InicializationService {
 	@Autowired
 	EmployeeDAO employeeDao;
 
+	/**
+	 * Thid method serves for inicialization of databaze of branches. First we enter all branches without 
+	 * references to their mothers. Then we fill in these refereces.
+	 * 
+	 * @param file file from which the branches will be parsed
+	 */
 	public void inicializateBranches(MultipartFile file) {
 		List<Branch> branches = new ArrayList<>();
 
@@ -61,6 +67,11 @@ public class InicializationServiceImpl implements InicializationService {
 		}
 	}
 
+	/**
+	 * Method for inicializating and adding new employees.
+	 * 
+	 * @param file file from which the employees will be parsed
+	 */
 	public void inicializateEmployees(MultipartFile file) {
 		List<Employee> employees = new ArrayList<>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-ddTHH:mm:ssXXX");
@@ -69,6 +80,9 @@ public class InicializationServiceImpl implements InicializationService {
 			CSVParser parser = CSVFormat.DEFAULT.parse(new InputStreamReader(
 					file.getInputStream()));
 			for (CSVRecord r : parser) {
+				//if employee is already in database, then skip to next record
+				if(employeeDao.read(r.get(0)) == null) continue;
+				
 				try {
 					Branch branch = branchDao.read(removeZeros(r.get(3)));
 					Employee emp = new Employee(

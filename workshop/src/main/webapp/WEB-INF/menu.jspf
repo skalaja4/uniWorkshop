@@ -1,19 +1,22 @@
+<%@ page import="java.util.Properties"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%
+	Properties menuProp = (Properties) request.getAttribute("menuProperties");
+%>
 <style type="text/css">
 	form.menu {display: inline;}
 	input.menu {font-size:25px;}
 </style>
 <h1>System BAES</h1>
 	<form class="menu" action="/workshop/">
-		<input class="menu" type="submit" value="Home">
+		<input class="menu" type="submit" value="<%= menuProp.get("home") %>">
 	</form>
-	<form class="menu" action="/workshop/inicialization">
-		<input class="menu" type="submit" value="Import">
+	<form class="menu" action="/workshop/import">
+		<input class="menu" type="submit" value="<%= menuProp.get("import") %>">
 	</form>
-	<form class="menu" action="/workshop/branches/">
-		<input class="menu" type="submit" value="Pobočky">
+	<form class="menu" action="/workshop/branches">
+		<input class="menu" type="submit" value="<%= menuProp.get("branches") %>">
 	</form>
 	<form class="menu" action="/workshop/plannedEvaluation">
-		<input class="menu" type="submit" value="Hodnocení">
+		<input class="menu" type="submit" value="<%= menuProp.get("evaluation") %>">
 	</form>
