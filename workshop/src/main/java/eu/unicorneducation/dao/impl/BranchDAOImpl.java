@@ -57,5 +57,12 @@ public class BranchDAOImpl implements BranchDAO{
 		em.merge(branch);
 		em.getTransaction().commit();
 	}
+	@Override
+	public Branch readByName(String name) {
+		return em.createQuery("SELECT b FROM Branch b where b.id=:name",Branch.class).setParameter("name", name).getResultList().get(0);
+		
+	}
+	
+	
 
 }

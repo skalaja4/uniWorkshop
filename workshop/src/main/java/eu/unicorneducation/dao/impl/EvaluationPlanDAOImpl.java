@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
 import eu.unicorneducation.dao.EvaluationPlanDAO;
-import eu.unicorneducation.entity.Evaluation;
+import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.entity.EvaluationPlan;
 
 public class EvaluationPlanDAOImpl implements EvaluationPlanDAO {
@@ -20,6 +20,14 @@ public class EvaluationPlanDAOImpl implements EvaluationPlanDAO {
 	public boolean create(EvaluationPlan evaluationPlan) {
 		em.getTransaction().begin();
 		em.persist(evaluationPlan);
+		em.getTransaction().commit();
+		em.getTransaction().begin();
+		for(Employee empl:evaluationPlan.getEmployees()){
+			//Employee employee = employeeDAO.read(empl.getId());
+			Employee employee = (Employee) em.find(Employee.class, empl.getId());
+		
+			employee.setPlan(evaluationPlan);
+		}
 		em.getTransaction().commit();
 		return true;
 	}

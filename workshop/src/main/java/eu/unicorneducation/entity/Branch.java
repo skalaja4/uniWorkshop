@@ -23,8 +23,8 @@ public class Branch {
 	@Column(nullable = false)
 	private String address;
 
-	@OneToOne
-	private Branch parrentBranch;
+
+	private String parrentBranch;
 
 	@OneToOne
 	private Employee manager;
@@ -36,7 +36,7 @@ public class Branch {
 		super();
 	}
 
-	public Branch(String id, String name, String address, Branch parrentBranch) {
+	public Branch(String id, String name, String address, String parrentBranch) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -68,11 +68,11 @@ public class Branch {
 		this.address = address;
 	}
 
-	public Branch getParrentBranch() {
+	public String getParrentBranch() {
 		return parrentBranch;
 	}
 
-	public void setParrentBranch(Branch parrentBranch) {
+	public void setParrentBranch(String parrentBranch) {
 		this.parrentBranch = parrentBranch;
 	}
 
@@ -83,7 +83,7 @@ public class Branch {
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
 	}
-	
+
 	public Employee getManager() {
 		return manager;
 	}
@@ -97,13 +97,11 @@ public class Branch {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result
-				+ ((employees == null) ? 0 : employees.hashCode());
+		result = prime * result + ((employees == null) ? 0 : employees.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((manager == null) ? 0 : manager.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((parrentBranch == null) ? 0 : parrentBranch.hashCode());
+		result = prime * result + ((parrentBranch == null) ? 0 : parrentBranch.hashCode());
 		return result;
 	}
 

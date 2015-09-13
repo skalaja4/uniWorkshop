@@ -20,4 +20,26 @@ public class EmployeeServiceImpl implements EmployeeService{
 		
 	}
 
+	@Override
+	public List<Employee> readByBranchAndCategory(String branch, String category) {
+		
+		return employeeDao.readByBranchAndCategory(branch, category);
+		
+	}
+
+	@Override
+	public List<Employee> readByBranchWithoutCategory(String branch, String category) {
+		return employeeDao.readByBranchWithoutCategory(branch, category);
+	}
+
+	@Override
+	public List<Employee> readByBranch(String branch) {
+		return employeeDao.readByBranch(branch);
+	}
+
+	@Override
+	public List<Employee> readByIds(String[] employeeIds) {
+		return employeeDao.readByIds(employeeIds);
+	}
+
 }

@@ -28,4 +28,49 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 		return listofserv;
 	}
 
+	@Override
+	public List<EmployeeModel> readByBranchAndCategory(String branch, String category) {
+		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
+
+		for (Employee s : employeeserv.readByBranchAndCategory(branch, category)) {
+			listofserv.add(new EmployeeModel(s));
+		}
+
+		return listofserv;
+	}
+
+	@Override
+	public List<EmployeeModel> readByBranchWithoutCategory(String branch, String category) {
+
+		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
+
+		for (Employee s : employeeserv.readByBranchWithoutCategory(branch, category)) {
+			listofserv.add(new EmployeeModel(s));
+		}
+
+		return listofserv;
+	}
+
+	@Override
+	public List<EmployeeModel> readByBranch(String branch) {
+		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
+
+		for (Employee s : employeeserv.readByBranch(branch)) {
+			listofserv.add(new EmployeeModel(s));
+		}
+
+		return listofserv;
+	}
+
+	@Override
+	public List<EmployeeModel> readByIds(String[] employeeIds) {
+		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
+
+		for (Employee s : employeeserv.readByIds(employeeIds)) {
+			listofserv.add(new EmployeeModel(s));
+		}
+
+		return listofserv;
+	}
+
 }

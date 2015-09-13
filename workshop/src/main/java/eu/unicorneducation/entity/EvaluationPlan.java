@@ -14,41 +14,40 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="EVALUATIONPLAN")
+@Table(name = "EVALUATIONPLAN")
 public class EvaluationPlan {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="sequence1")
-	@SequenceGenerator(name="sequence1", sequenceName="evaluation_plan_sequence", allocationSize=1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence1")
+	@SequenceGenerator(name = "sequence1", sequenceName = "evaluation_plan_sequence", allocationSize = 1)
 	private Long id;
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private String name;
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private Date expiration;
-	
+
 	@ManyToOne
 	private Branch branch;
-	
-	@OneToMany(mappedBy="plan")
-	List<Employee> employees;
-	
-	@Column(nullable=false)
-	boolean completed;
-	
-	public EvaluationPlan() {}
 
-	public EvaluationPlan(String name, Date expiration, Branch branch,
-			List<Employee> employees) {
+	@OneToMany(mappedBy = "plan")
+	List<Employee> employees;
+
+	@Column(nullable = false)
+	boolean completed;
+
+	public EvaluationPlan() {
+	}
+
+	public EvaluationPlan(String name, Date expiration, Branch branch, List<Employee> employees, boolean completed) {
 		super();
 		this.name = name;
 		this.expiration = expiration;
 		this.branch = branch;
 		this.employees = employees;
+		this.completed = completed;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -81,6 +80,21 @@ public class EvaluationPlan {
 	public void setBranch(Branch branch) {
 		this.branch = branch;
 	}
-	
-	
+
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+
 }

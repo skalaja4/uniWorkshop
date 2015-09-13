@@ -14,6 +14,16 @@ public class EvaluationPlanModel {
 	private BranchModel branch;
 	List<EmployeeModel> employees;
 	
+	public EvaluationPlanModel( String name, Date expiration, BranchModel branch,
+			List<EmployeeModel> employees) {
+		super();
+		
+		this.name = name;
+		this.expiration = expiration;
+		this.branch = branch;
+		this.employees = employees;
+	}
+	
 	public Long getId() {
 		return id;
 	}
