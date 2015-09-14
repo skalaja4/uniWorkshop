@@ -100,7 +100,7 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 				.getEvaluation(), emp.getBranch(), emp
 				.getCategory());
 		
-		return null;
+		return e;
 	}
 
 }
