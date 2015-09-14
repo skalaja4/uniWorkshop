@@ -45,13 +45,14 @@ public class InicializationServiceImpl implements InicializationService {
 
 			// first we save all branches to database without their mother specified
 			for (CSVRecord r : parser) {
-				branches.add(new Branch(removeZeros(r.get(0)), r.get(1), r
-						.get(2), null));
+				branches.add(new Branch(removeZeros(r.get(0)), r.get(1), r.get(2), null));
 			}
 
 			branchDao.createAll(branches);
 
 			// now we add records of mother branches
+			parser = CSVFormat.DEFAULT.parse(new InputStreamReader(file.getInputStream()));
+			
 			for (CSVRecord r : parser) {
 				if (r.get(4).equals("NULL"))
 					continue;
@@ -74,14 +75,14 @@ public class InicializationServiceImpl implements InicializationService {
 	 */
 	public void inicializateEmployees(MultipartFile file) {
 		List<Employee> employees = new ArrayList<>();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-ddTHH:mm:ssXXX");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 		try {
 			CSVParser parser = CSVFormat.DEFAULT.parse(new InputStreamReader(
 					file.getInputStream()));
 			for (CSVRecord r : parser) {
 				//if employee is already in database, then skip to next record
-				if(employeeDao.read(r.get(0)) == null) continue;
+				if(employeeDao.read(r.get(0)) != null) continue;
 				
 				try {
 					Branch branch = branchDao.read(removeZeros(r.get(3)));
@@ -90,10 +91,10 @@ public class InicializationServiceImpl implements InicializationService {
 							r.get(1),
 							r.get(2),
 							branch,
-							dateFormat.parse(r.get(4)),
+							dateFormat.parse(r.get(4).substring(0, 10)),
 							Category.valueOf(r.get(5))
 							);
-					
+					employeeDao.create(emp);
 					//if newly created employee is MANAGER, then we set him as manager
 					//in his branch
 					if(emp.getCategory().equals(Category.MANAGER)) {
@@ -108,7 +109,7 @@ public class InicializationServiceImpl implements InicializationService {
 				}
 			}
 			
-			employeeDao.createAll(employees);
+//			employeeDao.createAll(employees);
 		} catch (IOException e) {
 			// TODO add error logger
 			e.printStackTrace();
