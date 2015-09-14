@@ -39,4 +39,34 @@ public class EvaluationPlanFacadeImpl implements EvaluationPlanFacade {
 				employeeService.readByIds(employeeIDs), false));
 	}
 
+	@Override
+	public EvaluationPlanModel read(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean update(EvaluationPlanModel evaPlanModel, String[] employeeIDs) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete(EvaluationPlanModel evaPlanModel) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<EvaluationPlanModel> readAllBeforeDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<EvaluationPlanModel> readAllAfterDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

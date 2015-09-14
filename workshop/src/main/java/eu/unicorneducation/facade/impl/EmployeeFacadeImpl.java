@@ -113,8 +113,8 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 		List<EvaluationModel> listofev = new ArrayList<EvaluationModel>();
 		for(Evaluation e : employeeserv.getEvaluations(empID))
 		{
-			listofev.add(new EvaluationModel(e.getId(),e.getName(),e.getFill_date(),e.getquestion1(),
-					e.getquestion2(),e.getquestion3(),e.getQuestion4(),e.getQuestion5(),e.getQuestion6(),
+			listofev.add(new EvaluationModel(e.getId(),e.getName(),e.getFill_date(),e.getQuestion1(),
+					e.getQuestion2(),e.getQuestion3(),e.getQuestion4(),e.getQuestion5(),e.getQuestion6(),
 					e.getQuestion7(),e.getQuestion8(),e.getQuestion9(),e.getQuestion10()));
 			
 		}
