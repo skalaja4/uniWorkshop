@@ -1,4 +1,13 @@
+<%@page import="eu.unicorneducation.model.EmployeeModel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import=" java.text.DateFormat"%>
+<%
+	
+	EmployeeModel emp = (EmployeeModel)request.getAttribute("employee");
+	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
@@ -15,15 +24,28 @@
 
 <table border="1" cellpadding="5" width="600">
 <tr>
-<td width="120">Jméno :<br> Petr</td>
-<td width="120">Příjmení: <br>Kupka</td>
-<td width="120">Datum narození : <br>25.12.2015</td>
-<td width="120">Kategorie : <br>MANAGER</td></tr>
+<td width="120">Jméno :<br> <%= emp.getFirstName()%></td>
+<td width="120">Příjmení: <br><%= emp.getLastName()%></td>
+<td width="120">Datum narození : <br><%= format.format(emp.getBirthDate())%></td>
+<td width="120">Kategorie : <br><%= emp.getCategory() %></td></tr>
 </table>
 <h2>Hodnocení</h2>
-
+<br>
  
+<table border="1" cellpadding="5" width="600">
+<tr>
+<td width="160">Číslo otázky</td>
+<td width="160">Hodnocení</td>
 
+</tr>
+
+<% for(int i = 0; i<10; i++) { %>
+           <tr> <td> Otázka č.1</td> 
+           <td>  </td> </tr>
+           
+           
+        <% } %>
+</table>
 
 
 

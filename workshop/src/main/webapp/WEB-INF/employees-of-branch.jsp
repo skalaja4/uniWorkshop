@@ -46,11 +46,9 @@ table {
            <td> <%= format.format(e.getBirthDate())%> </td>
            <td> <%= e.getCategory()%> </td>
            
-          <td><form action="/workshop/detail?id=<%=(e.getId())%>"><input type="submit" value="Detail"></input></form></td>
+   
            
-           
-           
-           
+            <td> <a href="/workshop/detail?id=<%=(e.getId())%>"><button>Detail</button></a></td>
            
            </tr>
         <% } %>
