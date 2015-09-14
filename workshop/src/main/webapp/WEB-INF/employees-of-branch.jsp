@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.List"%>
+<%@page import="java.text.SimpleDateFormat"%>
+
+
+<%@page import=" java.text.DateFormat"%>
 
 <%@page import="eu.unicorneducation.model.EmployeeModel"%>
 <%
 	
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
-	DateFormat formatDataBezCasu = new SimpleDateFormat("d.MM.yyyy");
+	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
 
 %>
 
@@ -41,7 +43,7 @@ table {
 <% for(EmployeeModel e : employees) { %>
            <tr> <td> <%= e.getFirstName()%></td> 
            <td> <%= e.getLastName()%> </td> 
-           <td> <%= e.getBirthDate()%> </td>
+           <td> <%= format.format(e.getBirthDate())%> </td>
            <td> <%= e.getCategory()%> </td>
           <td><form action="http://localhost:8085/workshop/detail"><input type="submit" value="Detail"></input></form></td>
            
