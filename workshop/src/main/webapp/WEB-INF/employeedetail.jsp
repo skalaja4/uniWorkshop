@@ -37,8 +37,10 @@
 
 
 <% for(EvaluationModel e : evList) { %>
- Název hodnocení :  <%= e.getName() %> <br>
- <br>
+<br>
+
+ <h3>Název hodnocení : <i> <%= e.getName() %></i> </h3>
+
 <table border="1" cellpadding="5" width="600">
 <tr>
 <td width="160">Otázka</td>
