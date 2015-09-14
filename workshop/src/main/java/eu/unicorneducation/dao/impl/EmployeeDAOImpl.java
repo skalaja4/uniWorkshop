@@ -104,7 +104,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public Employee readByID(String employeeId) {
-		return em.createQuery("select e from Employee e left join e.branch b where b.id=:branchName and e.plan is null and e.category<>:notManager", Employee.class).getSingleResult();
+		return em.createQuery("select e from Employee e  where e.id=:empid ", Employee.class).setParameter("empid", employeeId).getSingleResult();
 	}
 
 }
