@@ -228,7 +228,7 @@ public class HomeController {
 	public String exportPdf(@RequestParam("id")String id, ModelMap model, HttpServletRequest request, HttpServletResponse response) {
 
 		InputStream is = pdfFacade.generatePdf(id);
-		
+		System.out.println("path" + request.getSession().getServletContext().getContextPath());
 		try {
 			org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
 			response.flushBuffer();
