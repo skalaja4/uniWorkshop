@@ -10,7 +10,10 @@ import eu.unicorneducation.entity.Branch;
 import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.facade.BranchFacade;
 import eu.unicorneducation.model.BranchModel;
+<<<<<<< HEAD
 import eu.unicorneducation.model.BranchTreeModel;
+=======
+>>>>>>> parent of ad00c27... Zmeny napric vrstvami, transformace entity na dto.
 import eu.unicorneducation.model.EmployeeModel;
 import eu.unicorneducation.service.BranchService;
 
@@ -76,6 +79,7 @@ public class BranchFacadeImpl implements BranchFacade {
 		return new BranchModel(branch.getId(), branch.getName(),
 				branch.getAddress(), branch.getParrentBranch(), employees,
 				branch.getManager());
+<<<<<<< HEAD
 	}
 
 	@Override
@@ -85,6 +89,8 @@ public class BranchFacadeImpl implements BranchFacade {
 
 		
 	
+=======
+>>>>>>> parent of ad00c27... Zmeny napric vrstvami, transformace entity na dto.
 	}
 
 }

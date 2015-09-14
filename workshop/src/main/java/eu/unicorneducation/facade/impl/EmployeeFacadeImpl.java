@@ -10,8 +10,11 @@ import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.facade.EmployeeFacade;
 import eu.unicorneducation.model.EmployeeModel;
+<<<<<<< HEAD
 import eu.unicorneducation.model.EvaluationModel;
 import eu.unicorneducation.model.transformation.EmployeeTransformation;
+=======
+>>>>>>> parent of ad00c27... Zmeny napric vrstvami, transformace entity na dto.
 import eu.unicorneducation.service.EmployeeService;
 
 @Component
@@ -21,45 +24,89 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 	private EmployeeService employeeserv;
 
 	public List<EmployeeModel> readAll() {
-		return EmployeeTransformation.transToModelList(employeeserv.readAll());
+
+		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
+
+		for (Employee emp : employeeserv.readAll()) {
+			listofserv.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
+		}
+
+		return listofserv;
 	}
 
 	@Override
 	public List<EmployeeModel> readByBranchAndCategory(String branch,
 			String category) {
-		List<EmployeeModel> listofserv = EmployeeTransformation
-				.transToModelList(employeeserv.readByBranchAndCategory(branch,
-						category));
+		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
+
+		for (Employee emp : employeeserv.readByBranchAndCategory(branch,
+				category)) {
+			listofserv.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
+		}
+
 		return listofserv;
 	}
 
 	@Override
 	public List<EmployeeModel> readByBranchWithoutCategory(String branch,
 			String category) {
-		List<EmployeeModel> listofserv = EmployeeTransformation
-				.transToModelList(employeeserv.readByBranchWithoutCategory(
-						branch, category));
+
+		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
+
+		for (Employee emp : employeeserv.readByBranchWithoutCategory(branch,
+				category)) {
+			listofserv.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
+		}
+
 		return listofserv;
 	}
 
 	@Override
 	public List<EmployeeModel> readByBranch(String branch) {
-		List<EmployeeModel> listofserv = EmployeeTransformation
-				.transToModelList(employeeserv.readByBranch(branch));
+		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
+
+		for (Employee emp : employeeserv.readByBranch(branch)) {
+			listofserv.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
+		}
+
 		return listofserv;
 	}
 
 	@Override
 	public List<EmployeeModel> readByIds(String[] employeeIds) {
-		List<EmployeeModel> listofserv = EmployeeTransformation
-				.transToModelList(employeeserv.readByIds(employeeIds));
+		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
+
+		for (Employee emp : employeeserv.readByIds(employeeIds)) {
+			listofserv.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
+		}
+
 		return listofserv;
 	}
 
 	@Override
 	public EmployeeModel readByID(String employeeId) {
 		Employee emp = employeeserv.readByID(employeeId);
-		return EmployeeTransformation.transToModel(emp);
+		EmployeeModel e = new EmployeeModel(emp.getId(), emp.getFirstName(),
+				emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+				.getEvaluation(), emp.getBranch(), emp
+				.getCategory());
+		
+		return e;
 	}
 
 	@Override

@@ -3,6 +3,9 @@ package eu.unicorneducation.model;
 import java.util.Date;
 import java.util.List;
 
+import eu.unicorneducation.entity.Branch;
+import eu.unicorneducation.entity.Evaluation;
+import eu.unicorneducation.entity.EvaluationPlan;
 import eu.unicorneducation.enumeration.Category;
 
 public class EmployeeModel {
@@ -15,11 +18,11 @@ public class EmployeeModel {
 	
 	private Date birthDate;
 	
-	private EvaluationPlanModel plan;
+	private EvaluationPlan plan;
 	
-	private List<EvaluationModel> evaluation;
+	private List<Evaluation> evaluation;
 	
-	private BranchModel branch;
+	private Branch branch;
 	
 	private Category category;
 	
@@ -29,11 +32,9 @@ public class EmployeeModel {
 		super();
 	}
 
-
 	public EmployeeModel(String id, String firstName, String lastName,
-			Date birthDate, EvaluationPlanModel plan,
-			List<EvaluationModel> evaluation, BranchModel branch,
-			Category category) {
+			Date birthDate, EvaluationPlan plan, List<Evaluation> evaluation,
+			Branch branch, Category category) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -44,7 +45,6 @@ public class EmployeeModel {
 		this.branch = branch;
 		this.category = category;
 	}
-
 
 	public String getId() {
 		return id;
@@ -76,29 +76,29 @@ public class EmployeeModel {
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
-	}	
+	}
 
-	public EvaluationPlanModel getPlan() {
+	public EvaluationPlan getPlan() {
 		return plan;
 	}
 
-	public void setPlan(EvaluationPlanModel plan) {
+	public void setPlan(EvaluationPlan plan) {
 		this.plan = plan;
 	}
 
-	public List<EvaluationModel> getEvaluation() {
+	public List<Evaluation> getEvaluation() {
 		return evaluation;
 	}
 
-	public void setEvaluation(List<EvaluationModel> evaluation) {
+	public void setEvaluation(List<Evaluation> evaluation) {
 		this.evaluation = evaluation;
 	}
 
-	public BranchModel getBranch() {
+	public Branch getBranch() {
 		return branch;
 	}
 
-	public void setBranch(BranchModel branch) {
+	public void setBranch(Branch branch) {
 		this.branch = branch;
 	}
 

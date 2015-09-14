@@ -17,32 +17,6 @@ public class EvaluationModel {
 	private int question8;
 	private int question9;
 	private String question10;
-	private EmployeeModel employeeModel;
-	
-	
-	public EvaluationModel() {
-		super();
-	}
-	
-	public EvaluationModel(Long id, String name, Date fill_date, int question1,
-			int question2, int question3, int question4, int question5,
-			int question6, int question7, int question8, int question9,
-			String question10) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.fill_date = fill_date;
-		this.question1 = question1;
-		this.question2 = question2;
-		this.question3 = question3;
-		this.question4 = question4;
-		this.question5 = question5;
-		this.question6 = question6;
-		this.question7 = question7;
-		this.question8 = question8;
-		this.question9 = question9;
-		this.question10 = question10;
-	}
 	
 	public Long getId() {
 		return id;
@@ -122,13 +96,6 @@ public class EvaluationModel {
 	public void setQuestion10(String question10) {
 		this.question10 = question10;
 	}
-
-	public EmployeeModel getEmployeeModel() {
-		return employeeModel;
-	}
-
-	public void setEmployeeModel(EmployeeModel employeeModel) {
-		this.employeeModel = employeeModel;
-	}
+	
 	
 }
