@@ -108,7 +108,7 @@ public class HomeController {
 	@RequestMapping(value = "/employees", method = RequestMethod.GET)
 	public String employees(ModelMap model, HttpServletRequest request) {
 
-		List<EmployeeModel> list = emplfacade.readAll();
+		List<EmployeeModel> list = emplfacade.readByBranch(request.getParameter("branchid"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
 
