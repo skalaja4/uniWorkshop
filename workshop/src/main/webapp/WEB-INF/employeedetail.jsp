@@ -31,7 +31,8 @@
 </table>
 <h2>Hodnocení</h2>
 <br>
- 
+ Název hodnocení :   <br>
+ <br>
 <table border="1" cellpadding="5" width="600">
 <tr>
 <td width="160">Číslo otázky</td>
@@ -39,12 +40,28 @@
 
 </tr>
 
-<% for(int i = 0; i<10; i++) { %>
-           <tr> <td> Otázka č.1</td> 
+           	<tr> <td> Otázka č.1</td> 
+           <td>  </td> </tr>
+            <tr> <td> Otázka č.2</td> 
+           <td>  </td> </tr>
+            <tr> <td> Otázka č.3</td> 
+           <td>  </td> </tr>
+            <tr> <td> Otázka č.4</td> 
+           <td>  </td> </tr>
+            <tr> <td> Otázka č.5</td> 
+           <td>  </td> </tr>
+            <tr> <td> Otázka č.6</td> 
+           <td>  </td> </tr>
+            <tr> <td> Otázka č.7</td> 
+           <td>  </td> </tr>
+            <tr> <td> Otázka č.8</td> 
+           <td>  </td> </tr>
+            <tr> <td> Otázka č.9</td> 
+           <td>  </td> </tr>
+            <tr> <td> Otázka č.10</td> 
            <td>  </td> </tr>
            
-           
-        <% } %>
+     
 </table>
 
 
