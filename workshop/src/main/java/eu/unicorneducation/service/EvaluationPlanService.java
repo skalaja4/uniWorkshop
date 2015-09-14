@@ -2,10 +2,8 @@ package eu.unicorneducation.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import eu.unicorneducation.dao.EvaluationPlanDAO;
 import eu.unicorneducation.entity.EvaluationPlan;
 
 /**

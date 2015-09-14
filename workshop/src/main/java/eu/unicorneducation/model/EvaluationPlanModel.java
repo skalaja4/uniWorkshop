@@ -3,25 +3,25 @@ package eu.unicorneducation.model;
 import java.util.Date;
 import java.util.List;
 
-import eu.unicorneducation.entity.Branch;
-import eu.unicorneducation.entity.Employee;
-
 public class EvaluationPlanModel {
 
 	private Long id;
 	private String name;
 	private Date expiration;
 	private BranchModel branch;
-	List<EmployeeModel> employees;
-	
-	public EvaluationPlanModel( String name, Date expiration, BranchModel branch,
-			List<EmployeeModel> employees) {
-		super();
+	private List<EmployeeModel> employees;
+	private boolean completed;
 		
+	
+	public EvaluationPlanModel(Long id, String name, Date expiration,
+			BranchModel branch, List<EmployeeModel> employees, boolean completed) {
+		super();
+		this.id = id;
 		this.name = name;
 		this.expiration = expiration;
 		this.branch = branch;
 		this.employees = employees;
+		this.completed = completed;
 	}
 	
 	public Long getId() {
@@ -54,4 +54,13 @@ public class EvaluationPlanModel {
 	public void setEmployees(List<EmployeeModel> employees) {
 		this.employees = employees;
 	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}	
+	
 }

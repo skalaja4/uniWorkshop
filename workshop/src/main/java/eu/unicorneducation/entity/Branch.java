@@ -34,14 +34,17 @@ public class Branch {
 
 	public Branch() {
 		super();
-	}
+	}	
 
-	public Branch(String id, String name, String address, String parrentBranch) {
+	public Branch(String id, String name, String address, String parrentBranch,
+			Employee manager, List<Employee> employees) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.parrentBranch = parrentBranch;
+		this.manager = manager;
+		this.employees = employees;
 	}
 
 	public String getId() {
