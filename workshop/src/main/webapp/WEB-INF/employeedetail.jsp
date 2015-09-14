@@ -41,31 +41,31 @@
  <br>
 <table border="1" cellpadding="5" width="600">
 <tr>
-<td width="160">Číslo otázky</td>
+<td width="160">Otázka</td>
 <td width="160">Hodnocení</td>
 
 </tr>
 
-           	<tr> <td> Otázka č.1</td> 
+           	<tr> <td>  Jakou známkou byste ohodnotil/a komunikační dovednosti poradce?</td> 
            <td> <%= e.getQuestion1()%> </td> </tr>
-            <tr> <td> Otázka č.2</td> 
+            <tr> <td> Jak byste ohodnotil/a pořádek na pracovišti poradce?</td> 
            <td> <%= e.getQuestion2() %></td> </tr>
-            <tr> <td> Otázka č.3</td> 
+            <tr> <td>  Jak byste ohodnotil/a schopnost poradce pracovat v týmu?</td> 
            <td> <%= e.getQuestion3() %> </td> </tr>
-            <tr> <td> Otázka č.4</td> 
+            <tr> <td>  Jak byste ohodnotil/a schopnost poradce zvládat stres?</td> 
            <td> <%= e.getQuestion4() %> </td> </tr>
-            <tr> <td> Otázka č.5</td> 
-           <td> <%= %> </td> </tr>
-            <tr> <td> Otázka č.6</td> 
-           <td> <%= %> </td> </tr>
-            <tr> <td> Otázka č.7</td> 
-           <td> <%= %>  </td> </tr>
-            <tr> <td> Otázka č.8</td> 
-           <td> <%= %> </td> </tr>
-            <tr> <td> Otázka č.9</td> 
-           <td> <%= %> </td> </tr>
-            <tr> <td> Otázka č.10</td> 
-           <td> <%= %> </td> </tr>
+            <tr> <td> Jak byste ohodnotil/a schopnost poradce si efektivně organizovat práci(schůzky, telefony s klienty, atd.)?</td> 
+           <td> <%= e.getQuestion5() %> </td> </tr>
+            <tr> <td> Jak byste ohodnotil/a znalost angličtiny poradce?</td> 
+           <td> <%= e.getQuestion6() %> </td> </tr>
+            <tr> <td> Jakou známku dostal poradce z testu „Znalost produktů“?</td> 
+           <td> <%= e.getQuestion7() %>  </td> </tr>
+            <tr> <td> Jakou známku dostal poradce z testu „Znalost IS“?</td> 
+           <td> <%= e.getQuestion8() %> </td> </tr>
+            <tr> <td> Jakou známkou byste ohodnotila schopnost se učit a dále se rozvíjet?</td> 
+           <td> <%= e.getQuestion9() %> </td> </tr>
+            <tr> <td>Poznámka: (jak bylo řečeno na konzultacích – zde můžeme zadávat libovolný text)</td> 
+           <td> <%= e.getQuestion10() %> </td> </tr>
            
      
 </table>
