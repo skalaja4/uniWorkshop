@@ -2,8 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import=" java.text.DateFormat"%>
+<%@page import=" java.util.List"%>
+<%@page import="eu.unicorneducation.model.EvaluationModel"%>
 <%
-	
+	List<EvaluationModel> evList = (List)request.getAttribute("evList");
 	EmployeeModel emp = (EmployeeModel)request.getAttribute("employee");
 	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
 
@@ -31,7 +33,11 @@
 </table>
 <h2>Hodnocení</h2>
 <br>
- Název hodnocení :   <br>
+
+
+
+<% for(EvaluationModel e : evList) { %>
+ Název hodnocení :  <%= e.getName() %> <br>
  <br>
 <table border="1" cellpadding="5" width="600">
 <tr>
@@ -41,30 +47,30 @@
 </tr>
 
            	<tr> <td> Otázka č.1</td> 
-           <td>  </td> </tr>
+           <td> <%= e.getQuestion1()%> </td> </tr>
             <tr> <td> Otázka č.2</td> 
-           <td>  </td> </tr>
+           <td> <%= e.getQuestion2() %></td> </tr>
             <tr> <td> Otázka č.3</td> 
-           <td>  </td> </tr>
+           <td> <%= e.getQuestion3() %> </td> </tr>
             <tr> <td> Otázka č.4</td> 
-           <td>  </td> </tr>
+           <td> <%= e.getQuestion4() %> </td> </tr>
             <tr> <td> Otázka č.5</td> 
-           <td>  </td> </tr>
+           <td> <%= %> </td> </tr>
             <tr> <td> Otázka č.6</td> 
-           <td>  </td> </tr>
+           <td> <%= %> </td> </tr>
             <tr> <td> Otázka č.7</td> 
-           <td>  </td> </tr>
+           <td> <%= %>  </td> </tr>
             <tr> <td> Otázka č.8</td> 
-           <td>  </td> </tr>
+           <td> <%= %> </td> </tr>
             <tr> <td> Otázka č.9</td> 
-           <td>  </td> </tr>
+           <td> <%= %> </td> </tr>
             <tr> <td> Otázka č.10</td> 
-           <td>  </td> </tr>
+           <td> <%= %> </td> </tr>
            
      
 </table>
 
-
+ <% } %>
 
 
 
