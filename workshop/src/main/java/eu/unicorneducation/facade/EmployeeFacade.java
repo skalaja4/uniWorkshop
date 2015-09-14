@@ -14,5 +14,5 @@ public interface EmployeeFacade {
 	List<EmployeeModel> readByBranch(String branch);
 	List<EmployeeModel> readByIds(String[] employeeIds);
 	EmployeeModel readByID(String employeeId);
-	List<EvaluationModel> getEvaluations(String empID);
+	
 }
