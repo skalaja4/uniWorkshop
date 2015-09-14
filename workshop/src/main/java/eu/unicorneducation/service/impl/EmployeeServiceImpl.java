@@ -49,11 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return employeeDao.readByID(employeeId);
 	}
 
-	@Override
-	public List<Evaluation> getEvaluations(String empID) {
-		
-		return employeeDao.getEvaluations(empID);
-	}
+	
 
 	
 
