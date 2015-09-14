@@ -104,9 +104,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public Employee readByID(String employeeId) {
-		Employee emp = new Employee();
-		emp = em.createQuery("select e from Employee e where e.id=:idOfEmployee", Employee.class).setParameter("idOfEmployee", employeeId).getSingleResult();
-		return null;
+		return em.createQuery("select e from Employee e where e.id=:idOfEmployee", Employee.class).setParameter("idOfEmployee", employeeId).getSingleResult();
 	}
 
 }
