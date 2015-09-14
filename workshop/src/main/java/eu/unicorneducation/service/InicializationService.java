@@ -4,8 +4,5 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface InicializationService {
 
-	public void inicializateBranches(MultipartFile file);
-	
-	public void inicializateEmployees(MultipartFile file);
-	
+	public void inicializate(MultipartFile branchesFile, MultipartFile employeesFile);
 }

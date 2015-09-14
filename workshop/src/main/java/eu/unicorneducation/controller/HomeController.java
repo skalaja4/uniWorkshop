@@ -83,25 +83,15 @@ public class HomeController {
 		return "inicialization";
 	}
 
-	@RequestMapping(value = "/inicializate_branches", method = RequestMethod.POST)
-	public String inicializateBranches(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) {
+	@RequestMapping(value = "/inicializate", method = RequestMethod.POST)
+	public String inicializateBranches(@RequestParam("branchesFile") MultipartFile branchesFile,
+			@RequestParam("employeesFile") MultipartFile employeesFile, ModelMap model, HttpServletRequest request) {
 
-		iniFacade.inicializateBranches(file);
+		iniFacade.inicializate(branchesFile, employeesFile);
 
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));
 		
-		return "inicialization";
-	}
-
-	@RequestMapping(value = "/inicializate_employees", method = RequestMethod.POST)
-	public String inicializateEmployees(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) {
-
-		iniFacade.inicializateEmployees(file);
-		
-		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));
-
 		return "inicialization";
 	}
 

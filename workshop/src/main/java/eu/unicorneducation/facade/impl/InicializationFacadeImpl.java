@@ -13,12 +13,7 @@ public class InicializationFacadeImpl implements InicializationFacade {
 	@Autowired
 	InicializationService service;
 	
-	public void inicializateBranches(MultipartFile file) {
-		service.inicializateBranches(file);
+	public void inicializate(MultipartFile branchesFile, MultipartFile employeesFile) {
+		service.inicializate(branchesFile, employeesFile);
 	}
-
-	public void inicializateEmployees(MultipartFile file) {
-		service.inicializateEmployees(file);
-	}
-
 }
