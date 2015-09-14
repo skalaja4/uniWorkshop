@@ -112,8 +112,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public List<Evaluation> getEvaluations(String empID) {
 		
-		return em.createQuery("select e from Evaluation e  where e.employee_id='EMP_15' ", Evaluation.class)
-				.setParameter("empid", empID).getResultList();
+		return em.createQuery("select e from Evaluation e  where e.employee_id=:emplid ", Evaluation.class)
+				.setParameter("emplid", empID).getResultList();
 	}
 	
 	
