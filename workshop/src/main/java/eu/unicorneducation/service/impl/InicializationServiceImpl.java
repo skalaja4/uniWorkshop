@@ -5,7 +5,9 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -38,6 +40,7 @@ public class InicializationServiceImpl implements InicializationService {
 	 */
 	public void inicializateBranches(MultipartFile file) {
 		List<Branch> branches = new ArrayList<>();
+		Map<String, String> branchesMap = new HashMap<>();
 
 		try {
 			CSVParser parser = CSVFormat.DEFAULT.parse(new InputStreamReader(
@@ -46,6 +49,7 @@ public class InicializationServiceImpl implements InicializationService {
 			// first we save all branches to database without their mother specified
 			for (CSVRecord r : parser) {
 				branches.add(new Branch(removeZeros(r.get(0)), r.get(1), r.get(2), null));
+				branchesMap.put(removeZeros(r.get(0)), removeZeros(r.get(3)));
 			}
 
 			branchDao.createAll(branches);
@@ -109,7 +113,6 @@ public class InicializationServiceImpl implements InicializationService {
 				}
 			}
 			
-//			employeeDao.createAll(employees);
 		} catch (IOException e) {
 			// TODO add error logger
 			e.printStackTrace();
