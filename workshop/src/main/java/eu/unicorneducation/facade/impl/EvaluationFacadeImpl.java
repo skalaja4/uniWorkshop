@@ -23,7 +23,7 @@ public class EvaluationFacadeImpl implements EvaluationFacade {
 		{
 			listofev.add(new EvaluationModel(e.getId(),e.getName(),e.getFill_date(),e.getquestion1(),
 					e.getquestion2(),e.getquestion3(),e.getquestion4(),e.getquestion5(),e.getquestion6(),
-					e.getquestion7(),e.getquestion8(),e.getquestion9(),e.getquestion10()));
+					e.getquestion7(),e.getquestion8(),e.getquestion9(),e.getquestion10(),e.getEmployee()));
 			
 		}
 		

@@ -48,6 +48,12 @@ public class Evaluation {
 	@ManyToOne
 	private Employee employee;
 	
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 	public Evaluation(){}
 	public Evaluation(Long id,String name, Date fill_date, int question1,
 			int question2, int question3, int question4, int question5, int question6,
