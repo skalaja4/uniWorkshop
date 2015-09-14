@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 
 
 
+
 import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.dao.EmployeeDAO;
@@ -99,6 +100,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 					.setParameter("idOfEmployee", employeeId).getResultList().get(0));
 		}
 		return list;
+	}
+
+	@Override
+	public Employee readByID(String employeeId) {
+		Employee emp = new Employee();
+		emp = em.createQuery("select e from Employee e where e.id=:idOfEmployee", Employee.class).setParameter("idOfEmployee", employeeId).getSingleResult();
+		return null;
 	}
 
 }
