@@ -10,7 +10,7 @@
 	
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
 	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
-	employees.get(0).getBranch();
+	
 
 %>
 
