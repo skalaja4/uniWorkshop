@@ -14,17 +14,33 @@ public class EvaluationPlanServiceImpl implements EvaluationPlanService{
 	
 	@Autowired
 	EvaluationPlanDAO evaPlanDAO;
-	
-	@Override
-	public List<EvaluationPlan> readAll() {
-		
-		return evaPlanDAO.readAll();
-		
+
+	public boolean create(EvaluationPlan evaluationPlan) {
+		return evaPlanDAO.create(evaluationPlan);
 	}
 
-	@Override
-	public boolean create(EvaluationPlan evalPlan) {
-		return evaPlanDAO.create(evalPlan);
+	public EvaluationPlan read(Long id) {
+		return evaPlanDAO.read(id);
+	}
+
+	public boolean update(EvaluationPlan evaluationPlan) {
+		return evaPlanDAO.update(evaluationPlan);
+	}
+
+	public boolean delete(EvaluationPlan evaluationPlan) {		
+		return evaPlanDAO.delete(evaluationPlan);
+	}
+
+	public List<EvaluationPlan> readAll() {
+		return evaPlanDAO.readAll();
+	}
+
+	public List<EvaluationPlan> readAllBeforeDate() {
+		return evaPlanDAO.readAllBeforeDate();
+	}
+
+	public List<EvaluationPlan> readAllAfterDate() {
+		return evaPlanDAO.readAllAfterDate();
 	}
 
 }

@@ -74,9 +74,6 @@ public class InicializationServiceImpl implements InicializationService {
 			//now we will inicializate employees
 			parser = CSVFormat.DEFAULT.parse(new InputStreamReader(employeesFile.getInputStream()));
 			for (CSVRecord r : parser) {
-				//if employee is already in database, then skip to next record
-				if(employeeDao.read(r.get(0)) != null) continue;
-				
 				try {
 					Branch branch = branchDao.read(removeZeros(r.get(3)));
 					Employee emp = new Employee(
@@ -118,52 +115,52 @@ public class InicializationServiceImpl implements InicializationService {
 		}
 	}
 
-//	/**
-//	 * Method for inicializating and adding new employees.
-//	 * 
-//	 * @param file file from which the employees will be parsed
-//	 */
-//	public void inicializateEmployees(MultipartFile file) {
-//		List<Employee> employees = new ArrayList<>();
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//
-//		try {
-//			CSVParser parser = CSVFormat.DEFAULT.parse(new InputStreamReader(
-//					file.getInputStream()));
-//			for (CSVRecord r : parser) {
-//				//if employee is already in database, then skip to next record
-//				if(employeeDao.read(r.get(0)) != null) continue;
-//				
-//				try {
-//					Branch branch = branchDao.read(removeZeros(r.get(3)));
-//					Employee emp = new Employee(
-//							r.get(0),
-//							r.get(1), 
-//							r.get(2),
-//							branch,
-//							dateFormat.parse(r.get(4).substring(0, 10)),
-//							Category.valueOf(r.get(5))
-//							);
-//					employeeDao.create(emp);
-//					//if newly created employee is MANAGER, then we set him as manager
-//					//in his branch
-//					if(emp.getCategory().equals(Category.MANAGER)) {
-//						branch.setManager(emp);
-//						branchDao.modify(branch);
-//					}
-//					
-//					employees.add(emp);
-//				} catch (ParseException e) {
-//					// TODO add error logger
-//					e.printStackTrace();
-//				}
-//			}
-//			
-//		} catch (IOException e) {
-//			// TODO add error logger
-//			e.printStackTrace();
-//		}
-//	}
+	/**
+	 * Method for adding new employees.
+	 * 
+	 * @param file file from which the employees will be parsed
+	 */
+	public void addEmployees(MultipartFile file) {
+		List<Employee> employees = new ArrayList<>();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		try {
+			CSVParser parser = CSVFormat.DEFAULT.parse(new InputStreamReader(
+					file.getInputStream()));
+			for (CSVRecord r : parser) {
+				//if employee is already in database, then skip to next record
+				if(employeeDao.read(r.get(0)) != null) continue;
+				
+				try {
+					Branch branch = branchDao.read(removeZeros(r.get(3)));
+					Employee emp = new Employee(
+							r.get(0),
+							r.get(1), 
+							r.get(2),
+							branch,
+							dateFormat.parse(r.get(4).substring(0, 10)),
+							Category.valueOf(r.get(5))
+							);
+					employeeDao.create(emp);
+					//if newly created employee is MANAGER, then we set him as manager
+					//in his branch
+					if(emp.getCategory().equals(Category.MANAGER)) {
+						branch.setManager(emp);
+						branchDao.modify(branch);
+					}
+					
+					employees.add(emp);
+				} catch (ParseException e) {
+					// TODO add error logger
+					e.printStackTrace();
+				}
+			}
+			
+		} catch (IOException e) {
+			// TODO add error logger
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * This method will remove zeros befor number part of id
