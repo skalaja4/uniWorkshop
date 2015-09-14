@@ -106,5 +106,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public Employee readByID(String employeeId) {
 		return em.createQuery("select e from Employee e  where e.id=:empid ", Employee.class).setParameter("empid", employeeId).getSingleResult();
 	}
+	
+	
+	
 
 }
+
+	
+	
