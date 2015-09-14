@@ -4,10 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import eu.unicorneducation.entity.Branch;
-import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.entity.EvaluationPlan;
-import eu.unicroneducation.enumeration.Category;
+import eu.unicorneducation.enumeration.Category;
 
 public class EmployeeModel {
 	
@@ -29,17 +28,22 @@ public class EmployeeModel {
 	
 	
 	
-
-	public EmployeeModel(Employee e) {
+	public EmployeeModel() {
 		super();
-		this.id = e.getId();
-		this.firstName = e.getFirstName();
-		this.lastName = e.getLastName();
-		this.plan = e.getPlan();
-		this.evaluation = e.getEvaluation();
-		this.branch = e.getBranch();
-		this.category = e.getCategory();
-		this.birthDate = e.getBirthDate();
+	}
+
+	public EmployeeModel(String id, String firstName, String lastName,
+			Date birthDate, EvaluationPlan plan, List<Evaluation> evaluation,
+			Branch branch, Category category) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthDate = birthDate;
+		this.plan = plan;
+		this.evaluation = evaluation;
+		this.branch = branch;
+		this.category = category;
 	}
 
 	public String getId() {
