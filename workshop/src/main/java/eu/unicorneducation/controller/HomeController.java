@@ -124,8 +124,9 @@ public class HomeController {
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(ModelMap model, HttpServletRequest request) {
-
+		EmployeeModel emp = emplfacade.readByID(request.getParameter("id"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("employee", emp);
 		return "employeedetail";
 	}
 

@@ -45,7 +45,7 @@ table {
            <td> <%= e.getLastName()%> </td> 
            <td> <%= format.format(e.getBirthDate())%> </td>
            <td> <%= e.getCategory()%> </td>
-          <td><form action="http://localhost:8085/workshop/detail"><input type="submit" value="Detail"></input></form></td>
+          <td><form action="http://localhost:8085/workshop/detail?id=<%=(e.getId())%>"><input type="submit" value="Detail"></input></form></td>
            
            
            
