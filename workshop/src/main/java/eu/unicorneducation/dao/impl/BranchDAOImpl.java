@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.dao.BranchDAO;
 import eu.unicorneducation.entity.Branch;
+import eu.unicorneducation.entity.Employee;
 
 @Component
 public class BranchDAOImpl implements BranchDAO{
@@ -60,6 +61,11 @@ public class BranchDAOImpl implements BranchDAO{
 	@Override
 	public Branch readByName(String name) {
 		return em.createQuery("SELECT b FROM Branch b where b.id=:name",Branch.class).setParameter("name", name).getResultList().get(0);
+		
+	}
+	@Override
+	public List<Branch> readAllOrderByPerrent() {
+		 return em.createQuery("SELECT b FROM Branch b ORDER BY parrentbranch",Branch.class).getResultList();
 		
 	}
 	
