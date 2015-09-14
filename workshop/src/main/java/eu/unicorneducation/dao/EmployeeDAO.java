@@ -17,5 +17,5 @@ public interface EmployeeDAO {
 	public List<Employee> readByBranch(String branch);
 	public List<Employee> readByIds(String[] employeeIds);
 	Employee readByID(String employeeId);
-	List<Evaluation> getEvaluations(String empID);
+	
 }

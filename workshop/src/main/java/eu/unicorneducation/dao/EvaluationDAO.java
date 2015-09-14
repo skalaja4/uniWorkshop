@@ -9,4 +9,5 @@ public interface EvaluationDAO {
 	public Evaluation read(Long id);
 	public boolean delete(Evaluation evaluation);
 	public List<Evaluation> readAll();
+	List<Evaluation> getEvaluations(String empID);
 }
