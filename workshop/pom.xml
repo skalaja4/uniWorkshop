@@ -69,6 +69,11 @@
 			<version>1.1.2</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.1.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>workshop</finalName>
