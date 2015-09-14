@@ -28,6 +28,7 @@ import eu.unicorneducation.facade.ImportFacade;
 import eu.unicorneducation.facade.InicializationFacade;
 import eu.unicorneducation.model.BranchModel;
 import eu.unicorneducation.model.EmployeeModel;
+import eu.unicorneducation.model.EvaluationModel;
 import eu.unicorneducation.model.EvaluationPlanModel;
 
 @Controller
@@ -116,9 +117,11 @@ public class HomeController {
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(ModelMap model, HttpServletRequest request) {
+		List<EvaluationModel> evList = emplfacade.getEvaluations(request.getParameter("id"));
 		EmployeeModel emp = emplfacade.readByID(request.getParameter("id"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("employee", emp);
+		model.addAttribute("evList", evList);
 		return "employeedetail";
 	}
 
