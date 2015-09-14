@@ -117,7 +117,9 @@ public class HomeController {
 
 	@RequestMapping(value = "/branches", method = RequestMethod.GET)
 	public String branches(ModelMap model, HttpServletRequest request) {
-
+		
+		
+		model.addAttribute("branches", branchfacade.readStructure());
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		return "branches";
 	}
