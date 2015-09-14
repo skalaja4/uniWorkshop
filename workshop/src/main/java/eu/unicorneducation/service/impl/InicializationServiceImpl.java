@@ -126,8 +126,7 @@ public class InicializationServiceImpl implements InicializationService {
 		int lastUnderscoreCharacterPosition = id.lastIndexOf('_');
 
 		// remove zeros before number
-		int zerolessId = Integer.parseInt(id
-				.substring(lastUnderscoreCharacterPosition));
+		int zerolessId = Integer.parseInt(id.substring(lastUnderscoreCharacterPosition + 1));
 		id = id.substring(0, lastUnderscoreCharacterPosition + 1) + zerolessId;
 		return id;
 	}
