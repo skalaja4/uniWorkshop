@@ -3,24 +3,16 @@ package eu.unicorneducation.controller;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
+import java.util.ArrayList;
 import java.util.Date;
-
-import java.util.Locale;
+import java.util.List;
+import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -73,11 +65,14 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/import_employees", method = RequestMethod.POST)
-	public String importEmployees(@RequestParam("file") MultipartFile file) {
+	public String importEmployees(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) {
 
 		importFacade.importEmployees(file);
-
-		return "inicialization";
+		
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "import.properties"));
+		
+		return "import";
 	}
 
 	@RequestMapping(value = "/inicialization", method = RequestMethod.GET)
@@ -89,17 +84,23 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/inicializate_branches", method = RequestMethod.POST)
-	public String inicializateBranches(@RequestParam("file") MultipartFile file) {
+	public String inicializateBranches(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) {
 
 		iniFacade.inicializateBranches(file);
 
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));
+		
 		return "inicialization";
 	}
 
 	@RequestMapping(value = "/inicializate_employees", method = RequestMethod.POST)
-	public String inicializateEmployees(@RequestParam("file") MultipartFile file) {
+	public String inicializateEmployees(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) {
 
 		iniFacade.inicializateEmployees(file);
+		
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));
 
 		return "inicialization";
 	}
@@ -136,7 +137,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/addEvaluation", method = RequestMethod.GET)
-	public String addEvaluation(ModelMap model) {
+	public String addEvaluation(ModelMap model, HttpServletRequest request) {
 
 		Properties prop = new Properties();
 		try {
@@ -147,22 +148,26 @@ public class HomeController {
 
 		List<BranchModel> branches = branchfacade.readAll();
 
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("branches", branches);
 		model.addAttribute("properties", prop);
 		return "addEvaluation";
 	}
 
 	@RequestMapping(value = "/addEvaluation", method = RequestMethod.POST)
-	public String chooseEvaluation(@RequestParam(value = "category") String category) {
+	public String chooseEvaluation(@RequestParam(value = "category") String category, ModelMap model, HttpServletRequest request) {
 
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		
 		return "choosEmployees";
 	}
 
 	@RequestMapping(value = "/chooseEmployees", method = RequestMethod.GET)
 	public String choosEmployees(ModelMap model, @RequestParam(value = "branch") String branch,
 			@RequestParam(value = "category") String category, @RequestParam(value = "datepicker") String datepicker,
-			@RequestParam(value = "name") String name) {
+			@RequestParam(value = "name") String name, HttpServletRequest request) {
 
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("branch", branch);
 		model.addAttribute("name", name);
 		model.addAttribute("category", category);
@@ -183,8 +188,10 @@ public class HomeController {
 	@RequestMapping(value = "/chooseEmployees", method = RequestMethod.POST)
 	public String createEvaluationPlan(ModelMap model, @RequestParam(value = "id") String[] employeeIds,
 			@RequestParam(value = "datepicker") String datepicker, @RequestParam(value = "name") String name,
-			@RequestParam(value = "branch") String branch) {
+			@RequestParam(value = "branch") String branch, HttpServletRequest request) {
 
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		
 		if (datepicker.equalsIgnoreCase("")) {
 			return "index";
 		}

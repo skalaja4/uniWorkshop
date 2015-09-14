@@ -18,44 +18,63 @@ public class BranchFacadeImpl implements BranchFacade {
 
 	@Autowired
 	BranchService branchService;
+
 	@Override
 	public List<BranchModel> readAll() {
 		List<Branch> list = branchService.readAll();
 		List<BranchModel> returnedList = new ArrayList<>();
 		for (Branch branch : list) {
-			
+
 			List<EmployeeModel> employees = new ArrayList<>();
 			for (Employee emp : branch.getEmployees()) {
-				employees.add(new EmployeeModel(emp));
+				employees.add(new EmployeeModel(emp.getId(),
+						emp.getFirstName(), emp.getLastName(), emp
+								.getBirthDate(), emp.getPlan(), emp
+								.getEvaluation(), emp.getBranch(), emp
+								.getCategory()));
 			}
-			
-			BranchModel bm = new BranchModel(branch.getId(),branch.getName(),branch.getAddress(),branch.getParrentBranch(),employees,branch.getManager());
-		
-			returnedList.add(bm);	
+
+			BranchModel bm = new BranchModel(branch.getId(), branch.getName(),
+					branch.getAddress(), branch.getParrentBranch(), employees,
+					branch.getManager());
+
+			returnedList.add(bm);
 		}
 		return returnedList;
-		
+
 	}
+
 	@Override
 	public BranchModel read(String id) {
-		Branch branch= branchService.read(id);
+		Branch branch = branchService.read(id);
 		List<EmployeeModel> employees = new ArrayList<>();
 		for (Employee emp : branch.getEmployees()) {
-			employees.add(new EmployeeModel(emp));
+			employees.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
 		}
-		
-		return new BranchModel(branch.getId(),branch.getName(),branch.getAddress(),branch.getParrentBranch(),employees,branch.getManager());
+
+		return new BranchModel(branch.getId(), branch.getName(),
+				branch.getAddress(), branch.getParrentBranch(), employees,
+				branch.getManager());
 	}
+
 	@Override
 	public BranchModel readByName(String name) {
-		
-		Branch branch= branchService.readByName(name);
+
+		Branch branch = branchService.readByName(name);
 		List<EmployeeModel> employees = new ArrayList<>();
 		for (Employee emp : branch.getEmployees()) {
-			employees.add(new EmployeeModel(emp));
+			employees.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
 		}
-		
-		return new BranchModel(branch.getId(),branch.getName(),branch.getAddress(),branch.getParrentBranch(),employees,branch.getManager());
+
+		return new BranchModel(branch.getId(), branch.getName(),
+				branch.getAddress(), branch.getParrentBranch(), employees,
+				branch.getManager());
 	}
 
 }

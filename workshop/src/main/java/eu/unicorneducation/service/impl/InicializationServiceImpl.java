@@ -18,8 +18,8 @@ import eu.unicorneducation.dao.BranchDAO;
 import eu.unicorneducation.dao.EmployeeDAO;
 import eu.unicorneducation.entity.Branch;
 import eu.unicorneducation.entity.Employee;
+import eu.unicorneducation.enumeration.Category;
 import eu.unicorneducation.service.InicializationService;
-import eu.unicroneducation.enumeration.Category;
 
 @Component
 public class InicializationServiceImpl implements InicializationService {
