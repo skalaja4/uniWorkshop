@@ -92,4 +92,15 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 		return listofserv;
 	}
 
+	@Override
+	public EmployeeModel readByID(String employeeId) {
+		Employee emp = employeeserv.readByID();
+		EmployeeModel e = new EmployeeModel(emp.getId(), emp.getFirstName(),
+				emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+				.getEvaluation(), emp.getBranch(), emp
+				.getCategory());
+		
+		return null;
+	}
+
 }
