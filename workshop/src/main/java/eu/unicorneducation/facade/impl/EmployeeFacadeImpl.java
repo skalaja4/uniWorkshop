@@ -10,11 +10,10 @@ import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.facade.EmployeeFacade;
 import eu.unicorneducation.model.EmployeeModel;
-<<<<<<< HEAD
+
 import eu.unicorneducation.model.EvaluationModel;
-import eu.unicorneducation.model.transformation.EmployeeTransformation;
-=======
->>>>>>> parent of ad00c27... Zmeny napric vrstvami, transformace entity na dto.
+
+
 import eu.unicorneducation.service.EmployeeService;
 
 @Component
@@ -114,8 +113,8 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 		List<EvaluationModel> listofev = new ArrayList<EvaluationModel>();
 		for(Evaluation e : employeeserv.getEvaluations(empID))
 		{
-			listofev.add(new EvaluationModel(e.getId(),e.getName(),e.getFill_date(),e.getQuestion1(),
-					e.getQuestion2(),e.getQuestion3(),e.getQuestion4(),e.getQuestion5(),e.getQuestion6(),
+			listofev.add(new EvaluationModel(e.getId(),e.getName(),e.getFill_date(),e.getquestion1(),
+					e.getquestion2(),e.getquestion3(),e.getQuestion4(),e.getQuestion5(),e.getQuestion6(),
 					e.getQuestion7(),e.getQuestion8(),e.getQuestion9(),e.getQuestion10()));
 			
 		}
