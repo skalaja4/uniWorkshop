@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import eu.unicorneducation.facade.BranchFacade;
 import eu.unicorneducation.facade.EmployeeFacade;
+import eu.unicorneducation.facade.EvaluationFacade;
 import eu.unicorneducation.facade.EvaluationPlanFacade;
 import eu.unicorneducation.facade.ImportFacade;
 import eu.unicorneducation.facade.InicializationFacade;
@@ -54,6 +55,9 @@ public class HomeController {
 	
 	@Autowired
 	private PdfFacade pdfFacade;
+	
+	@Autowired
+	private EvaluationFacade evalfac;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String students(ModelMap model, HttpServletRequest request) {
@@ -122,7 +126,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(ModelMap model, HttpServletRequest request) {
-		List<EvaluationModel> evList = emplfacade.getEvaluations(request.getParameter("id"));
+		List<EvaluationModel> evList = evalfac.getEvaluations(request.getParameter("id"));
 		EmployeeModel emp = emplfacade.readByID(request.getParameter("id"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("employee", emp);
