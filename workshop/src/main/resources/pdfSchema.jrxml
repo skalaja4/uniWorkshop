@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.1.1.final using JasperReports Library version 6.1.1  -->
+<!-- 2015-09-14T14:46:58 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pdfSchema" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ba7d6ed0-d1f7-4b5c-8b63-78ecc634d117">
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.String">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="firstName" class="java.lang.String">
+		<fieldDescription><![CDATA[firstName]]></fieldDescription>
+	</field>
+	<field name="lastName" class="java.lang.String">
+		<fieldDescription><![CDATA[lastName]]></fieldDescription>
+	</field>
+	<field name="birthDate" class="java.util.Date">
+		<fieldDescription><![CDATA[birthDate]]></fieldDescription>
+	</field>
+	<field name="category" class="eu.unicorneducation.enumeration.Category">
+		<fieldDescription><![CDATA[category]]></fieldDescription>
+	</field>
+	<field name="branch" class="eu.unicorneducation.entity.Branch">
+		<fieldDescription><![CDATA[branch]]></fieldDescription>
+	</field>
+	<field name="evaluation" class="java.util.List">
+		<fieldDescription><![CDATA[evaluation]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="63" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="33" width="95" height="30" uuid="e0ddfe3e-8396-4ce0-b5f0-ed9d5d695c03"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="93" y="33" width="92" height="30" uuid="2c675db8-0973-4a79-badd-2e1a00134523"/>
+				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="33" width="92" height="30" uuid="ff3239ac-03ee-4226-a7b7-035e40114f86"/>
+				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="33" width="92" height="30" uuid="a20c0eba-7733-4e3c-bf3d-7505543c5b90"/>
+				<textFieldExpression><![CDATA[$F{birthDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="33" width="92" height="30" uuid="a20c0eba-7733-4e3c-bf3d-7505543c5b90"/>
+				<textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="463" y="33" width="92" height="30" uuid="a20c0eba-7733-4e3c-bf3d-7505543c5b90"/>
+				<textFieldExpression><![CDATA[$F{branch}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="92" height="30" uuid="dfdcb325-1e9a-4dae-b55d-ccdfac6c919b"/>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="92" y="0" width="92" height="30" uuid="13279677-ab67-4219-832a-7fe8c94749db"/>
+				<text><![CDATA[Jmeno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="0" width="92" height="30" uuid="6ed43231-e3ee-458d-b6d7-9e56719a8e51"/>
+				<text><![CDATA[Prijmeni]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="92" height="30" uuid="fc0a39ce-0fbb-450a-8882-0219ee5b96d3"/>
+				<text><![CDATA[Datum narozeni]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="463" y="0" width="92" height="30" uuid="2fcad3fe-7b57-424f-8ba7-0aa8e5656fd3"/>
+				<text><![CDATA[Pobocka]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="0" width="92" height="30" uuid="7f80dc9f-f431-442d-8083-af53781805c3"/>
+				<text><![CDATA[Pozice]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="243" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="200" uuid="0461f55b-34d0-4cd3-a91a-db20e88b5c62"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{evaluation})]]></dataSourceExpression>
+				<subreportExpression><![CDATA["src/main/resources/subReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>
