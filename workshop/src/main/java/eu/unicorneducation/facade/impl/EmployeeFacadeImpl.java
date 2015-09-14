@@ -108,18 +108,6 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 		return e;
 	}
 
-	@Override
-	public List<EvaluationModel> getEvaluations(String empID) {
-		List<EvaluationModel> listofev = new ArrayList<EvaluationModel>();
-		for(Evaluation e : employeeserv.getEvaluations(empID))
-		{
-			listofev.add(new EvaluationModel(e.getId(),e.getName(),e.getFill_date(),e.getquestion1(),
-					e.getquestion2(),e.getquestion3(),e.getquestion4(),e.getquestion5(),e.getquestion6(),
-					e.getquestion7(),e.getquestion8(),e.getquestion9(),e.getquestion10()));
-			
-		}
-		
-		return listofev;
-	}
+	
 
 }
