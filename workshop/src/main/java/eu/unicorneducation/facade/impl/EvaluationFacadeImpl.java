@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.facade.EvaluationFacade;
 import eu.unicorneducation.model.EvaluationModel;
 import eu.unicorneducation.service.EvaluationService;
-
+@Component
 public class EvaluationFacadeImpl implements EvaluationFacade {
 
 	@Autowired
