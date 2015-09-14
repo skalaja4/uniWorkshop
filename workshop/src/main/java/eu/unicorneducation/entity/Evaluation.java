@@ -51,7 +51,7 @@ public class Evaluation {
 	public Evaluation(){}
 	public Evaluation(Long id,String name, Date fill_date, int question1,
 			int question2, int question3, int question4, int question5, int question6,
-			int question7, int question8, int question9, String question10) {
+			int question7, int question8, int question9, String question10, Employee employee) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -66,6 +66,7 @@ public class Evaluation {
 		this.question8 = question8;
 		this.question9 = question9;
 		this.question10 = question10;
+		this.employee = employee;
 	}
 
 	public Long getId() {
