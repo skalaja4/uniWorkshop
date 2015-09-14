@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 
 <%@page import="eu.unicorneducation.model.EmployeeModel"%>
 <%
 	
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
+	DateFormat formatDataBezCasu = new SimpleDateFormat("d.MM.yyyy");
 
 %>
 
