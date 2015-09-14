@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ import eu.unicorneducation.facade.EmployeeFacade;
 import eu.unicorneducation.facade.EvaluationPlanFacade;
 import eu.unicorneducation.facade.ImportFacade;
 import eu.unicorneducation.facade.InicializationFacade;
+import eu.unicorneducation.facade.PdfFacade;
 import eu.unicorneducation.model.BranchModel;
 import eu.unicorneducation.model.EmployeeModel;
 import eu.unicorneducation.model.EvaluationModel;
@@ -49,6 +51,9 @@ public class HomeController {
 
 	@Autowired
 	private EvaluationPlanFacade evaluationPlanFacade;
+	
+	@Autowired
+	private PdfFacade pdfFacade;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String students(ModelMap model, HttpServletRequest request) {
@@ -213,6 +218,24 @@ public class HomeController {
 
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		return "fillEvaluation";
+	}
+	
+	@RequestMapping(value = "/exportPdf", method = RequestMethod.GET)
+	public String exportPdf(@RequestParam("id")String id, ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+
+		InputStream is = pdfFacade.generatePdf(id);
+		
+		try {
+			org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
+			response.flushBuffer();
+		} catch (IOException e) {
+			// TODO logger
+			e.printStackTrace();
+		}
+	      
+		
+		model.addAttribute("menuProperties", loadProperties(request, "exportPdf.properties"));
+		return "exportPdf";
 	}
 
 	private Properties loadProperties(HttpServletRequest request, String propertiesName) {
