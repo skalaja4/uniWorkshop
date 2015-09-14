@@ -42,4 +42,12 @@ public class EvaluationDAOImpl implements EvaluationDAO {
 		return em.createQuery("select e from Employee e", Employee.class).getResultList();
 		
 	}
+	
+	
+	@Override
+	public List<Evaluation> getEvaluations(String empID) {
+		
+		return em.createQuery("select e from Evaluation e  where employee_id=:emplid ", Evaluation.class)
+				.setParameter("emplid", empID).getResultList();
+	}
 }
