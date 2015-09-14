@@ -10,6 +10,7 @@
 	
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
 	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
+	employees.get(0).getBranch();
 
 %>
 
@@ -23,7 +24,7 @@ table {
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Employees of branch</title>
+<title>Employees of specific branch</title>
 </head>
 <body>
 <%@ include file="menu.jspf" %>
