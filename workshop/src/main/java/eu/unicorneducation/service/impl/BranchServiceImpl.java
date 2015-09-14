@@ -67,8 +67,9 @@ public class BranchServiceImpl implements BranchService {
 
 			}
 		}
-
-		traverse(treeStructure.get(0));
+		
+		
+		
 		return treeStructure;
 	}
 

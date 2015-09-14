@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,20 +27,22 @@ public class PdfServiceImpl implements PdfService {
 	@Override
 	public InputStream generatePdf(String id) {
 
-
-//		String sourceFileName = "WEB-INF/jasper/pdfSchema.jasper";
-		String sourceFileName = "C:/Users/Student/uniWorkshop/workshop/src/main/resources/pdfSchema.jasper";
+		String sourceFileName = "src/main/resources/pdfSchema.jasper";
+//		String sourceFileName = "C:/Users/Student/uniWorkshop/workshop/src/main/resources/pdfSchema.jasper";
 		
 		String printFileName = null;
-		JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(Arrays.asList(employeeDao.read(id)));
-//		JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(DataForJasperFactory.getList());
+//		JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(Arrays.asList(employeeDao.read(id)));
+		JRBeanCollectionDataSource beanColDataSource =
+		         new JRBeanCollectionDataSource(DataForJasperFactory.getList());
 		
 		Map parameters = new HashMap();
 		InputStream in = null;
 		try {
 			File temp = File.createTempFile("tempPdf", ".pdf");
+			System.out.println("tempFile:" + temp.getAbsolutePath());
 			printFileName = JasperFillManager.fillReportToFile(sourceFileName,
 					parameters, beanColDataSource);
+			System.out.println("printFileName:" + printFileName);
 			if (printFileName != null) {
 				/**
 				 * 1- export to PDF

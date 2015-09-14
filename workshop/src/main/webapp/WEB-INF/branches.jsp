@@ -1,6 +1,5 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.Queue"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="java.text.SimpleDateFormat"%>
 
@@ -11,7 +10,8 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
-List<BranchTreeModel> branches = (List<BranchTreeModel>) request.getAttribute("branches");
+	Integer size=(Integer) request.getAttribute("branches");
+
 %>
 
 <html>
@@ -21,27 +21,66 @@ List<BranchTreeModel> branches = (List<BranchTreeModel>) request.getAttribute("b
 <body>
 	<div id="header">
 		<%@ include file="menu.jspf"%>
-
-
-
+		
+		<%for(int i=0;i<size;i++){ %>
+<%= request.getAttribute("branche"+i) %>
+<%} %>
+<%-- 
 		<h1>Pobočky</h1>
 		<br>
-		
-		<%for(BranchTreeModel branchTree:branches){
-			
-			%>
-			<br>	<%=branchTree.getThisBranch().getName()%>	
-		<%
-		for(BranchTreeModel branchTree2:branchTree.getChildrens()){%>
-		<br>
-			&nbsp;&nbsp;&nbsp;&nbsp; <%=branchTree2.getThisBranch().getName()%>
-			<%for(BranchTreeModel branchTree3:branchTree2.getChildrens()){%>
-			<br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%=branchTree3.getThisBranch().getName()%>
+		<ul>
 			<%
-		}}
-		}%>
+				for (BranchTreeModel branchTree : branches) {
+			%>
+			<li><a href="/workshop/employees?branchid=BB_BRANCH_001"> <%=branchTree.getThisBranch().getName()%></a></li>
+			
+			<ul>
+				<%
+					for (BranchTreeModel branchTree2 : branchTree.getChildrens()) {
+				%>
+
+
+				<li><a href="/workshop/employees?branchid=BB_BRANCH_001"> <%=branchTree2.getThisBranch().getName()%></a></li>
+
+
+<ul>
+				<%
+					for (BranchTreeModel branchTree3 : branchTree2
+									.getChildrens()) {
+				%>
+				
+					<li><a href="/workshop/employees?branchid=BB_BRANCH_001">
+							<%=branchTree3.getThisBranch().getName()%></a></li>
+
+					<%
+						for (BranchTreeModel branchTree4 : branchTree3
+											.getChildrens()) {
+					%>
+
+					<li><a href="/workshop/employees?branchid=BB_BRANCH_001">
+							<%=branchTree4.getThisBranch().getName()%></a></li>
+
+				</ul>
+			
 		
+		<%
+			}
+					}%>
+				
+				<ul>
+				<%}%>
+				
+				</ul>
+<%}%>
+		
+
+
+		</ul>
+
+
+
+
+
 		<ul>
 			<li><a href="/workshop/employees?branchid=BB_BRANCH_001">
 					prvni hlavni pobocka</a></li>
@@ -63,6 +102,6 @@ List<BranchTreeModel> branches = (List<BranchTreeModel>) request.getAttribute("b
 				</ol></li>
 			<!-- Here is the closing </li> tag -->
 			<li><a href="/workshop/employees"> treti hlavni pobocka</a></li>
-		</ul>
+		</ul> --%>
 </body>
 </html>

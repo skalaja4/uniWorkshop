@@ -1,7 +1,9 @@
 package eu.unicorneducation.model;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import eu.unicorneducation.entity.Branch;
 
@@ -53,5 +55,12 @@ public class BranchTreeModel {
 	public void setChildrens(List<BranchTreeModel> childrens) {
 		this.childrens = childrens;
 	}
+	public void printChildrens(int cislo){
+		for(BranchTreeModel models:childrens){
+			models.printChildrens(cislo++);
+		}
+		System.out.println(thisBranch.getName());
+	}
+	
 	
 }

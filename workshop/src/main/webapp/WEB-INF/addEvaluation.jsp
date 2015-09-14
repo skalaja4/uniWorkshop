@@ -62,10 +62,11 @@ table {
 				<td width="100"><label>Kategorie: </label></td>
 				<td><select id="category" name="category">
 
+						<option value="OTHER"></option>
 						<option value="NEW">New</option>
 						<option value="STABLE">Stable</option>
 						<option value="SENIOR">Senior</option>
-						<option value="OTHER">Jiné</option>
+						
 				</select></td>
 			</tr>
 			<tr>

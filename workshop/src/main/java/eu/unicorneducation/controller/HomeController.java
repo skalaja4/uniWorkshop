@@ -29,7 +29,9 @@ import eu.unicorneducation.facade.EvaluationPlanFacade;
 import eu.unicorneducation.facade.ImportFacade;
 import eu.unicorneducation.facade.InicializationFacade;
 import eu.unicorneducation.facade.PdfFacade;
+import eu.unicorneducation.helpers.BranchTreeHelper;
 import eu.unicorneducation.model.BranchModel;
+import eu.unicorneducation.model.BranchTreeModel;
 import eu.unicorneducation.model.EmployeeModel;
 import eu.unicorneducation.model.EvaluationModel;
 import eu.unicorneducation.model.EvaluationPlanModel;
@@ -118,10 +120,14 @@ public class HomeController {
 	@RequestMapping(value = "/branches", method = RequestMethod.GET)
 	public String branches(ModelMap model, HttpServletRequest request) {
 		
-		
-		model.addAttribute("branches", branchfacade.readStructure());
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		return "branches";
+		//model.addAttribute("branches", branchfacade.readStructure());
+		List<BranchTreeModel> structure= branchfacade.readStructure();
+		//model.addAttribute("branches", structure);
+		model.addAttribute("branches", structure.size());
+		for (int i = 0; i < structure.size(); i++) {
+			model.addAttribute("branche"+i, BranchTreeHelper.getTreeForBranch("", structure.get(i)));	
+		}return "branches";
 	}
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
