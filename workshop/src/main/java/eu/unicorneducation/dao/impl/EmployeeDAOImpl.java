@@ -9,10 +9,12 @@ import javax.persistence.Persistence;
 
 
 
+
 import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.dao.EmployeeDAO;
 import eu.unicorneducation.entity.Employee;
+import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.enumeration.Category;
 
 @Component
@@ -105,6 +107,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public Employee readByID(String employeeId) {
 		return em.createQuery("select e from Employee e  where e.id=:empid ", Employee.class).setParameter("empid", employeeId).getSingleResult();
+	}
+
+	@Override
+	public List<Evaluation> getEvaluations(String empID) {
+		
+		return em
+				.createQuery(
+						"select e from Evaluation e  where e.employee_id=:empid ",
+						Evaluation.class)
+				.setParameter("empid", empID).getResultList();
 	}
 	
 	
