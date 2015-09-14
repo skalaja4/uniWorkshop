@@ -13,7 +13,7 @@
 <h1>Pobočky</h1>
 		<br>
 		<ul>
-			<li><a href="link.employees?branchid=BB_BRANCH_012"> prvni hlavni pobocka</a></li>
+			<li><a href="/workshop/employees?branchid=BB_BRANCH_001"> prvni hlavni pobocka</a></li>
 			<ol>
 				<li><a href="/workshop/employees"> pobocka1</a></li>
 				<li><a href="/workshop/employees"> pobocka2</a></li>
