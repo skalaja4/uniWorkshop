@@ -40,8 +40,10 @@ public class EvaluationPlan {
 	public EvaluationPlan() {
 	}
 
-	public EvaluationPlan(String name, Date expiration, Branch branch, List<Employee> employees, boolean completed) {
+	public EvaluationPlan(Long id, String name, Date expiration, Branch branch,
+			List<Employee> employees, boolean completed) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.expiration = expiration;
 		this.branch = branch;

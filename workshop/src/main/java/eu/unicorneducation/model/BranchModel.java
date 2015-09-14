@@ -2,8 +2,6 @@ package eu.unicorneducation.model;
 
 import java.util.List;
 
-import eu.unicorneducation.entity.Employee;
-
 public class BranchModel {
 
 	private String id;
@@ -11,10 +9,13 @@ public class BranchModel {
 	private String address;
 	private String parrentBranch;
 	private List<EmployeeModel> employees;
-	private Employee manager;
+	private EmployeeModel manager;
 
-	public BranchModel(String id, String name, String address, String parrentBranch, List<EmployeeModel> employees,
-			Employee manager) {
+	
+
+	public BranchModel(String id, String name, String address,
+			String parrentBranch, List<EmployeeModel> employees,
+			EmployeeModel manager) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -64,11 +65,11 @@ public class BranchModel {
 		this.employees = employees;
 	}
 
-	public Employee getManager() {
+	public EmployeeModel getManager() {
 		return manager;
 	}
 
-	public void setManager(Employee manager) {
+	public void setManager(EmployeeModel manager) {
 		this.manager = manager;
 	}
 
@@ -128,5 +129,6 @@ public class BranchModel {
 			return false;
 		return true;
 	}
+	
 	
 }

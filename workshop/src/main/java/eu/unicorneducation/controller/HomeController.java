@@ -28,6 +28,7 @@ import eu.unicorneducation.facade.ImportFacade;
 import eu.unicorneducation.facade.InicializationFacade;
 import eu.unicorneducation.model.BranchModel;
 import eu.unicorneducation.model.EmployeeModel;
+import eu.unicorneducation.model.EvaluationModel;
 import eu.unicorneducation.model.EvaluationPlanModel;
 
 @Controller
@@ -83,25 +84,15 @@ public class HomeController {
 		return "inicialization";
 	}
 
-	@RequestMapping(value = "/inicializate_branches", method = RequestMethod.POST)
-	public String inicializateBranches(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) {
+	@RequestMapping(value = "/inicializate", method = RequestMethod.POST)
+	public String inicializateBranches(@RequestParam("branchesFile") MultipartFile branchesFile,
+			@RequestParam("employeesFile") MultipartFile employeesFile, ModelMap model, HttpServletRequest request) {
 
-		iniFacade.inicializateBranches(file);
+		iniFacade.inicializate(branchesFile, employeesFile);
 
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));
 		
-		return "inicialization";
-	}
-
-	@RequestMapping(value = "/inicializate_employees", method = RequestMethod.POST)
-	public String inicializateEmployees(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) {
-
-		iniFacade.inicializateEmployees(file);
-		
-		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));
-
 		return "inicialization";
 	}
 
@@ -126,9 +117,11 @@ public class HomeController {
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(ModelMap model, HttpServletRequest request) {
+		List<EvaluationModel> evList = emplfacade.getEvaluations(request.getParameter("id"));
 		EmployeeModel emp = emplfacade.readByID(request.getParameter("id"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("employee", emp);
+		model.addAttribute("evList", evList);
 		return "employeedetail";
 	}
 

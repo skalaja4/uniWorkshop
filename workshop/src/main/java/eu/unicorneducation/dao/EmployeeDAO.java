@@ -3,6 +3,7 @@ package eu.unicorneducation.dao;
 import java.util.List;
 
 import eu.unicorneducation.entity.Employee;
+import eu.unicorneducation.entity.Evaluation;
 
 public interface EmployeeDAO {
 
@@ -16,4 +17,5 @@ public interface EmployeeDAO {
 	public List<Employee> readByBranch(String branch);
 	public List<Employee> readByIds(String[] employeeIds);
 	Employee readByID(String employeeId);
+	List<Evaluation> getEvaluations(String empID);
 }

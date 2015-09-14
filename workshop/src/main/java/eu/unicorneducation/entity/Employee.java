@@ -56,12 +56,15 @@ public  class Employee {
 	}
 
 	public Employee(String id, String firstName, String lastName,
-			Branch branch, Date birthDate, Category category) {
+			Date birthDate, EvaluationPlan plan, List<Evaluation> evaluation,
+			Branch branch, Category category) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthDate = birthDate;
+		this.plan = plan;
+		this.evaluation = evaluation;
 		this.branch = branch;
 		this.category = category;
 	}

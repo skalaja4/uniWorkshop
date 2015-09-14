@@ -17,29 +17,34 @@
 <body>
 	<%@ include file="menu.jspf"%>
 
-	<sf:form action="/workshop/inicializate_branches" method="post"
+	<sf:form action="/workshop/inicializate" method="post"
 		enctype="multipart/form-data">
 		<p>
 			<%= prop.get("enterBranches") %><br>
-			<input type="file" name="file" size="40">
+			<input type="file" name="branchesFile" size="40">
+		</p>
+		<p>
+			<%= prop.get("enterEmployees") %><br>
+			<input type="file" name="employeesFile" size="40">
 		</p>
 		<div>
 			<input type="submit" value="<%= prop.get("submitBranches") %>">
 		</div>
+		
 	</sf:form>
 
 
-	<hr>
-	<sf:form action="/workshop/inicializate_employees" method="post"
-		enctype="multipart/form-data">
-		<p>
-			<%= prop.get("enterEmployees") %><br>
-			<input type="file" name="file" size="40">
-		</p>
-		<div>
-			<input type="submit" value="<%= prop.get("submitEmployees") %>">
-		</div>
-	</sf:form>
+<!-- 	<hr> -->
+<%-- 	<sf:form action="/workshop/inicializate_employees" method="post" --%>
+<%-- 		enctype="multipart/form-data"> --%>
+<!-- 		<p> -->
+<%-- 			<%= prop.get("enterEmployees") %><br> --%>
+<!-- 			<input type="file" name="file" size="40"> -->
+<!-- 		</p> -->
+<!-- 		<div> -->
+<%-- 			<input type="submit" value="<%= prop.get("submitEmployees") %>"> --%>
+<!-- 		</div> -->
+<%-- 	</sf:form> --%>
 
 </body>
 </html>

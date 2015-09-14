@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import eu.unicorneducation.entity.Branch;
-import eu.unicorneducation.entity.EvaluationPlan;
+import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.facade.EvaluationPlanFacade;
 import eu.unicorneducation.model.EvaluationPlanModel;
+import eu.unicorneducation.model.transformation.EmployeeTransformation;
+import eu.unicorneducation.model.transformation.EvaluationPlanTransformation;
 import eu.unicorneducation.service.EmployeeService;
 import eu.unicorneducation.service.EvaluationPlanService;
 
@@ -22,21 +23,41 @@ public class EvaluationPlanFacadeImpl implements EvaluationPlanFacade {
 	EmployeeService employeeService;
 
 	@Override
-	public List<EvaluationPlanModel> readAll() {
+	public boolean create(EvaluationPlanModel evaPlanModel, String[] employeeIDs) {
 
-		return null;
+		List<Employee> employees = employeeService.readByIds(employeeIDs);
+		evaPlanModel.setEmployees(EmployeeTransformation.transToModelList(employees));
+		return evaPlanService.create(EvaluationPlanTransformation.transToEntity(evaPlanModel));		
 	}
 
 	@Override
-	public boolean create(EvaluationPlanModel evaPlanModel, String[] employeeIDs) {
+	public EvaluationPlanModel read(Long id) {
+		return EvaluationPlanTransformation.transToModel(evaPlanService.read(id));	
+	}
 
-	
-		Branch branch = new Branch(evaPlanModel.getBranch().getId(), evaPlanModel.getBranch().getName(),
-				evaPlanModel.getBranch().getAddress(), evaPlanModel.getBranch().getParrentBranch());
+	@Override
+	public boolean update(EvaluationPlanModel evaPlanModel, String[] employeeIDs) {
+		return evaPlanService.update(EvaluationPlanTransformation.transToEntity(evaPlanModel));
+	}
 
-		
-		return evaPlanService.create(new EvaluationPlan(evaPlanModel.getName(), evaPlanModel.getExpiration(), branch,
-				employeeService.readByIds(employeeIDs), false));
+	@Override
+	public boolean delete(EvaluationPlanModel evaPlanModel) {
+		return evaPlanService.delete(EvaluationPlanTransformation.transToEntity(evaPlanModel));
+	}
+
+	@Override
+	public List<EvaluationPlanModel> readAll() {
+		return EvaluationPlanTransformation.transToModelList(evaPlanService.readAll());
+	}
+
+	@Override
+	public List<EvaluationPlanModel> readAllBeforeDate() {
+		return EvaluationPlanTransformation.transToModelList(evaPlanService.readAllBeforeDate());
+	}
+
+	@Override
+	public List<EvaluationPlanModel> readAllAfterDate() {
+		return EvaluationPlanTransformation.transToModelList(evaPlanService.readAllAfterDate());
 	}
 
 }
