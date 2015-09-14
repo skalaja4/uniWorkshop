@@ -14,5 +14,5 @@ public interface EmployeeService {
 	 List<Employee> readByBranch(String branch);
 	 List<Employee> readByIds(String[] employeeIds);
 	 Employee readByID(String employeeId);
-	 List <Evaluation> getEvaluations(String empID);
+	\
 }
