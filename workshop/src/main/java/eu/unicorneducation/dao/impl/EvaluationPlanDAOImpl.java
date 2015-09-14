@@ -5,10 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
+import org.springframework.stereotype.Component;
+
 import eu.unicorneducation.dao.EvaluationPlanDAO;
 import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.entity.EvaluationPlan;
-
+@Component
 public class EvaluationPlanDAOImpl implements EvaluationPlanDAO {
 
 	private EntityManager em;

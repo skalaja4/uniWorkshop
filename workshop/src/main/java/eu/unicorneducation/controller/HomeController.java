@@ -110,6 +110,7 @@ public class HomeController {
 		List<EmployeeModel> list = emplfacade.readAll();
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
+		request.getParameter("branchid");
 
 		return "employees-of-branch";
 	}
