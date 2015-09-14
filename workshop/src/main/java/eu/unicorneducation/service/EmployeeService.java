@@ -3,6 +3,7 @@ package eu.unicorneducation.service;
 import java.util.List;
 
 import eu.unicorneducation.entity.Employee;
+import eu.unicorneducation.model.EmployeeModel;
 
 public interface EmployeeService {
 
@@ -11,4 +12,5 @@ public interface EmployeeService {
 	 List<Employee> readByBranchWithoutCategory(String branch, String category);
 	 List<Employee> readByBranch(String branch);
 	 List<Employee> readByIds(String[] employeeIds);
+	 Employee readByID(String employeeId);
 }

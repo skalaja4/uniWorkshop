@@ -42,4 +42,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return employeeDao.readByIds(employeeIds);
 	}
 
+	@Override
+	public Employee readByID(String employeeId) {
+		return employeeDao.readById(employeeId);
+	
+	}
+
 }
