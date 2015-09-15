@@ -67,12 +67,12 @@ table {
 	
 		<table border="0" cellpadding="5" width="400">
 			<tr>
-				<td width="100"><label>Název plánu:</label></td>
+				<td width="100"><label><%= prop.get("nazev") %> </label></td>
 				<td><input id="category" type="text" name="name" /></td>
 			</tr>
 
 			<tr>
-				<td width="100"><label>Pobočka: </label></td>
+				<td width="100"><label><%= prop.get("branch") %> </label></td>
 				<td><select id="category" name="branch">
 						<%
 							List<BranchModel> branches = (List<BranchModel>) request.getAttribute("branches");
@@ -88,7 +88,7 @@ table {
 			</tr>
 
 			<tr>
-				<td width="100"><label>Kategorie: </label></td>
+				<td width="100"><label><%= prop.get("category") %> </label></td>
 				<td><select id="category" name="category">
 
 						<option value="OTHER"></option>
@@ -99,7 +99,7 @@ table {
 				</select></td>
 			</tr>
 			<tr>
-				<td width="100"><label>Datum: </label></td>
+				<td width="100"><label><%= prop.get("date") %></label></td>
 				<td>
 					<%
 						Calendar cal = Calendar.getInstance();

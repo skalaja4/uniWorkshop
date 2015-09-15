@@ -34,17 +34,17 @@ table {
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Employees of specific branch</title>
+<title><%= prop.get("title") %></title>
 </head>
 <body>
 <%@ include file="menu.jspf" %>
-<h2>Zaměstnanci</h2>
+<h2><%= prop.get("employees") %></h2>
 <br>
 <br>
 
 <form  method="post" action="/workshop/employees">
 
-Zadej jméno nebo příjmení zaměstnance :
+<%= prop.get("enterNameOrSurname") %> :
  <input type=text name=lastname value=""></input>
  <input type="hidden" name="branchid" value=<%= branchid %>>
 <input type="submit" value="Vyhledat">
@@ -54,11 +54,11 @@ Zadej jméno nebo příjmení zaměstnance :
 </form>
 <table border="1" cellpadding="5" width="800">
 <tr>
-<td width="200">Jméno</td>
-<td width="200">Příjmení</td>
-<td width="200">Datum narození</td>
-<td width="200">Kategorie</td>
-<td width="50">Detail zaměstnance</td>
+<td width="200"><%= prop.get("name") %></td>
+<td width="200"><%= prop.get("surname") %></td>
+<td width="200"><%= prop.get("birthDate") %></td>
+<td width="200"><%= prop.get("category") %></td>
+<td width="50"><%= prop.get("detail") %></td>
 </tr>
 
 <%

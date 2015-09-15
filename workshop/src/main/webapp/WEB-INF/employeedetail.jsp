@@ -20,22 +20,22 @@
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Employee detail</title>
+<title><%= prop.get("title") %></title>
 </head>
 <body>
 <%@ include file="menu.jspf" %>
-<h2>Detail zaměstnance</h2>
+<h2><%= prop.get("title") %></h2>
 <br>
 <br>
 <%=branches %>
 <table border="1" cellpadding="5" width="600">
 <tr>
-<td width="120">Jméno :<br> <%= emp.getFirstName()%></td>
-<td width="120">Příjmení: <br><%= emp.getLastName()%></td>
-<td width="120">Datum narození : <br><%= format.format(emp.getBirthDate())%></td>
-<td width="120">Kategorie : <br><%= emp.getCategory() %></td></tr>
+<td width="120"><%= prop.get("name") %> :<br> <%= emp.getFirstName()%></td>
+<td width="120"><%= prop.get("surname") %>: <br><%= emp.getLastName()%></td>
+<td width="120"><%= prop.get("birthDate") %> : <br><%= format.format(emp.getBirthDate())%></td>
+<td width="120"><%= prop.get("category") %> : <br><%= emp.getCategory() %></td></tr>
 </table>
-<h2>Hodnocení</h2>
+<h2><%= prop.get("evaluation") %></h2>
 <br>
 
 
@@ -43,12 +43,12 @@
 <% for(EvaluationModel e : evList) { %>
 <br>
 
- <h3>Název hodnocení : <i> <%= e.getName() %></i> </h3>
+ <h3><%= prop.get("nameOfEva") %> : <i> <%= e.getName() %></i> </h3>
 
 <table border="1" cellpadding="5" width="600">
 <tr>
-<td width="160">Otázka</td>
-<td width="160">Hodnocení</td>
+<td width="160"><%= prop.get("question") %></td>
+<td width="160"><%= prop.get("evaluation") %></td>
 
 </tr>
 

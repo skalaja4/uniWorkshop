@@ -18,12 +18,12 @@ Properties prop = (Properties) request.getAttribute("properties");
 
 <html>
 <head>
-<title>Branches</title>
+<title><%= prop.get("title") %></title>
 </head>
 <body>
 	<div id="header">
 		<%@ include file="menu.jspf"%>
-		<h2>Pobočky</h2>
+		<h2><%= prop.get("strana") %></h2>
 		<%for(int i=0;i<size;i++){ %>
 <%= request.getAttribute("branche"+i) %>
 <%} %>
