@@ -32,7 +32,7 @@ table {
 <br>
 
 
-<form name="frm" method="get" action="/workshop/employees">
+<form name="frm" method="get" action="/workshop/employeefinder">
 Vyhledávání : <input type=text name=lastName value="Příjmení"></input>
  
 	 

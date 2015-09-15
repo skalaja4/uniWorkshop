@@ -125,9 +125,10 @@ public class HomeController {
 		List<EmployeeModel> list = emplfacade.readByBranch(request.getParameter("branchid"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
+		model.addAttribute("lastName", request.getParameter("lastName"));
 		
 
-		return "employees-of-branch";
+		return "employeefinder";
 	}
 	@RequestMapping(value = "/branches", method = RequestMethod.GET)
 	public String branches(ModelMap model, HttpServletRequest request) {
