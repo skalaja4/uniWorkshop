@@ -16,6 +16,7 @@
 </head>
 <body>
 	<%@ include file="menu.jspf"%>
+	<h2>Přidání zaměstnance</h2>
 
 	<sf:form action="/workshop/inicializate_branches" method="post"
 		enctype="multipart/form-data">

@@ -19,6 +19,7 @@
 </head>
 <body>
 	<%@ include file="menu.jspf"%>
+	<h2>Výběr zaměstnanců k plánu</h2>
 
 	<form ACTION="/workshop/chooseEmployees" method=POST>
 
