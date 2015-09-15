@@ -44,7 +44,7 @@ table {
 
 Zadej jméno nebo příjmení zaměstnance :
  <input type=text name=lastname value=""></input>
- <input type="hidden" name="branchid" value=<%=branchid%>>
+ <input type="hidden" name="branchid" value=<%= branchid %>>
 <input type="submit" value="Vyhledat">
 
 <br>
@@ -72,18 +72,6 @@ Zadej jméno nebo příjmení zaměstnance :
     
     </tr>
  <% } %>
-
-
-
-
-
-
-
-
-
-
- 
-
 
 
 </table>
