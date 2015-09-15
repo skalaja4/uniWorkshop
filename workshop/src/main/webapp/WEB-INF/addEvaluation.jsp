@@ -56,12 +56,13 @@ table {
 	});
 </script>
 
-<%-- <title><%=prop.getProperty("title")%></title> --%>
 <title>Přidat Hodnocení</title>
 </head>
 <body>
 	<%@ include file="menu.jspf"%>
+	<h2>Přidání hodnocení</h2>
 	<form action="/workshop/chooseEmployees" method="get">
+	
 		<table border="0" cellpadding="5" width="400">
 			<tr>
 				<td width="100"><label>Název plánu:</label></td>

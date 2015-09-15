@@ -123,7 +123,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public List<Employee> readByLastName(String lastname, String branchid) {
 		
-		return em.createQuery("select e from Employee e  where lastname=:last or firstname=:last and branch_id=:branch ",
+		return em.createQuery("select e from Employee e  where (lastname=:last or firstname=:last) and branch_id=:branch ",
 						Employee.class).setParameter("last", lastname).setParameter("branch", branchid).getResultList();
 	}
 
