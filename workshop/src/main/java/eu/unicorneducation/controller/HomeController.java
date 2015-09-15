@@ -329,7 +329,7 @@ public class HomeController {
 						Integer.parseInt(quest5[i]), Integer.parseInt(quest6[i]), Integer.parseInt(quest7[i]),
 						Integer.parseInt(quest8[i]), Integer.parseInt(quest9[i]),info[i],e);
 				if (evalfac.create(model1)) {
-					evaluationPlanFacade.setCompleted(plan);
+					evaluationPlanFacade.setCompleted(id);
 				}
 			} catch (NumberFormatException exe) {
 				System.err.print("Faild parse date");

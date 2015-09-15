@@ -94,15 +94,12 @@ public class EvaluationPlanDAOImpl implements EvaluationPlanDAO {
 	}
 
 	@Override
-	public boolean setCompleted(EvaluationPlan evaluationPlan) {
-		if (evaluationPlan != null) {
-			em.getTransaction().begin();
-			evaluationPlan.setCompleted(true);
-			em.merge(evaluationPlan);
-			em.getTransaction().commit();
-			return true;
-		}
-		return false;
+	public boolean setCompleted(Long id) {
+		em.getTransaction().begin();
+		EvaluationPlan e = read(id);
+		e.setCompleted(true);
+		em.getTransaction().commit();
+		return true;
 	}
 	
 	

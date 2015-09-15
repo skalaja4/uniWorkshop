@@ -66,6 +66,6 @@ public interface EvaluationPlanDAO {
 	
 	public List<EvaluationPlan> readAllCompleted();
 	
-	public boolean setCompleted(EvaluationPlan evaluationPlan);
+	public boolean setCompleted(Long id);
 	
 }

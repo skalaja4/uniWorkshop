@@ -64,6 +64,6 @@ public interface EvaluationPlanFacade {
 	
 	public List<EvaluationPlanPartsModel> readAllCompleted();
 	
-	public boolean setCompleted(EvaluationPlanModel evaluationPlanModel);
+	public boolean setCompleted(Long id);
 	
 }

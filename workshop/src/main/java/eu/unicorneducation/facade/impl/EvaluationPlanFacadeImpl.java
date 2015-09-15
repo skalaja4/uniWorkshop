@@ -144,18 +144,8 @@ public class EvaluationPlanFacadeImpl implements EvaluationPlanFacade {
 	}
 
 	@Override
-	public boolean setCompleted(EvaluationPlanModel evaPlanModel) {
-		Branch branch = new Branch(evaPlanModel.getBranch().getId(),
-				evaPlanModel.getBranch().getName(), evaPlanModel.getBranch()
-						.getAddress(), evaPlanModel.getBranch()
-						.getParrentBranch());
-		List<Employee> employees = new ArrayList<Employee>(); 
-		for(EmployeeModel model:evaPlanModel.getEmployees()){
-			employees.add(new Employee(model.getId(), model.getFirstName(), model.getLastName(), model.getBranch(), model.getBirthDate(), model.getCategory()));		
-		}
-		EvaluationPlan plan = new EvaluationPlan(evaPlanModel.getName(), evaPlanModel.getExpiration(),
-				branch, employees, true);
-		return evaPlanService.setCompleted(plan);
+	public boolean setCompleted(Long id) {		
+		return evaPlanService.setCompleted(id);
 	}
 
 }

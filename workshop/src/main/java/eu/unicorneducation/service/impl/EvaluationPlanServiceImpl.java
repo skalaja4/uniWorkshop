@@ -50,8 +50,8 @@ public class EvaluationPlanServiceImpl implements EvaluationPlanService{
 	}
 
 	@Override
-	public boolean setCompleted(EvaluationPlan evaluationPlan) {
-		return  evaPlanDAO.setCompleted(evaluationPlan);
+	public boolean setCompleted(Long id) {
+		return  evaPlanDAO.setCompleted(id);
 	}
 
 }
