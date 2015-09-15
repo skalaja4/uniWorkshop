@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -11,6 +12,24 @@
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
 	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
 	String branchid = (String)request.getAttribute("branchid");
+	String lastn = (String)request.getAttribute("lastname");
+	List<EmployeeModel> employeesfound = new ArrayList<>();
+	
+	
+	
+	if(lastn != null)
+	{
+		for(EmployeeModel e : employees)
+		{
+			if(e.getLastName().equals(lastn)){
+				
+				employeesfound.add(e);
+				
+			}
+			
+		}
+		
+	}
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,10 +52,10 @@ table {
 
 <form  method="get" action="/workshop/employees">
 
-Vyhledávání : <input type=text name=lastName value="Příjmení"></input>
+Vyhledávání : <input type=text name=lastname value="Příjmení"></input>
  
 <%
-String last=request.getParameter("lastName");
+String last=request.getParameter("lastname");
 %>
 <input type="submit" value="Potvrdit">
 <a href="/workshop/employeefinder?lastname=<%=last%>&branchid=BB_BRANCH_1"><button>Vyhledat</button></a>

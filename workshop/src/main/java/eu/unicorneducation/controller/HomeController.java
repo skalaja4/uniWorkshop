@@ -114,7 +114,7 @@ public class HomeController {
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
 		model.addAttribute("branchid", request.getParameter("branchid"));
-		model.addAttribute("lastname", request.getParameter("lastName"));
+		model.addAttribute("lastname", request.getParameter("lastnname"));
 		
 
 		return "employees-of-branch";

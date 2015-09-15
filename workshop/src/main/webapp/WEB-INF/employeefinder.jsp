@@ -33,10 +33,10 @@ table {
 <br>
 <form  method="get" action="/workshop/employees">
 
-Vyhledávání : <input type=text name=lastName value="Příjmení"></input>
+Vyhledávání : <input type=text name=lastname value="Příjmení"></input>
  
 <%
-String last=request.getParameter("lastName");
+String last=request.getParameter("lastname");
 %>
 <input type="submit" value="Potvrdit">
 <a href="/workshop/employeefinder?lastname=<%=last%>&branchid=BB_BRANCH_1"><button>Vyhledat</button></a>
