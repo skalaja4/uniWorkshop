@@ -31,17 +31,18 @@ table {
 <br>
 <br>
 
-
+<form  method="get" action="/workshop/employees">
 
 Vyhledávání : <input type=text name=lastName value="Příjmení"></input>
  
 <%
 String last=request.getParameter("lastName");
 %>
-
-<a href="/workshop/employeefinder?lastname=<%=last%>&branchid=<%= employees.get(0).getBranch().getId() %>"><button>Vyhledat</button></a>
+<input type="submit" value="Potvrdit">
+<a href="/workshop/employeefinder?lastname=<%=last%>&branchid=BB_BRANCH_1"><button>Vyhledat</button></a>
 <br>
 <br>
+</form>
 <table border="1" cellpadding="5" width="800">
 <tr>
 <td width="200">Jméno</td>
