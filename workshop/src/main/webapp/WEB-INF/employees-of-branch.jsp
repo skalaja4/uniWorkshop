@@ -32,18 +32,12 @@ table {
 <br>
 
 
-<form name="frm" method="get" action="/workshop/employeefinder">
+
 Vyhledávání : <input type=text name=lastName value="Příjmení"></input>
  
-	 
-    <td><input type="submit" name="submit" value="Potvrdit"></td>
-   
-</form>
-
-<% String last = request.getParameter("lastName");%>
 
 
-<a href="/workshop/employees?lastname=<%=last%>"><button>Vyhledat</button></a>
+<a href="/workshop/employeefinder?lastname=<%=last%>"><button>Vyhledat</button></a>
 <br>
 <br>
 <table border="1" cellpadding="5" width="800">
