@@ -27,7 +27,7 @@ table {
 	rel="stylesheet" type="text/css" />
 <script>
 	$(document).ready(function() {
-	    $( "#datepickerFrom, #datepickerTo" ).datepicker(
+	    $( "#datepicker" ).datepicker(
 	            {allowPastDates: false}
 	     );
 	});
@@ -104,7 +104,7 @@ table {
 					%> 
 					
 					
-					<input id="datepicker" type="text" name="datepicker" value=<%=tipe.format(cal.getTime())%>/>
+					<input id="datepicker" type="text" name="datepicker" value="<%=tipe.format(cal.getTime())%>"/>
 
 				</td>
 			</tr>
