@@ -22,6 +22,7 @@
 </head>
 <body>
 <%@ include file="menu.jspf" %>
+<h2>Detail zaměstnance</h2>
 <br>
 <br>
 <%=branches %>
