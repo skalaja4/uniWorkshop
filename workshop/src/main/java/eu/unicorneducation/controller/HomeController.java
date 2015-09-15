@@ -69,10 +69,16 @@ public class HomeController {
 	private EvaluationFacade evalfac;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String students(ModelMap model, HttpServletRequest request) {
+	public String workshop(ModelMap model, HttpServletRequest request) {
 
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		return "index";
+	}
+	@RequestMapping(value = "/feedback", method = RequestMethod.GET)
+	public String feedback(ModelMap model, HttpServletRequest request) {
+
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		return "feedback";
 	}
 
 	@RequestMapping(value = "/import", method = RequestMethod.GET)
@@ -108,10 +114,11 @@ public class HomeController {
 
 		iniFacade.inicializate(branchesFile, employeesFile);
 
-		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));
+		/*model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));*/
+		model.addAttribute("message","Data vložena.");
 		
-		return "inicialization";
+		return "feedback";
 	}
 
 	@RequestMapping(value = "/employees", method = RequestMethod.GET)
@@ -241,7 +248,9 @@ public class HomeController {
 		model.addAttribute("properties", loadProperties(request, "index.properties"));
 		
 		if (datepicker.equalsIgnoreCase("")) {
-			return "index";
+			model.addAttribute("message","Plán ohodnocení je vytvoøen.");
+			
+			return "feedback";
 		}
 
 		DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
@@ -257,7 +266,9 @@ public class HomeController {
 			e.printStackTrace();
 
 		}
-		return "index";
+		model.addAttribute("message","Plán ohodnocení je vytvoøen.");
+		
+		return "feedback";
 	}
 
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.GET)
@@ -324,7 +335,8 @@ public class HomeController {
 			}
 		}
 
-		return "index";
+		model.addAttribute("message","Plán ohodnocení je vytvoøen.");
+		return "feedback";
 	}
 	
 	@RequestMapping(value = "/exportPdf", method = RequestMethod.GET)
