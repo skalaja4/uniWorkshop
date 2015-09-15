@@ -12,22 +12,22 @@
 	
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>PlannedEvaluation</title>
+<title><%= prop.get("title") %></title>
 </head>
 <body>
 	<%@ include file="menu.jspf"%>
-<h2>Hodnocení</h2>
+<h2><%= prop.get("strana") %></h2>
 	<br>
 	<br>
-	<h3>Nevyplněná hodnocení</h3>
+	<h3><%= prop.get("uncompleted") %></h3>
 	
 
 	<table border="1" id="afterDate" class="" cellpadding="5" width="800">
 		<tr>
-			<td width="200">Datum</td>
-			<td width="200">Názav</td>
-			<td width="200">Uni. Kód</td>
-			<td width="50">Vyplnit</td>
+			<td width="200"><%= prop.get("date") %></td>
+			<td width="200"><%= prop.get("name") %></td>
+			<td width="200"><%= prop.get("branch") %></td>
+			<td width="50"><%= prop.get("fill") %></td>
 		</tr>
 
 		<%
@@ -70,12 +70,12 @@
 
 	</table>
 <br><br>
-<h3>Vyplněná hodnocení</h3>
+<h3><%= prop.get("completed") %></h3>
 	<table border="1" id="beforeDate" cellpadding="5" width="800">
 		<tr>
-			<td width="200">Datum</td>
-			<td width="200">Názav</td>
-			<td width="200">Pobočka</td>
+			<td width="200"><%= prop.get("date") %></td>
+			<td width="200"><%= prop.get("name") %></td>
+			<td width="200"><%= prop.get("branch") %></td>
 			
 		</tr>
 
