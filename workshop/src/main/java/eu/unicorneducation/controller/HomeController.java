@@ -208,7 +208,7 @@ public class HomeController {
 			return "index";
 		}
 
-		DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+		DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 		Date date;
 		try {
 			date = format.parse(datepicker);
