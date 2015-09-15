@@ -120,18 +120,21 @@ public class HomeController {
 
 		return "employees-of-branch";
 	}
+	
+	@RequestMapping(value = "/employees", method = RequestMethod.POST)
+	public String finder(ModelMap model, HttpServletRequest request) {
 
-	@RequestMapping(value = "/employeefinder", method = RequestMethod.GET)
-	public String find(ModelMap model, HttpServletRequest request) {
-
-		List<EmployeeModel> list = emplfacade.readByLastName(request.getParameter("lastname"));
+		List<EmployeeModel> list = emplfacade.readByLastName(request.getParameter("lastname"), request.getParameter("branchid"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
-		
+		model.addAttribute("branchid", request.getParameter("branchid"));
+		model.addAttribute("lastname", request.getParameter("lastname"));
 		
 
-		return "employeefinder";
+		return "employees-of-branch";
 	}
+
+	
 	@RequestMapping(value = "/branches", method = RequestMethod.GET)
 	public String branches(ModelMap model, HttpServletRequest request) {
 		
