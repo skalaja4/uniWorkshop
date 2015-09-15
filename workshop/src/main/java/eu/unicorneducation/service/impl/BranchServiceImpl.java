@@ -38,7 +38,7 @@ public class BranchServiceImpl implements BranchService {
 
 	@Override
 	public List<BranchTreeModel> readStructure() {
-		List<Branch> orderedBranches = branchDAO.readAllOrderByPerrent();
+		List<Branch> orderedBranches = branchDAO.readAllOrderByPerrent(); 
 		List<BranchTreeModel> treeStructure = new ArrayList<>();
 
 		for (Branch branch : orderedBranches) {
@@ -55,7 +55,6 @@ public class BranchServiceImpl implements BranchService {
 					numberOfBranches--;
 					continue;
 				}
-			//	String branchId = branch.getId();
 				BranchTreeModel node;
 				for (int j = 0; j < treeStructure.size(); j++) {
 					if ((node = findNode(treeStructure.get(j), branch)) != null) {
@@ -72,7 +71,12 @@ public class BranchServiceImpl implements BranchService {
 		
 		return treeStructure;
 	}
-
+/**
+ * Method for finding specific Node in tree structure
+ * @param node BranchTreeModel(Node of tree)
+ * @param keyNode Node that we are looking for
+ * @return Node that we are looking for
+ */
 	private BranchTreeModel findNode(BranchTreeModel node, Branch keyNode) {
 		if (node == null)
 			return null;
@@ -87,17 +91,7 @@ public class BranchServiceImpl implements BranchService {
 		}
 		return null;
 	}
-	void traverse(BranchTreeModel node)
-	{
-	    if(node == null){
-	    	
-	        return;
-	    }
-	    System.out.println(node.getThisBranch().getId()+" t");
-	    for(BranchTreeModel child : node.getChildrens()) {
-	        traverse(child);
-	    }
-	}
+
 
 	@Override
 	public String readStructureById(String id) {

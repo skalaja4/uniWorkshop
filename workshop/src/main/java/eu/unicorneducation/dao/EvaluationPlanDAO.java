@@ -59,7 +59,7 @@ public interface EvaluationPlanDAO {
 	public List<EvaluationPlan> readAllBeforeDate();
 	
 	/**
-	 * Method for getting all Evaluations after date of 
+	 * Method for getting all Evaluations after date of expiration
 	 * @return List of Evaluations after date.
 	 */
 	public List<EvaluationPlan> readAllAfterDate();

@@ -82,10 +82,10 @@ public interface EmployeeDAO {
 	public Employee readByID(String employeeId);
 	
 	/**
-	 * Method for reading entity Employee by i
-	 * @param lastname
-	 * @param branchid
-	 * @return
+	 * Method for reading entity Employees in exact branch with first or last name given by lastname
+	 * @param lastname first or last name of Employee
+	 * @param branchid Id of Branch
+	 * @return List of Employees
 	 */
 	public List<Employee> readByLastName(String lastname, String branchid);
 	
