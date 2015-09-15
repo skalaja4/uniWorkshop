@@ -58,7 +58,7 @@ Vyhledávání : <input type=text name=lastname value="Příjmení"></input>
 String last=request.getParameter("lastname");
 %>
 <input type="submit" value="Potvrdit">
-<a href="/workshop/employeefinder?lastname=<%=last%>&branchid=BB_BRANCH_1"><button>Vyhledat</button></a>
+<a href="/workshop/employeefinder?lastname=<%=lastn%>"><button>Vyhledat</button></a>
 <br>
 <br>
 </form>
@@ -71,7 +71,24 @@ String last=request.getParameter("lastname");
 <td width="50">Detail zaměstnance</td>
 </tr>
 
-<% for(EmployeeModel e : employees) { %>
+<% 
+if(employeesfound.size()>0){
+	for(EmployeeModel e : employeesfound) { %>
+    <tr> <td> <%= e.getFirstName()%></td> 
+    <td> <%= e.getLastName()%> </td> 
+    <td> <%= format.format(e.getBirthDate())%> </td>
+    <td> <%= e.getCategory()%> </td>
+    
+
+    
+     <td> <a href="/workshop/detail?id=<%=(e.getId())%>"><button>Detail</button></a></td>
+    
+    </tr>
+ <% }}
+	else{
+
+
+for(EmployeeModel e : employees) { %>
            <tr> <td> <%= e.getFirstName()%></td> 
            <td> <%= e.getLastName()%> </td> 
            <td> <%= format.format(e.getBirthDate())%> </td>
@@ -82,7 +99,7 @@ String last=request.getParameter("lastname");
             <td> <a href="/workshop/detail?id=<%=(e.getId())%>"><button>Detail</button></a></td>
            
            </tr>
-        <% } %>
+        <% }} %>
 
 
 
