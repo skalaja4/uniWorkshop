@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.Properties"%>
+<%@ page import="java.util.List"%>
+<%@ page import="eu.unicorneducation.model.EmployeeModel"%>
+
+<%
+	Properties fill = (Properties) request.getAttribute("fill");
+	Properties quest = (Properties) request.getAttribute("quest");
+	String name =(String) request.getAttribute("plan_name");
+	String date =(String) request.getAttribute("plan_date");
+	String branch = (String) request.getAttribute("plan_branch");
+	Long id = Long.valueOf( (String)request.getAttribute("plan_id"));
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,26 +35,35 @@
 	});
 </script>
 
-<title>Insert title here</title>
+<title><%=fill.get("pagetitle")%></title>
 </head>
 <body>
 	<%@ include file="menu.jspf"%>
-	<h3>Hodnocení z 15.02.2015 jménem Hodnocení1</h3>
+	<h2><%=branch%></h2>
+	<h3><%=fill.get("title1")%>  <%=name%> <%=fill.get("title2")%> <%=date%></h3>
 	<br>
 
 
+
 	<form action="/workshop/">
+		<input type="hidden" id="plan" value=<%=id%>>
 		<%
-			for (int j = 1; j < 10; j++) {
+			List<EmployeeModel> plans = (List<EmployeeModel>) request.getAttribute("plan_employees");
+			for (int j = 1; j < plans.size(); j++) {
 		%>
 		<div class="accordion">
-			<h3>Jaroslav Dvořák:</h3>
+			<input type="hidden" id="employeeIds" value=<%=plans.get(j).getId()%>>			
+			<h3><%=plans.get(j).getFirstName()+" "+plans.get(j).getLastName()%></h3>
 			<div>
 				<%
 					for (int i = 1; i < 10; i++) {
+						String key = "q"+i;
 				%>
-				<br> Otazka<%=i%>
-				<select>
+				<br>
+					<label>
+						<%=quest.get(key)%>
+					</label>
+				<select id=<%=i%>>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -53,7 +75,7 @@
 					}
 				%>
 				<br>
-				<textarea rows="4" cols="50"></textarea>
+				<textarea id="info" rows="4" cols="50"></textarea>
 			</div>
 		</div>
 		<%

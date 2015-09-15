@@ -21,10 +21,11 @@
 <body>
 	<div id="header">
 		<%@ include file="menu.jspf"%>
-		
+		<h2>Pobočky</h2>
 		<%for(int i=0;i<size;i++){ %>
 <%= request.getAttribute("branche"+i) %>
 <%} %>
+<<<<<<< HEAD
 <%-- 
 		<h1>Pobočky</h1>
 		<br>
@@ -107,5 +108,7 @@
 			<!-- Here is the closing </li> tag -->
 			<li><a href="/workshop/employees"> treti hlavni pobocka</a></li>
 		</ul> --%>
+=======
+>>>>>>> origin/master
 </body>
 </html>

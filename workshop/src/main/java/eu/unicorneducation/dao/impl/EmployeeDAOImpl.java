@@ -10,6 +10,7 @@ import javax.persistence.Persistence;
 
 
 
+
 import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.dao.EmployeeDAO;
@@ -85,12 +86,22 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public List<Employee> readByBranch(String branch) {
+	public List<Employee> readByBranchAndNotPlaned(String branch) {
 		return em
 				.createQuery(
 						"select e from Employee e left join e.branch b where b.id=:branchName and e.plan is null and e.category<>:notManager",
 						Employee.class)
 				.setParameter("branchName", branch).setParameter("notManager", Category.MANAGER).getResultList();
+
+	}
+	
+	@Override
+	public List<Employee> readByBranch(String branch) {
+		return em
+				.createQuery(
+						"select e from Employee e left join e.branch b where b.id=:branchName",
+						Employee.class)
+				.setParameter("branchName", branch).getResultList();
 
 	}
 
@@ -101,12 +112,19 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			list.add(em.createQuery("select e from Employee e where e.id=:idOfEmployee", Employee.class)
 					.setParameter("idOfEmployee", employeeId).getResultList().get(0));
 		}
-		return (List<Employee>) list.get(0);
+		return  list;
 	}
 
 	@Override
 	public Employee readByID(String employeeId) {
 		return em.createQuery("select e from Employee e  where e.id=:empid ", Employee.class).setParameter("empid", employeeId).getSingleResult();
+	}
+
+	@Override
+	public List<Employee> readByLastName(String lastname, String branchid) {
+		
+		return em.createQuery("select e from Employee e  where (lastname=:last or firstname=:last) and branch_id=:branch ",
+						Employee.class).setParameter("last", lastname).setParameter("branch", branchid).getResultList();
 	}
 
 	

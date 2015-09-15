@@ -8,6 +8,7 @@
 	List<EvaluationModel> evList = (List)request.getAttribute("evList");
 	EmployeeModel emp = (EmployeeModel)request.getAttribute("employee");
 	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
+	String branches =(String) request.getAttribute("branches");
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,9 +22,10 @@
 </head>
 <body>
 <%@ include file="menu.jspf" %>
+<h2>Detail zaměstnance</h2>
 <br>
 <br>
-
+<%=branches %>
 <table border="1" cellpadding="5" width="600">
 <tr>
 <td width="120">Jméno :<br> <%= emp.getFirstName()%></td>
@@ -73,7 +75,10 @@
 </table>
 
  <% } %>
-
+<form action="/workshop/exportPdf">
+<input type="hidden" name="id" value="<%=emp.getId() %>">
+<input type="submit" name="exportPdf" value="Exportovat do PDF">
+</form>
 
 
 </body>

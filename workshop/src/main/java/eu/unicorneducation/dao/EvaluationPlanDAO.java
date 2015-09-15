@@ -63,4 +63,6 @@ public interface EvaluationPlanDAO {
 	 * @return List of Evaluations after date.
 	 */
 	public List<EvaluationPlan> readAllAfterDate();
+	
+	public List<EvaluationPlan> readAllCompleted();
 }

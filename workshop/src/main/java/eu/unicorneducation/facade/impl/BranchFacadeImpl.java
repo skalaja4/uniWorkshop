@@ -88,4 +88,10 @@ public class BranchFacadeImpl implements BranchFacade {
 	
 	}
 
+	@Override
+	public String readStructureById(String id) {
+		return branchService.readStructureById(id);
+		
+	}
+
 }

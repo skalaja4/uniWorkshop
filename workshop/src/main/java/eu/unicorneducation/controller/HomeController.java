@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.facade.BranchFacade;
 import eu.unicorneducation.facade.EmployeeFacade;
 import eu.unicorneducation.facade.EvaluationFacade;
@@ -35,6 +36,7 @@ import eu.unicorneducation.model.BranchTreeModel;
 import eu.unicorneducation.model.EmployeeModel;
 import eu.unicorneducation.model.EvaluationModel;
 import eu.unicorneducation.model.EvaluationPlanModel;
+import eu.unicorneducation.model.EvaluationPlanPartsModel;
 
 @Controller
 @RequestMapping("/")
@@ -113,18 +115,36 @@ public class HomeController {
 		List<EmployeeModel> list = emplfacade.readByBranch(request.getParameter("branchid"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
+<<<<<<< HEAD
 		request.getParameter("branchid");
+=======
+		model.addAttribute("branchid", request.getParameter("branchid"));
+		model.addAttribute("lastname", request.getParameter("lastname"));
+		
+
+		return "employees-of-branch";
+	}
+	
+	@RequestMapping(value = "/employees", method = RequestMethod.POST)
+	public String finder(ModelMap model, HttpServletRequest request) {
+
+		List<EmployeeModel> list = emplfacade.readByLastName(request.getParameter("lastname"), request.getParameter("branchid"));
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("listofemployees", list);
+		model.addAttribute("branchid", request.getParameter("branchid"));
+		model.addAttribute("lastname", request.getParameter("lastname"));
+		
+>>>>>>> origin/master
 
 		return "employees-of-branch";
 	}
 
+	
 	@RequestMapping(value = "/branches", method = RequestMethod.GET)
 	public String branches(ModelMap model, HttpServletRequest request) {
 		
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		//model.addAttribute("branches", branchfacade.readStructure());
 		List<BranchTreeModel> structure= branchfacade.readStructure();
-		//model.addAttribute("branches", structure);
 		model.addAttribute("branches", structure.size());
 		for (int i = 0; i < structure.size(); i++) {
 			model.addAttribute("branche"+i, BranchTreeHelper.getTreeForBranch("", structure.get(i)));	
@@ -138,12 +158,20 @@ public class HomeController {
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("employee", emp);
 		model.addAttribute("evList", evList);
+		
+		model.addAttribute("branches", branchfacade.readStructureById(emp.getBranch().getId()));
 		return "employeedetail";
 	}
 
 	@RequestMapping(value = "/plannedEvaluation", method = RequestMethod.GET)
 	public String plannedEvaluation(ModelMap model, HttpServletRequest request) {
 
+		List<EvaluationPlanPartsModel> plansAfter = evaluationPlanFacade.readAllAfterDate();
+		List<EvaluationPlanPartsModel> plansBefore = evaluationPlanFacade.readAllBeforeDate();
+		List<EvaluationPlanPartsModel> plansCompleted = evaluationPlanFacade.readAllCompleted();
+		model.addAttribute("plansAfter", plansAfter);
+		model.addAttribute("plansBefore", plansBefore);
+		model.addAttribute("plansCompleted", plansCompleted);
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		return "plannedEvaluation";
 	}
@@ -191,7 +219,7 @@ public class HomeController {
 		} else {
 			List<EmployeeModel> list = new ArrayList<>();
 			model.addAttribute("selectedEmployee", list);
-			model.addAttribute("unselectedEmployee", emplfacade.readByBranch(branch));
+			model.addAttribute("unselectedEmployee", emplfacade.readByBranchAndNotPlanned(branch));
 		}
 
 		return "chooseEmployees";
@@ -208,7 +236,7 @@ public class HomeController {
 			return "index";
 		}
 
-		DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+		DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 		Date date;
 		try {
 			date = format.parse(datepicker);
@@ -225,10 +253,65 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.GET)
-	public String fillEvaluation(ModelMap model, HttpServletRequest request) {
-
-		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+	public String fillEvaluation(ModelMap model, @RequestParam(value = "idOfPlan") Long id , HttpServletRequest request) {
+		
+		
+		EvaluationPlanModel plan = evaluationPlanFacade.read(id);
+		DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+		Date date = plan.getExpiration();
+		
+		model.addAttribute("plan_id", plan.getId());
+		model.addAttribute("plan_name", plan.getName());
+		model.addAttribute("plan_date", date);
+		model.addAttribute("plan_employees",plan.getEmployees());
+		model.addAttribute("plan_branch",plan.getBranch().getName());
+		
+		model.addAttribute("fill", loadProperties(request, "fillEvaluation.properties"));
+		model.addAttribute("quest", loadProperties(request, "questions.properties"));
 		return "fillEvaluation";
+	}
+	
+	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.POST)
+	public String fillEvaluation(ModelMap model, @RequestParam(value = "plan") String id,
+			@RequestParam(value = "employeeIds") String[] employeeIds,
+			@RequestParam(value = "1") String[] quest1,
+			@RequestParam(value = "2") String[] quest2,
+			@RequestParam(value = "3") String[] quest3,
+			@RequestParam(value = "4") String[] quest4,
+			@RequestParam(value = "5") String[] quest5,
+			@RequestParam(value = "6") String[] quest6,
+			@RequestParam(value = "7") String[] quest7,
+			@RequestParam(value = "8") String[] quest8,
+			@RequestParam(value = "9") String[] quest9,
+			@RequestParam(value = "info") String[] info,
+			HttpServletRequest request) throws Exception {
+		
+		Long idl = Long.valueOf(id);
+		EvaluationPlanModel plan = evaluationPlanFacade.read(idl);
+		
+		for (int i = 0; i < employeeIds.length; i++) {
+			Date date = new Date();
+			if (info[i].length()>4000){
+				throw new Exception("Chyba délky.");
+			}
+			EmployeeModel emp = emplfacade.readByID(employeeIds[i]);
+			Employee e = new Employee(emp.getId(), emp.getFirstName(), emp.getLastName(), emp.getBranch(), emp.getBirthDate(), emp.getCategory());
+			EvaluationModel model1;
+			try {
+				model1 = new EvaluationModel(plan.getName(), date, Integer.parseInt(quest1[i]),
+						Integer.parseInt(quest2[i]), Integer.parseInt(quest3[i]), Integer.parseInt(quest4[i]),
+						Integer.parseInt(quest5[i]), Integer.parseInt(quest6[i]), Integer.parseInt(quest7[i]),
+						Integer.parseInt(quest8[i]), Integer.parseInt(quest9[i]),info[i],e);
+				evalfac.create(model1);
+			} catch (NumberFormatException exe) {
+				System.err.print("Faild parse date");
+				exe.printStackTrace();
+
+			}
+			//evalfac.create(model1);
+		}
+
+		return "index";
 	}
 	
 	@RequestMapping(value = "/exportPdf", method = RequestMethod.GET)
@@ -247,6 +330,12 @@ public class HomeController {
 		
 		model.addAttribute("menuProperties", loadProperties(request, "exportPdf.properties"));
 		return "exportPdf";
+	}
+	
+	@RequestMapping(value = "/errorTest", method = RequestMethod.GET)
+	public String errorTest() {
+
+		throw new IllegalStateException("Chyba!");
 	}
 
 	private Properties loadProperties(HttpServletRequest request, String propertiesName) {

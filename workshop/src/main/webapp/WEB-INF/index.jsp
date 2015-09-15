@@ -9,7 +9,7 @@
 	<div id="header">
 		<%@ include file="menu.jspf"%>
 	</div>
-	
+	<h2>Hlavní strana</h2>
 	<br />
 <!-- 	<a href="/workshop/inicialization"> /workshop/inicialization</a> <br /> -->
 </body>

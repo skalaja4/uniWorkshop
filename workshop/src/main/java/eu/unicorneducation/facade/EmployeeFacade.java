@@ -2,9 +2,7 @@ package eu.unicorneducation.facade;
 
 import java.util.List;
 
-import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.model.EmployeeModel;
-import eu.unicorneducation.model.EvaluationModel;
 
 public interface EmployeeFacade {
 	
@@ -14,5 +12,7 @@ public interface EmployeeFacade {
 	List<EmployeeModel> readByBranch(String branch);
 	List<EmployeeModel> readByIds(String[] employeeIds);
 	EmployeeModel readByID(String employeeId);
+	List<EmployeeModel> readByLastName(String lastname, String branchid);
+	List<EmployeeModel> readByBranchAndNotPlanned(String branch);
 	
 }

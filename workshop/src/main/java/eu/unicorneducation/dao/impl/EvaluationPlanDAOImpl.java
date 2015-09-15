@@ -73,14 +73,23 @@ public class EvaluationPlanDAOImpl implements EvaluationPlanDAO {
 	public List<EvaluationPlan> readAllBeforeDate() {
 		return em
 				.createQuery(
-						"SELECT e FROM EvaluationPlan e ORDER BY e.date WHERE TRUNC(e.EXPIRATION)>TRUNC(SYSDATE+1)",
-						EvaluationPlan.class).getResultList();
+						"SELECT e FROM EvaluationPlan e  WHERE trunc(e.expiration) >= trunc(sysdate) AND e.completed=0 ORDER BY e.expiration",
+						EvaluationPlan.class).getResultList();         
 	}
 
 	public List<EvaluationPlan> readAllAfterDate() {
 		return em
 				.createQuery(
-						"SELECT e FROM EvaluationPlan e ORDER BY e.date WHERE TRUNC(e.EXPIRATION)>TRUNC(SYSDATE)",
+						"SELECT e FROM EvaluationPlan e  WHERE trunc(e.expiration) < trunc(sysdate) AND e.completed=0 ORDER BY e.expiration",
+						EvaluationPlan.class).getResultList();
+	}
+
+	@Override
+	public List<EvaluationPlan> readAllCompleted() {
+		
+		return em
+				.createQuery(
+						"SELECT e FROM EvaluationPlan e  WHERE e.completed=1 ORDER BY e.expiration",
 						EvaluationPlan.class).getResultList();
 	}
 
