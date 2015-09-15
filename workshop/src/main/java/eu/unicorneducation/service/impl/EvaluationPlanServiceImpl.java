@@ -43,4 +43,10 @@ public class EvaluationPlanServiceImpl implements EvaluationPlanService{
 		return evaPlanDAO.readAllAfterDate();
 	}
 
+	@Override
+	public List<EvaluationPlan> readAllCompleted() {
+		
+		return evaPlanDAO.readAllCompleted();
+	}
+
 }

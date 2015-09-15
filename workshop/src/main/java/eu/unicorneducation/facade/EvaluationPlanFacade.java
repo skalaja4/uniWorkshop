@@ -3,6 +3,7 @@ package eu.unicorneducation.facade;
 import java.util.List;
 
 import eu.unicorneducation.model.EvaluationPlanModel;
+import eu.unicorneducation.model.EvaluationPlanPartsModel;
 
 /**
  * 
@@ -51,12 +52,14 @@ public interface EvaluationPlanFacade {
 	 * 
 	 * @return
 	 */
-	public List<EvaluationPlanModel> readAllBeforeDate();
+	public List<EvaluationPlanPartsModel> readAllBeforeDate();
 	
 	/**
 	 * 
 	 * @return
 	 */
-	public List<EvaluationPlanModel> readAllAfterDate();
+	public List<EvaluationPlanPartsModel> readAllAfterDate();
+	
+	public List<EvaluationPlanPartsModel> readAllCompleted();
 	
 }

@@ -61,4 +61,6 @@ public interface EvaluationPlanService {
 	 * @return
 	 */
 	public List<EvaluationPlan> readAllAfterDate();
+	
+	public List<EvaluationPlan> readAllCompleted();
 }

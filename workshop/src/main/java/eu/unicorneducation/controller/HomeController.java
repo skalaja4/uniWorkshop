@@ -35,6 +35,7 @@ import eu.unicorneducation.model.BranchTreeModel;
 import eu.unicorneducation.model.EmployeeModel;
 import eu.unicorneducation.model.EvaluationModel;
 import eu.unicorneducation.model.EvaluationPlanModel;
+import eu.unicorneducation.model.EvaluationPlanPartsModel;
 
 @Controller
 @RequestMapping("/")
@@ -144,6 +145,12 @@ public class HomeController {
 	@RequestMapping(value = "/plannedEvaluation", method = RequestMethod.GET)
 	public String plannedEvaluation(ModelMap model, HttpServletRequest request) {
 
+		List<EvaluationPlanPartsModel> plansAfter = evaluationPlanFacade.readAllAfterDate();
+		List<EvaluationPlanPartsModel> plansBefore = evaluationPlanFacade.readAllBeforeDate();
+		List<EvaluationPlanPartsModel> plansCompleted = evaluationPlanFacade.readAllCompleted();
+		model.addAttribute("plansAfter", plansAfter);
+		model.addAttribute("plansBefore", plansBefore);
+		model.addAttribute("plansCompleted", plansCompleted);
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		return "plannedEvaluation";
 	}
