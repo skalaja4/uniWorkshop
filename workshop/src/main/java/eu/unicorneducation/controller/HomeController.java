@@ -115,6 +115,9 @@ public class HomeController {
 		List<EmployeeModel> list = emplfacade.readByBranch(request.getParameter("branchid"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
+<<<<<<< HEAD
+		request.getParameter("branchid");
+=======
 		model.addAttribute("branchid", request.getParameter("branchid"));
 		model.addAttribute("lastname", request.getParameter("lastname"));
 		model.addAttribute("properties", loadProperties(request, "employees-of-branch.properties"));
@@ -133,6 +136,7 @@ public class HomeController {
 		model.addAttribute("lastname", request.getParameter("lastname"));
 		model.addAttribute("properties", loadProperties(request, "employees-of-branch.properties"));
 		
+>>>>>>> origin/master
 
 		return "employees-of-branch";
 	}

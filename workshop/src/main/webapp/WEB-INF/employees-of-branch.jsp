@@ -9,6 +9,8 @@
 <%@page import="eu.unicorneducation.model.EmployeeModel"%>
 <%
 	
+	
+	String id = request.getParameter("branchid");
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
 	
 	DateFormat format = new SimpleDateFormat("d.MM.yyyy");

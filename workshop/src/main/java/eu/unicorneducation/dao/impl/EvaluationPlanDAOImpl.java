@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import eu.unicorneducation.dao.EvaluationPlanDAO;
 import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.entity.EvaluationPlan;
-
 @Component
 public class EvaluationPlanDAOImpl implements EvaluationPlanDAO {
 
