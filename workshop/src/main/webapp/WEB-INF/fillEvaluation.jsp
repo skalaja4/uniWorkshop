@@ -48,13 +48,13 @@
 	<form action="/workshop/fillEvaluation" method="post">
 		<input type="hidden" id="plan" value=<%=id%>>
 		<%
-			List<EmployeeModel> plans = (List<EmployeeModel>) request.getAttribute("plan_employees");
-			for (int j = 1; j < plans.size(); j++) {
+			List<EmployeeModel> employees = (List<EmployeeModel>) request.getAttribute("plan_employees");
+			for (int j = 1; j < employees.size(); j++) {
 		%>
 		<div class="accordion">		
-			<h3><%=plans.get(j).getFirstName()+" "+plans.get(j).getLastName()%></h3>
+			<h3><%=employees.get(j).getFirstName()+" "+employees.get(j).getLastName()%></h3>
 			<div>
-				<input type="hidden" id="employeeIds<%=j%>" value=<%=plans.get(j).getId()%>>	
+				<input type="hidden" id="employeeIds<%=j%>" value=<%=employees.get(j).getId()%>>	
 				<%
 					for (int i = 1; i < 10; i++) {
 						String key = "q"+i;
