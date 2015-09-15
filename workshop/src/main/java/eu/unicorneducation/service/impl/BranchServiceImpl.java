@@ -98,4 +98,14 @@ public class BranchServiceImpl implements BranchService {
 	        traverse(child);
 	    }
 	}
+
+	@Override
+	public String readStructureById(String id) {
+		Branch branch = branchDAO.read(id);
+		while(branch.getParrentBranch()==null){
+			
+		}
+		branchDAO.read(id);
+		return null;
+	}
 }

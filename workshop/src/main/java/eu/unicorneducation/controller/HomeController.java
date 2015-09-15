@@ -124,7 +124,7 @@ public class HomeController {
 	@RequestMapping(value = "/employeefinder", method = RequestMethod.GET)
 	public String find(ModelMap model, HttpServletRequest request) {
 
-		List<EmployeeModel> list = emplfacade.readByBLastName(request.getParameter("lastname"));
+		List<EmployeeModel> list = emplfacade.readByLastName(request.getParameter("lastname"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
 		
@@ -136,9 +136,7 @@ public class HomeController {
 	public String branches(ModelMap model, HttpServletRequest request) {
 		
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		//model.addAttribute("branches", branchfacade.readStructure());
 		List<BranchTreeModel> structure= branchfacade.readStructure();
-		//model.addAttribute("branches", structure);
 		model.addAttribute("branches", structure.size());
 		for (int i = 0; i < structure.size(); i++) {
 			model.addAttribute("branche"+i, BranchTreeHelper.getTreeForBranch("", structure.get(i)));	
@@ -152,6 +150,8 @@ public class HomeController {
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("employee", emp);
 		model.addAttribute("evList", evList);
+		
+		branchfacade.readStructureById(emp.getBranch().getId());
 		return "employeedetail";
 	}
 

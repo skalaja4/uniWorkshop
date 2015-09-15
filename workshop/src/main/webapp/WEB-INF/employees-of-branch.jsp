@@ -10,6 +10,7 @@
 <%
 	
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
+	
 	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
 	String branchid = (String)request.getAttribute("branchid");
 	String lastn = (String)request.getAttribute("lastname");
