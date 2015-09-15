@@ -32,6 +32,20 @@ table {
 <br>
 <br>
 
+Vyhledávání : <input type="text" name="lastName" value="Příjmení">
+  <%
+        String last = request.getParameter("lastName");
+  		String branch = this.getParameter("branchid");
+ 
+  %>
+
+
+
+
+
+<a href="/workshop/employees?branchid=<%= this.getInitParameter("branchid") %>"><button>Vyhledat</button></a>
+<br>
+<br>
 <table border="1" cellpadding="5" width="800">
 <tr>
 <td width="200">Jméno</td>
