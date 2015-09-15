@@ -95,6 +95,7 @@ public class EvaluationPlanDAOImpl implements EvaluationPlanDAO {
 
 	@Override
 	public boolean setCompleted(Long id) {
+		System.out.println("completed "+id);
 		em.getTransaction().begin();
 		EvaluationPlan e = read(id);
 		e.setCompleted(true);

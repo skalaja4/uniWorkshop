@@ -328,7 +328,9 @@ public class HomeController {
 						Integer.parseInt(quest2[i]), Integer.parseInt(quest3[i]), Integer.parseInt(quest4[i]),
 						Integer.parseInt(quest5[i]), Integer.parseInt(quest6[i]), Integer.parseInt(quest7[i]),
 						Integer.parseInt(quest8[i]), Integer.parseInt(quest9[i]),info[i],e);
+				System.out.println("tady1");
 				if (evalfac.create(model1)) {
+					System.out.println("tady2");
 					evaluationPlanFacade.setCompleted(id);
 				}
 			} catch (NumberFormatException exe) {

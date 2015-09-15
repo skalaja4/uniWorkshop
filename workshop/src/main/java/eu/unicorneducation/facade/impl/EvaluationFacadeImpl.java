@@ -37,7 +37,7 @@ public class EvaluationFacadeImpl implements EvaluationFacade {
 				model.getQuestion5(), model.getQuestion6(), model.getQuestion7(), model.getQuestion8(),
 				model.getQuestion9(), model.getQuestion10(), model.getEmployee());
 		evalserv.create(eval);
-		return false;
+		return true;
 	}
 
 	@Override
