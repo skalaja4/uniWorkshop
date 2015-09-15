@@ -50,9 +50,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public List<Employee> readByLastName(String lastname, String branchid) {
+	public List<Employee> readByLastName(String lastname) {
 		
-		return employeeDao.readByLastName(lastname, branchid);
+		return employeeDao.readByLastName(lastname);
 	}
 
 	

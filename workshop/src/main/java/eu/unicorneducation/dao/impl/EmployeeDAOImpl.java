@@ -111,9 +111,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public List<Employee> readByLastName(String lastname, String branchid) {
-		return em.createQuery("select e from Employee e  where lastname=:last and branch_id=:branch ",
-						Employee.class).setParameter("last", lastname).setParameter("branch", branchid).getResultList();
+	public List<Employee> readByLastName(String lastname) {
+		return em.createQuery("select e from Employee e  where lastname=:last  ",
+						Employee.class).setParameter("last", lastname).getResultList();
 	}
 
 	
