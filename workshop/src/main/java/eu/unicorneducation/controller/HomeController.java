@@ -270,17 +270,18 @@ public class HomeController {
 		
 		model.addAttribute("plan_id", plan.getId());
 		model.addAttribute("plan_name", plan.getName());
-		model.addAttribute("plan_date", date);
+		model.addAttribute("plan_date", format.format(date));
 		model.addAttribute("plan_employees",plan.getEmployees());
 		model.addAttribute("plan_branch",plan.getBranch().getName());
 		
 		model.addAttribute("fill", loadProperties(request, "fillEvaluation.properties"));
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("quest", loadProperties(request, "questions.properties"));
 		return "fillEvaluation";
 	}
 	
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.POST)
-	public String fillEvaluation(ModelMap model, @RequestParam(value = "plan") Long id,
+	public String fillEvaluation(ModelMap model,
 			@RequestParam(value = "employeeIds") String[] employeeIds,
 			@RequestParam(value = "1") String[] quest1,
 			@RequestParam(value = "2") String[] quest2,
@@ -293,7 +294,8 @@ public class HomeController {
 			@RequestParam(value = "9") String[] quest9,
 			@RequestParam(value = "info") String[] info,
 			HttpServletRequest request) throws Exception {
-		
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		Long id = Long.valueOf(request.getParameter("plan"));
 		EvaluationPlanModel plan = evaluationPlanFacade.read(id);
 		
 		for (int i = 0; i < employeeIds.length; i++) {
