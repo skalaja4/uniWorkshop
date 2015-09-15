@@ -76,8 +76,8 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/feedback", method = RequestMethod.GET)
 	public String feedback(ModelMap model, HttpServletRequest request) {
-
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("message",request.getAttribute("message"));
 		return "feedback";
 	}
 
@@ -114,8 +114,8 @@ public class HomeController {
 
 		iniFacade.inicializate(branchesFile, employeesFile);
 
-		/*model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));*/
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		//model.addAttribute("properties", loadProperties(request, "inicialization.properties"));
 		model.addAttribute("message","Data vložena.");
 		
 		return "feedback";

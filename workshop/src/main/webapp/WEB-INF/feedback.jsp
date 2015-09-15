@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%String message = request.getParameter("message"); %>
+<%String message = (String)request.getAttribute("message"); %>
 <html>
 <head>
 <title>Odezva</title>
@@ -12,7 +12,7 @@
 	</div>
 	<h2>Akce provedena</h2>
 	<br>
-	<%=message %>>
+	<%=message %>
 
 </body>
 </html>
