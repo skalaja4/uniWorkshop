@@ -327,6 +327,12 @@ public class HomeController {
 		model.addAttribute("menuProperties", loadProperties(request, "exportPdf.properties"));
 		return "exportPdf";
 	}
+	
+	@RequestMapping(value = "/errorTest", method = RequestMethod.GET)
+	public String errorTest() {
+
+		throw new IllegalStateException("Chyba!");
+	}
 
 	private Properties loadProperties(HttpServletRequest request, String propertiesName) {
 		Properties prop = new Properties();
