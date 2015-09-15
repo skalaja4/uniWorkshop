@@ -33,7 +33,7 @@ table {
 <br>
 <br>
 
-Vyhledávání : <input type="text" name="lastName" value="Příjmení">
+Vyhledávání : <input type=text name=lastName value="Příjmení"></input>
   <%
         String last = request.getParameter("lastName");
   		
@@ -44,7 +44,7 @@ Vyhledávání : <input type="text" name="lastName" value="Příjmení">
 
 
 
-<a href="/workshop/employees?branchid=<%= branchid %>"><button>Vyhledat</button></a>
+<a href="/workshop/employees?branchid=<%= branchid %>&lastname=<%= last %>"><button>Vyhledat</button></a>
 <br>
 <br>
 <table border="1" cellpadding="5" width="800">
