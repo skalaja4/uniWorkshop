@@ -51,10 +51,10 @@
 			List<EmployeeModel> plans = (List<EmployeeModel>) request.getAttribute("plan_employees");
 			for (int j = 1; j < plans.size(); j++) {
 		%>
-		<div class="accordion">
-			<input type="hidden" id="employeeIds" value=<%=plans.get(j).getId()%>>			
+		<div class="accordion">		
 			<h3><%=plans.get(j).getFirstName()+" "+plans.get(j).getLastName()%></h3>
 			<div>
+				<input type="hidden" id="employeeIds" value=<%=plans.get(j).getId()%>>	
 				<%
 					for (int i = 1; i < 10; i++) {
 						String key = "q"+i;
