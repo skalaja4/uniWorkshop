@@ -10,7 +10,7 @@ import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.service.EvaluationService;
 @Component
 public class EvaluationServiceImpl implements EvaluationService{
-	
+
 	@Autowired
 	private EvaluationDAO evalDao;
 	
@@ -20,5 +20,26 @@ public class EvaluationServiceImpl implements EvaluationService{
 		
 		return evalDao.getEvaluations(empID);
 	}
+
+	@Override
+	public boolean create(Evaluation evaluation) {
+		return evalDao.create(evaluation);
+	}
+
+	@Override
+	public Evaluation read(Long id) {
+		return evalDao.read(id);
+	}
+
+	@Override
+	public boolean delete(Evaluation evaluation) {
+		return evalDao.delete(evaluation);
+	}
+
+	@Override
+	public List<Evaluation> readAll() {
+		return evalDao.readAll();
+	}
+	
 
 }

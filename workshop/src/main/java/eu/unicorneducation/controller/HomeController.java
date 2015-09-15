@@ -248,10 +248,64 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.GET)
-	public String fillEvaluation(ModelMap model, HttpServletRequest request) {
-
-		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+	public String fillEvaluation(ModelMap model, @RequestParam(value = "idofplan") String id , HttpServletRequest request) {
+		
+		Long idl = Long.valueOf(id);
+		EvaluationPlanModel plan = evaluationPlanFacade.read(idl);
+		DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+		Date date = plan.getExpiration();
+		
+		model.addAttribute("plan_id", plan.getId());
+		model.addAttribute("plan_name", plan.getName());
+		model.addAttribute("plan_date", date);
+		model.addAttribute("plan_employees",plan.getEmployees());
+		model.addAttribute("plan_branch",plan.getBranch().getName());
+		
+		model.addAttribute("fill", loadProperties(request, "fillEvaluation.properties"));
+		model.addAttribute("quest", loadProperties(request, "questions.properties"));
 		return "fillEvaluation";
+	}
+	
+	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.POST)
+	public String fillEvaluation(ModelMap model, @RequestParam(value = "plan") String id,
+			@RequestParam(value = "employeeIds") String[] employeeIds,
+			@RequestParam(value = "1") String[] quest1,
+			@RequestParam(value = "2") String[] quest2,
+			@RequestParam(value = "3") String[] quest3,
+			@RequestParam(value = "4") String[] quest4,
+			@RequestParam(value = "5") String[] quest5,
+			@RequestParam(value = "6") String[] quest6,
+			@RequestParam(value = "7") String[] quest7,
+			@RequestParam(value = "8") String[] quest8,
+			@RequestParam(value = "9") String[] quest9,
+			@RequestParam(value = "info") String[] info,
+			HttpServletRequest request) {
+		
+		Long idl = Long.valueOf(id);
+		EvaluationPlanModel plan = evaluationPlanFacade.read(idl);
+		
+		for (int i = 0; i < employeeIds.length; i++) {
+			Date date = new Date();
+			if (info[i].length()>4000){
+				throw new Exception("Chyba délky.");
+			}
+			EmployeeModel emp = emplfacade.readByID(employeeIds[i]);
+			Employee e = new Employee(emp.getId(), emp.getFirstName(), emp.getLastName(), emp.getBranch(), emp.getBirthDate(), emp.getCategory());
+			EvaluationModel model1;
+			try {
+				model1 = new EvaluationModel(plan.getName(), date, Integer.parseInt(quest1[i]),
+						Integer.parseInt(quest2[i]), Integer.parseInt(quest3[i]), Integer.parseInt(quest4[i]),
+						Integer.parseInt(quest5[i]), Integer.parseInt(quest6[i]), Integer.parseInt(quest7[i]),
+						Integer.parseInt(quest8[i]), Integer.parseInt(quest9[i]),info[i],e);
+			} catch (NumberFormatException exe) {
+				System.err.print("Faild parse date");
+				exe.printStackTrace();
+
+			}
+			evalfac.create(model1);
+		}
+
+		return "index";
 	}
 	
 	@RequestMapping(value = "/exportPdf", method = RequestMethod.GET)
