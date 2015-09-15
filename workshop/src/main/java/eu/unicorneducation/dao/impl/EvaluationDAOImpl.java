@@ -15,9 +15,7 @@ public class EvaluationDAOImpl implements EvaluationDAO {
 	private EntityManager em;
 
 	
-	/**
-	 * @inheritDoc
-	 */
+	
 	
 	public EvaluationDAOImpl() {
 		em = Persistence.createEntityManagerFactory("workshop").createEntityManager();
