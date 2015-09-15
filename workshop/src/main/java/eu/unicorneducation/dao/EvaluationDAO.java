@@ -12,7 +12,11 @@ import java.util.List;
 
 
 import eu.unicorneducation.entity.Evaluation;
-
+/**
+ * Interface representing DAO layer for Evaluation.
+ * @author Jaroslav Skala
+ *
+ */
 public interface EvaluationDAO {
 	
 	

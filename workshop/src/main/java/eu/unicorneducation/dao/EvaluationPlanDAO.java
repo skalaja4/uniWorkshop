@@ -64,8 +64,17 @@ public interface EvaluationPlanDAO {
 	 */
 	public List<EvaluationPlan> readAllAfterDate();
 	
+	/**
+	 * Method for getting all EvaluationPlans that are completed
+	 * @return List of completed EvaluationPlan
+	 */
 	public List<EvaluationPlan> readAllCompleted();
 	
+	/**
+	 * Method for setting EvaluationPlan as completed using id
+	 * @param id Id of plan that we want to change
+	 * @return true if changing is successful
+	 */
 	public boolean setCompleted(Long id);
 	
 }

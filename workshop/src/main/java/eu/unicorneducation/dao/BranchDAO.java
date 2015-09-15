@@ -5,6 +5,11 @@ import java.util.List;
 import eu.unicorneducation.entity.Branch;
 import eu.unicorneducation.entity.Employee;
 
+/**
+ * Interface representing DAO layer for Branch.
+ * @author Jaroslav Skala
+ *
+ */
 public interface BranchDAO {
 	
 	
@@ -49,7 +54,10 @@ public interface BranchDAO {
 	 */
 	public List<Branch> readAll();
 	
-	
+	/**
+	 * Modify exact Branch
+	 * @param branch Id of Branch we want to modify
+	 */
 	public void modify(Branch branch);
 	
 	/**
@@ -60,7 +68,10 @@ public interface BranchDAO {
 	 */
 	public Branch readByName(String name);
 	
-	
+	/**
+	 * Gets all Branches and order them by their parent
+	 * @return
+	 */
 	public List<Branch> readAllOrderByPerrent();
 	
 	
