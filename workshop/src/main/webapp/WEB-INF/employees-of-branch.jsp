@@ -42,8 +42,8 @@ table {
 
 <form  method="post" action="/workshop/employees">
 
-Vyhledávání :
- <input type=text name=lastname value="Zadej jméno nebo příjmení"></input>
+Zadej jméno nebo příjmení zaměstnance :
+ <input type=text name=lastname value=""></input>
  <input type="hidden" name="branchid" value=<%=branchid%>>
 <input type="submit" value="Vyhledat">
 
