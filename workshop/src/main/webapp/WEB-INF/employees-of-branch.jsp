@@ -11,8 +11,6 @@
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
 	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
 	String branchid = (String)request.getAttribute("branchid");
-	
-
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,18 +31,19 @@ table {
 <br>
 <br>
 
+
+<form name="frm" method="get" action="/workshop/employees">
 Vyhledávání : <input type=text name=lastName value="Příjmení"></input>
-  <%
-        String last = request.getParameter("lastName");
-  		
  
-  %>
+	 
+    <td><input type="submit" name="submit" value="Potvrdit"></td>
+   
+</form>
+
+<% String last = request.getParameter("lastName");%>
 
 
-
-
-
-<a href="/workshop/employees?branchid=<%= branchid %>&lastname=<%= last %>"><button>Vyhledat</button></a>
+<a href="/workshop/employees?lastname=<%=last%>"><button>Vyhledat</button></a>
 <br>
 <br>
 <table border="1" cellpadding="5" width="800">
