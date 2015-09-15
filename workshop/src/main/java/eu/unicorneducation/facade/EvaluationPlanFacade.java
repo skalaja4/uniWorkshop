@@ -2,6 +2,8 @@ package eu.unicorneducation.facade;
 
 import java.util.List;
 
+import eu.unicorneducation.entity.EvaluationPlan;
+import eu.unicorneducation.model.EvaluationModel;
 import eu.unicorneducation.model.EvaluationPlanModel;
 import eu.unicorneducation.model.EvaluationPlanPartsModel;
 
@@ -61,5 +63,7 @@ public interface EvaluationPlanFacade {
 	public List<EvaluationPlanPartsModel> readAllAfterDate();
 	
 	public List<EvaluationPlanPartsModel> readAllCompleted();
+	
+	public boolean setCompleted(EvaluationPlanModel evaluationPlanModel);
 	
 }

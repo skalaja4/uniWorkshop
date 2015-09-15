@@ -93,4 +93,18 @@ public class EvaluationPlanDAOImpl implements EvaluationPlanDAO {
 						EvaluationPlan.class).getResultList();
 	}
 
+	@Override
+	public boolean setCompleted(EvaluationPlan evaluationPlan) {
+		if (evaluationPlan != null) {
+			em.getTransaction().begin();
+			evaluationPlan.setCompleted(true);
+			em.merge(evaluationPlan);
+			em.getTransaction().commit();
+			return true;
+		}
+		return false;
+	}
+	
+	
+
 }

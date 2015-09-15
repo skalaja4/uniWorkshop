@@ -63,4 +63,6 @@ public interface EvaluationPlanService {
 	public List<EvaluationPlan> readAllAfterDate();
 	
 	public List<EvaluationPlan> readAllCompleted();
+	
+	public boolean setCompleted(EvaluationPlan evaluationPlan);
 }

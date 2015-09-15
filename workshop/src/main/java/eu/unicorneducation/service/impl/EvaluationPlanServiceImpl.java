@@ -49,4 +49,9 @@ public class EvaluationPlanServiceImpl implements EvaluationPlanService{
 		return evaPlanDAO.readAllCompleted();
 	}
 
+	@Override
+	public boolean setCompleted(EvaluationPlan evaluationPlan) {
+		return  evaPlanDAO.setCompleted(evaluationPlan);
+	}
+
 }
