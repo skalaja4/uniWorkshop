@@ -4,6 +4,10 @@ import java.util.Date;
 
 import eu.unicorneducation.entity.Employee;
 
+/**
+ * Data Transfer Object of Evaluation.
+ *
+ */
 public class EvaluationModel {
 
 	private Long id;

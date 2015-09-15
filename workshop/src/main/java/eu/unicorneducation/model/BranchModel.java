@@ -4,6 +4,10 @@ import java.util.List;
 
 import eu.unicorneducation.entity.Employee;
 
+/**
+ * Data Transfer Object of Branch.
+ *
+ */
 public class BranchModel {
 
 	private String id;

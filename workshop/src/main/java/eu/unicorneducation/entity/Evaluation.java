@@ -11,6 +11,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/**
+ * Class representing evaluation for a employee.
+ *
+ */
 @Entity
 @Table(name="EVALUATION")
 public class Evaluation {

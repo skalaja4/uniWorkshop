@@ -4,6 +4,11 @@ import java.util.Date;
 
 import eu.unicorneducation.entity.Employee;
 
+
+/**
+ * Data Transfer Object of Evaluation for REST.
+ *
+ */
 public class EvaluationRESTModel {
 
 	private Long id;

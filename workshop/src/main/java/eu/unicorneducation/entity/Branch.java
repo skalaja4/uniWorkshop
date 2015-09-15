@@ -10,6 +10,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * Class representing a company branch.
+ *
+ */
 @Entity
 @Table(name = "BRANCH")
 public class Branch {

@@ -8,23 +8,19 @@ import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.entity.EvaluationPlan;
 import eu.unicorneducation.enumeration.Category;
 
-
+/**
+ * Data Transfer Object of Employee.
+ *
+ */
 public class EmployeeModel {
 	
 	private String id;
-	
 	private String  firstName ;
-	
 	private String lastName;
-	
 	private Date birthDate;
-	
 	private EvaluationPlan plan;
-	
 	private List<Evaluation> evaluation;
-	
 	private Branch branch;
-	
 	private Category category;
 	
 	

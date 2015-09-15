@@ -5,6 +5,10 @@ import java.util.List;
 
 import eu.unicorneducation.enumeration.Category;
 
+/**
+ * Data Transfer Object of Employee for REST.
+ *
+ */
 public class EmployeeRESTModel {
 
 	private String id;

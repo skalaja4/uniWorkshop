@@ -7,6 +7,10 @@ import java.util.Map;
 
 import eu.unicorneducation.entity.Branch;
 
+/**
+ * Data Transfer Object of BranchTree.
+ *
+ */
 public class BranchTreeModel {
 
 	private BranchTreeModel parrent;

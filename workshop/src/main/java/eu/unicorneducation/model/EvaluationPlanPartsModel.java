@@ -4,7 +4,10 @@ package eu.unicorneducation.model;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ * Data Transfer Object of Evaluation Plan containing only necessary parts.
+ *
+ */
 public class EvaluationPlanPartsModel {
 
 	private Long id;

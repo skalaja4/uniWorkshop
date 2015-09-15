@@ -6,6 +6,10 @@ import java.util.List;
 import eu.unicorneducation.entity.Branch;
 import eu.unicorneducation.entity.Employee;
 
+/**
+ * Data Transfer Object of Evaluation Plan.
+ *
+ */
 public class EvaluationPlanModel {
 
 	private Long id;

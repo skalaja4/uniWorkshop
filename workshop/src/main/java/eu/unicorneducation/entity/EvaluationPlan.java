@@ -13,6 +13,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/**
+ * Class representing plan of future or past evaluations.
+ *
+ */
 @Entity
 @Table(name = "EVALUATIONPLAN")
 public class EvaluationPlan {

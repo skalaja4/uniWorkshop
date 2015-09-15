@@ -14,10 +14,10 @@ import javax.persistence.Table;
 
 import eu.unicorneducation.enumeration.Category;
 
-
-
-
-
+/**
+ * Class representing an employee.
+ *
+ */
 @Entity
 @Table(name="EMPLOYEE")
 public  class Employee {
