@@ -10,6 +10,7 @@
 	
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
 	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
+	String branchid = (String)request.getAttribute("branchid");
 	
 
 %>
@@ -35,7 +36,7 @@ table {
 Vyhledávání : <input type="text" name="lastName" value="Příjmení">
   <%
         String last = request.getParameter("lastName");
-  		String branch = this.getParameter("branchid");
+  		
  
   %>
 
@@ -43,7 +44,7 @@ Vyhledávání : <input type="text" name="lastName" value="Příjmení">
 
 
 
-<a href="/workshop/employees?branchid=<%= this.getInitParameter("branchid") %>"><button>Vyhledat</button></a>
+<a href="/workshop/employees?branchid=<%= branchid %>"><button>Vyhledat</button></a>
 <br>
 <br>
 <table border="1" cellpadding="5" width="800">
