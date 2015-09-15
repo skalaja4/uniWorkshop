@@ -60,7 +60,7 @@ public class EvaluationPlanFacadeImpl implements EvaluationPlanFacade {
 			employees.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
 					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp.getEvaluation(), emp.getBranch(), emp.getCategory()));
 		}
-		return new EvaluationPlanModel(plan.getName(), plan.getExpiration(), branch, employees);
+		return new EvaluationPlanModel(id,plan.getName(), plan.getExpiration(), branch, employees);
 	}
 
 	@Override

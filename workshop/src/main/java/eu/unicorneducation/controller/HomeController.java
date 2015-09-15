@@ -269,6 +269,7 @@ public class HomeController {
 		Date date = plan.getExpiration();
 		
 		model.addAttribute("plan_id", plan.getId());
+		System.out.println(plan.getId());
 		model.addAttribute("plan_name", plan.getName());
 		model.addAttribute("plan_date", format.format(date));
 		model.addAttribute("plan_employees",plan.getEmployees());
@@ -282,6 +283,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.POST)
 	public String fillEvaluation(ModelMap model,@RequestParam(value="plan")Long id,
+			@RequestParam(value = "employeeIds") String[] employeeIds,
 			@RequestParam(value = "v1") String[] quest1,
 			@RequestParam(value = "v2") String[] quest2,
 			@RequestParam(value = "v3") String[] quest3,
@@ -293,18 +295,14 @@ public class HomeController {
 			@RequestParam(value = "v9") String[] quest9,
 			@RequestParam(value = "info") String[] info,
 			HttpServletRequest request) throws Exception {
-		
+		System.out.println(quest1.length);
 		
 		EvaluationPlanModel plan = evaluationPlanFacade.read(id);
 		
 		int count = plan.getEmployees().size();
-		String[] employeeIds = new String[count];
+		
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		for (int i = 0; i < count; i++) {
-			String string = "employeeIds";
-			string+=i;
-			employeeIds[i] = request.getParameter(string);
-		}
+		
 		
 		for (int i = 0; i < count; i++) {
 			Date date = new Date();

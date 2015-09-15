@@ -17,7 +17,7 @@ public class Evaluation {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="SEQUENCE1")
-	@SequenceGenerator(name="SEQUENCE1", sequenceName="SEQUENCE1", allocationSize=1)
+	@SequenceGenerator(name="SEQUENCE1", sequenceName="EVALUATION_SEQUENCE", allocationSize=1)
 	private Long id;
 	
 	@Column(nullable=false)
@@ -42,7 +42,6 @@ public class Evaluation {
 	private int question8;
 	@Column(nullable=false)
 	private int question9;
-	@Column(nullable=false)
 	private String question10;
 	
 	@ManyToOne
