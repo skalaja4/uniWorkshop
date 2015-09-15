@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="eu.unicorneducation.model.EvaluationPlanPartsModel"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -32,11 +33,11 @@
 		<%
 			List<EvaluationPlanPartsModel> plansAfter = (List<EvaluationPlanPartsModel>) request
 					.getAttribute("plansAfter");
-
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			for (int i = 0; i < plansAfter.size(); i++) {
 		%>
 		<tr class="red">
-			<td><%=plansAfter.get(i).getExpiration()%></td>
+			<td><%=dateFormat.format(plansAfter.get(i).getExpiration())%></td>
 			<td><%=plansAfter.get(i).getName()%></td>
 			<td><%=plansAfter.get(i).getBranchName()%></td>
 			<td>
@@ -53,12 +54,12 @@
 			for (int i = 0; i < plansBefore.size(); i++) {
 		%>
 		<tr >
-			<td><%=plansBefore.get(i).getExpiration()%></td>
+			<td><%=dateFormat.format(plansBefore.get(i).getExpiration())%></td>
 			<td><%=plansBefore.get(i).getName()%></td>
 			<td><%=plansBefore.get(i).getBranchName()%></td>
 			<td>
 				<form action="/workshop/fillEvaluation">
-				<input type="hidden" name="idOfPlan" value=<%=plansAfter.get(i).getId()%>>
+				<input type="hidden" name="idOfPlan" value=<%=plansBefore.get(i).getId()%>>
 					<input type="submit" value="Vyplnit">
 				</form>
 		</tr>
@@ -82,7 +83,7 @@
 			for (int i = 0; i < plansCompleted.size(); i++) {
 		%>
 		<tr>
-			<td><%=plansCompleted.get(i).getExpiration()%></td>
+			<td><%=dateFormat.format(plansCompleted.get(i).getExpiration())%></td>
 			<td><%=plansCompleted.get(i).getName()%></td>
 			<td><%=plansCompleted.get(i).getBranchName()%></td>
 			
