@@ -1,6 +1,5 @@
 package eu.unicorneducation.helpers;
 
-import eu.unicorneducation.entity.Branch;
 import eu.unicorneducation.model.BranchTreeModel;
 
 

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.dao.BranchDAO;
 import eu.unicorneducation.entity.Branch;
-import eu.unicorneducation.entity.Employee;
 
 @Component
 public class BranchDAOImpl implements BranchDAO{

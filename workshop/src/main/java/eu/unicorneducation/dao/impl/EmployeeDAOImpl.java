@@ -6,16 +6,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-
-
-
-
-
 import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.dao.EmployeeDAO;
 import eu.unicorneducation.entity.Employee;
-import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.enumeration.Category;
 
 @Component
