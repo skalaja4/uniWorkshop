@@ -188,19 +188,14 @@ public class HomeController {
 	@RequestMapping(value = "/addEvaluation", method = RequestMethod.GET)
 	public String addEvaluation(ModelMap model, HttpServletRequest request) {
 
-		Properties prop = new Properties();
-		try {
-			prop.load(new FileInputStream("src/main/webapp/WEB-INF/addEvaluation.jsp"));
-		} catch (IOException e) {
-			System.err.println(e.getStackTrace());
-		}
+		
 
 		List<BranchModel> branches = branchfacade.readAll();
 
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("properties", loadProperties(request, "addEvaluation.properties"));
 		model.addAttribute("branches", branches);
-		model.addAttribute("properties", prop);
+		
 		return "addEvaluation";
 	}
 
