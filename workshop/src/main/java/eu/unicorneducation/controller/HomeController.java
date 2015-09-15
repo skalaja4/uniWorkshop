@@ -301,7 +301,9 @@ public class HomeController {
 		String[] employeeIds = new String[count];
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		for (int i = 0; i < count; i++) {
-			employeeIds[i] = request.getParameter("employeeIds"+i);
+			String string = "employeeIds";
+			string+=i;
+			employeeIds[i] = request.getParameter(string);
 		}
 		
 		for (int i = 0; i < count; i++) {
