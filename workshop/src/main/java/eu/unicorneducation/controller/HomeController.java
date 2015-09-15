@@ -154,7 +154,7 @@ public class HomeController {
 		model.addAttribute("employee", emp);
 		model.addAttribute("evList", evList);
 		
-		branchfacade.readStructureById(emp.getBranch().getId());
+		model.addAttribute("branches", branchfacade.readStructureById(emp.getBranch().getId()));
 		return "employeedetail";
 	}
 
