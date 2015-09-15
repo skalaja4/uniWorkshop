@@ -117,6 +117,7 @@ public class HomeController {
 		model.addAttribute("listofemployees", list);
 		model.addAttribute("branchid", request.getParameter("branchid"));
 		model.addAttribute("lastname", request.getParameter("lastname"));
+		model.addAttribute("properties", loadProperties(request, "employees-of-branch.properties"));
 		
 
 		return "employees-of-branch";
@@ -130,6 +131,7 @@ public class HomeController {
 		model.addAttribute("listofemployees", list);
 		model.addAttribute("branchid", request.getParameter("branchid"));
 		model.addAttribute("lastname", request.getParameter("lastname"));
+		model.addAttribute("properties", loadProperties(request, "employees-of-branch.properties"));
 		
 
 		return "employees-of-branch";
@@ -140,6 +142,7 @@ public class HomeController {
 	public String branches(ModelMap model, HttpServletRequest request) {
 		
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "branches.properties"));
 		List<BranchTreeModel> structure= branchfacade.readStructure();
 		model.addAttribute("branches", structure.size());
 		for (int i = 0; i < structure.size(); i++) {
@@ -152,6 +155,7 @@ public class HomeController {
 		List<EvaluationModel> evList = evalfac.getEvaluations(request.getParameter("id"));
 		EmployeeModel emp = emplfacade.readByID(request.getParameter("id"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("menuProperties", loadProperties(request, "employeedetail.properties"));
 		model.addAttribute("employee", emp);
 		model.addAttribute("evList", evList);
 		
@@ -169,6 +173,7 @@ public class HomeController {
 		model.addAttribute("plansBefore", plansBefore);
 		model.addAttribute("plansCompleted", plansCompleted);
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "plannedEvaluation.properties"));
 		return "plannedEvaluation";
 	}
 
@@ -185,6 +190,7 @@ public class HomeController {
 		List<BranchModel> branches = branchfacade.readAll();
 
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "addEvaluation.properties"));
 		model.addAttribute("branches", branches);
 		model.addAttribute("properties", prop);
 		return "addEvaluation";
@@ -194,6 +200,7 @@ public class HomeController {
 	public String chooseEvaluation(@RequestParam(value = "category") String category, ModelMap model, HttpServletRequest request) {
 
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "choosEmployees.properties"));
 		
 		return "choosEmployees";
 	}
@@ -204,6 +211,7 @@ public class HomeController {
 			@RequestParam(value = "name") String name, HttpServletRequest request) {
 
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "chooseEmployees.properties"));
 		model.addAttribute("branch", branch);
 		model.addAttribute("name", name);
 		model.addAttribute("category", category);
@@ -227,6 +235,7 @@ public class HomeController {
 			@RequestParam(value = "branch") String branch, HttpServletRequest request) {
 
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("properties", loadProperties(request, "index.properties"));
 		
 		if (datepicker.equalsIgnoreCase("")) {
 			return "index";
@@ -325,6 +334,7 @@ public class HomeController {
 	      
 		
 		model.addAttribute("menuProperties", loadProperties(request, "exportPdf.properties"));
+		
 		return "exportPdf";
 	}
 	
