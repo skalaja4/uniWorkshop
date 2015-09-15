@@ -108,8 +108,8 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 	}
 
 	@Override
-	public List<EmployeeModel> readByLastName(String lastname) {
-		List<Employee> list = employeeserv.readByLastName(lastname);
+	public List<EmployeeModel> readByLastName(String lastname, String branchid) {
+		List<Employee> list = employeeserv.readByLastName(lastname, branchid);
 		List<EmployeeModel> listofmodels = new ArrayList<EmployeeModel>();
 		for (Employee emp : list) {
 			listofmodels.add(new EmployeeModel(emp.getId(), emp.getFirstName(),

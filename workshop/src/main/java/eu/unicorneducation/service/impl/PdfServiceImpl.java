@@ -27,7 +27,7 @@ public class PdfServiceImpl implements PdfService {
 	@Override
 	public InputStream generatePdf(String id) {
 
-		String sourceFileName = "src/main/resources/pdfSchema.jasper";
+		String sourceFileName = "pdfSchema.jasper";
 //		String sourceFileName = "C:/Users/Student/uniWorkshop/workshop/src/main/resources/pdfSchema.jasper";
 		
 		String printFileName = null;
@@ -39,7 +39,6 @@ public class PdfServiceImpl implements PdfService {
 		InputStream in = null;
 		try {
 			File temp = File.createTempFile("tempPdf", ".pdf");
-			System.out.println("tempFile:" + temp.getAbsolutePath());
 			printFileName = JasperFillManager.fillReportToFile(sourceFileName,
 					parameters, beanColDataSource);
 			System.out.println("printFileName:" + printFileName);
