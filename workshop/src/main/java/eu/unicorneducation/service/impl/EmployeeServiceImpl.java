@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.dao.EmployeeDAO;
 import eu.unicorneducation.entity.Employee;
+import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.service.EmployeeService;
 @Component
 public class EmployeeServiceImpl implements EmployeeService{
@@ -41,5 +42,15 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public List<Employee> readByIds(String[] employeeIds) {
 		return employeeDao.readByIds(employeeIds);
 	}
+
+	@Override
+	public Employee readByID(String employeeId) {
+		
+		return employeeDao.readByID(employeeId);
+	}
+
+	
+
+	
 
 }

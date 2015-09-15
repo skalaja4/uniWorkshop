@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,11 +24,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import eu.unicorneducation.facade.BranchFacade;
 import eu.unicorneducation.facade.EmployeeFacade;
+import eu.unicorneducation.facade.EvaluationFacade;
 import eu.unicorneducation.facade.EvaluationPlanFacade;
 import eu.unicorneducation.facade.ImportFacade;
 import eu.unicorneducation.facade.InicializationFacade;
+import eu.unicorneducation.facade.PdfFacade;
+import eu.unicorneducation.helpers.BranchTreeHelper;
 import eu.unicorneducation.model.BranchModel;
+import eu.unicorneducation.model.BranchTreeModel;
 import eu.unicorneducation.model.EmployeeModel;
+import eu.unicorneducation.model.EvaluationModel;
 import eu.unicorneducation.model.EvaluationPlanModel;
 
 @Controller
@@ -48,6 +54,12 @@ public class HomeController {
 
 	@Autowired
 	private EvaluationPlanFacade evaluationPlanFacade;
+	
+	@Autowired
+	private PdfFacade pdfFacade;
+	
+	@Autowired
+	private EvaluationFacade evalfac;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String students(ModelMap model, HttpServletRequest request) {
@@ -83,32 +95,22 @@ public class HomeController {
 		return "inicialization";
 	}
 
-	@RequestMapping(value = "/inicializate_branches", method = RequestMethod.POST)
-	public String inicializateBranches(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) {
+	@RequestMapping(value = "/inicializate", method = RequestMethod.POST)
+	public String inicializateBranches(@RequestParam("branchesFile") MultipartFile branchesFile,
+			@RequestParam("employeesFile") MultipartFile employeesFile, ModelMap model, HttpServletRequest request) {
 
-		iniFacade.inicializateBranches(file);
+		iniFacade.inicializate(branchesFile, employeesFile);
 
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));
 		
-		return "inicialization";
-	}
-
-	@RequestMapping(value = "/inicializate_employees", method = RequestMethod.POST)
-	public String inicializateEmployees(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) {
-
-		iniFacade.inicializateEmployees(file);
-		
-		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		model.addAttribute("properties", loadProperties(request, "inicialization.properties"));
-
 		return "inicialization";
 	}
 
 	@RequestMapping(value = "/employees", method = RequestMethod.GET)
 	public String employees(ModelMap model, HttpServletRequest request) {
 
-		List<EmployeeModel> list = emplfacade.readAll();
+		List<EmployeeModel> list = emplfacade.readByBranch(request.getParameter("branchid"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
 		request.getParameter("branchid");
@@ -118,15 +120,24 @@ public class HomeController {
 
 	@RequestMapping(value = "/branches", method = RequestMethod.GET)
 	public String branches(ModelMap model, HttpServletRequest request) {
-
+		
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		return "branches";
+		//model.addAttribute("branches", branchfacade.readStructure());
+		List<BranchTreeModel> structure= branchfacade.readStructure();
+		//model.addAttribute("branches", structure);
+		model.addAttribute("branches", structure.size());
+		for (int i = 0; i < structure.size(); i++) {
+			model.addAttribute("branche"+i, BranchTreeHelper.getTreeForBranch("", structure.get(i)));	
+		}return "branches";
 	}
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(ModelMap model, HttpServletRequest request) {
-
+		List<EvaluationModel> evList = evalfac.getEvaluations(request.getParameter("id"));
+		EmployeeModel emp = emplfacade.readByID(request.getParameter("id"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		model.addAttribute("employee", emp);
+		model.addAttribute("evList", evList);
 		return "employeedetail";
 	}
 
@@ -218,6 +229,24 @@ public class HomeController {
 
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		return "fillEvaluation";
+	}
+	
+	@RequestMapping(value = "/exportPdf", method = RequestMethod.GET)
+	public String exportPdf(@RequestParam("id")String id, ModelMap model, HttpServletRequest request, HttpServletResponse response) {
+
+		InputStream is = pdfFacade.generatePdf(id);
+		System.out.println("path" + request.getSession().getServletContext().getContextPath());
+		try {
+			org.apache.commons.io.IOUtils.copy(is, response.getOutputStream());
+			response.flushBuffer();
+		} catch (IOException e) {
+			// TODO logger
+			e.printStackTrace();
+		}
+	      
+		
+		model.addAttribute("menuProperties", loadProperties(request, "exportPdf.properties"));
+		return "exportPdf";
 	}
 
 	private Properties loadProperties(HttpServletRequest request, String propertiesName) {

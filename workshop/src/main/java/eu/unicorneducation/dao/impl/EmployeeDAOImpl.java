@@ -6,10 +6,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
+
+
+
+
 import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.dao.EmployeeDAO;
 import eu.unicorneducation.entity.Employee;
+import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.enumeration.Category;
 
 @Component
@@ -96,7 +101,20 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			list.add(em.createQuery("select e from Employee e where e.id=:idOfEmployee", Employee.class)
 					.setParameter("idOfEmployee", employeeId).getResultList().get(0));
 		}
-		return list;
+		return (List<Employee>) list.get(0);
 	}
 
+	@Override
+	public Employee readByID(String employeeId) {
+		return em.createQuery("select e from Employee e  where e.id=:empid ", Employee.class).setParameter("empid", employeeId).getSingleResult();
+	}
+
+	
+	
+	
+	
+
 }
+
+	
+	

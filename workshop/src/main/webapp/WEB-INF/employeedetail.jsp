@@ -1,4 +1,15 @@
+<%@page import="eu.unicorneducation.model.EmployeeModel"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import=" java.text.DateFormat"%>
+<%@page import=" java.util.List"%>
+<%@page import="eu.unicorneducation.model.EvaluationModel"%>
+<%
+	List<EvaluationModel> evList = (List)request.getAttribute("evList");
+	EmployeeModel emp = (EmployeeModel)request.getAttribute("employee");
+	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <style>
@@ -15,17 +26,53 @@
 
 <table border="1" cellpadding="5" width="600">
 <tr>
-<td width="120">Jméno :<br> Petr</td>
-<td width="120">Příjmení: <br>Kupka</td>
-<td width="120">Datum narození : <br>25.12.2015</td>
-<td width="120">Kategorie : <br>MANAGER</td></tr>
+<td width="120">Jméno :<br> <%= emp.getFirstName()%></td>
+<td width="120">Příjmení: <br><%= emp.getLastName()%></td>
+<td width="120">Datum narození : <br><%= format.format(emp.getBirthDate())%></td>
+<td width="120">Kategorie : <br><%= emp.getCategory() %></td></tr>
 </table>
 <h2>Hodnocení</h2>
-
- 
-
+<br>
 
 
+
+<% for(EvaluationModel e : evList) { %>
+<br>
+
+ <h3>Název hodnocení : <i> <%= e.getName() %></i> </h3>
+
+<table border="1" cellpadding="5" width="600">
+<tr>
+<td width="160">Otázka</td>
+<td width="160">Hodnocení</td>
+
+</tr>
+
+           	<tr> <td>  Jakou známkou byste ohodnotil/a komunikační dovednosti poradce?</td> 
+           <td> <%= e.getQuestion1()%> </td> </tr>
+            <tr> <td> Jak byste ohodnotil/a pořádek na pracovišti poradce?</td> 
+           <td> <%= e.getQuestion2() %></td> </tr>
+            <tr> <td>  Jak byste ohodnotil/a schopnost poradce pracovat v týmu?</td> 
+           <td> <%= e.getQuestion3() %> </td> </tr>
+            <tr> <td>  Jak byste ohodnotil/a schopnost poradce zvládat stres?</td> 
+           <td> <%= e.getQuestion4() %> </td> </tr>
+            <tr> <td> Jak byste ohodnotil/a schopnost poradce si efektivně organizovat práci(schůzky, telefony s klienty, atd.)?</td> 
+           <td> <%= e.getQuestion5() %> </td> </tr>
+            <tr> <td> Jak byste ohodnotil/a znalost angličtiny poradce?</td> 
+           <td> <%= e.getQuestion6() %> </td> </tr>
+            <tr> <td> Jakou známku dostal poradce z testu „Znalost produktů“?</td> 
+           <td> <%= e.getQuestion7() %>  </td> </tr>
+            <tr> <td> Jakou známku dostal poradce z testu „Znalost IS“?</td> 
+           <td> <%= e.getQuestion8() %> </td> </tr>
+            <tr> <td> Jakou známkou byste ohodnotila schopnost se učit a dále se rozvíjet?</td> 
+           <td> <%= e.getQuestion9() %> </td> </tr>
+            <tr> <td>Poznámka: (jak bylo řečeno na konzultacích – zde můžeme zadávat libovolný text)</td> 
+           <td> <%= e.getQuestion10() %> </td> </tr>
+           
+     
+</table>
+
+ <% } %>
 
 
 

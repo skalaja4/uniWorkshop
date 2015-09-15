@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
+<%@page import="java.text.SimpleDateFormat"%>
+
+
+<%@page import=" java.text.DateFormat"%>
 
 <%@page import="eu.unicorneducation.model.EmployeeModel"%>
 <%
@@ -7,6 +11,8 @@
 	
 	String id = request.getParameter("branchid");
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
+	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
+	
 
 %>
 
@@ -20,7 +26,7 @@ table {
 </style>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Employees of branch</title>
+<title>Employees of specific branch</title>
 </head>
 <body>
 <%@ include file="menu.jspf" %>
@@ -40,13 +46,12 @@ table {
 <% for(EmployeeModel e : employees) { %>
            <tr> <td> <%= e.getFirstName()%></td> 
            <td> <%= e.getLastName()%> </td> 
-           <td> <%= e.getBirthDate()%> </td>
+           <td> <%= format.format(e.getBirthDate())%> </td>
            <td> <%= e.getCategory()%> </td>
-          <td><form action="http://localhost:8085/workshop/detail"><input type="submit" value="Detail"></input></form></td>
            
+   
            
-           
-           
+            <td> <a href="/workshop/detail?id=<%=(e.getId())%>"><button>Detail</button></a></td>
            
            </tr>
         <% } %>

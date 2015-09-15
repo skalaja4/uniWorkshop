@@ -48,10 +48,16 @@ public class Evaluation {
 	@ManyToOne
 	private Employee employee;
 	
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 	public Evaluation(){}
-	public Evaluation(String name, Date fill_date, int question1,
+	public Evaluation(Long id,String name, Date fill_date, int question1,
 			int question2, int question3, int question4, int question5, int question6,
-			int question7, int question8, int question9, String question10) {
+			int question7, int question8, int question9, String question10, Employee employee) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -66,6 +72,7 @@ public class Evaluation {
 		this.question8 = question8;
 		this.question9 = question9;
 		this.question10 = question10;
+		this.employee = employee;
 	}
 
 	public Long getId() {

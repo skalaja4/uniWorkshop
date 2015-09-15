@@ -10,6 +10,7 @@ import eu.unicorneducation.entity.Branch;
 import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.facade.BranchFacade;
 import eu.unicorneducation.model.BranchModel;
+import eu.unicorneducation.model.BranchTreeModel;
 import eu.unicorneducation.model.EmployeeModel;
 import eu.unicorneducation.service.BranchService;
 
@@ -75,6 +76,16 @@ public class BranchFacadeImpl implements BranchFacade {
 		return new BranchModel(branch.getId(), branch.getName(),
 				branch.getAddress(), branch.getParrentBranch(), employees,
 				branch.getManager());
+
+	}
+
+	@Override
+	public List<BranchTreeModel> readStructure() {
+		
+		return branchService.readStructure();
+
+		
+	
 	}
 
 }

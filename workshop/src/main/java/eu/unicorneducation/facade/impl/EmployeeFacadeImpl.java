@@ -7,8 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.entity.Employee;
+import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.facade.EmployeeFacade;
 import eu.unicorneducation.model.EmployeeModel;
+
+import eu.unicorneducation.model.EvaluationModel;
+
+
 import eu.unicorneducation.service.EmployeeService;
 
 @Component
@@ -91,5 +96,18 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 
 		return listofserv;
 	}
+
+	@Override
+	public EmployeeModel readByID(String employeeId) {
+		Employee emp = employeeserv.readByID(employeeId);
+		EmployeeModel e = new EmployeeModel(emp.getId(), emp.getFirstName(),
+				emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+				.getEvaluation(), emp.getBranch(), emp
+				.getCategory());
+		
+		return e;
+	}
+
+	
 
 }

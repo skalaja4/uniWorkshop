@@ -15,7 +15,7 @@ public class ImportFacadeImpl implements ImportFacade {
 	
 	@Override
 	public void importEmployees(MultipartFile file) {
-		initService.inicializateEmployees(file);
+		initService.addEmployees(file);
 	}
 
 }

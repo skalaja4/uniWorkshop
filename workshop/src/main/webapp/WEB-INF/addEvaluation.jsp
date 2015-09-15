@@ -27,9 +27,35 @@ table {
 	rel="stylesheet" type="text/css" />
 <script>
 	$(document).ready(function() {
-		$("#datepicker").datepicker();
+	    $( "#datepicker" ).datepicker(
+	            {allowPastDates: false}
+	     );
 	});
 </script>
+<script>
+	$(document).ready(function() {
+	    $.datepicker.regional['cs'] = {
+	            closeText: 'Zavřít',
+	            prevText: '&#x3c;Dříve',
+	            nextText: 'Později&#x3e;',
+	            currentText: 'Nyní',
+	            monthNames: ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen',
+	'září', 'říjen', 'listopad', 'prosinec'],
+	            monthNamesShort: ['led', 'úno', 'bře', 'dub', 'kvě', 'čer', 'čvc', 'srp', 'zář', 'říj', 'lis', 'pro'],
+	            dayNames: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota'],
+	            dayNamesShort: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
+	            dayNamesMin: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
+	            weekHeader: 'Týd',
+	            dateFormat: 'dd.mm.yy',
+	            firstDay: 1,
+	            isRTL: false,
+	            showMonthAfterYear: false,
+	            yearSuffix: ''
+	    };
+	    $.datepicker.setDefaults($.datepicker.regional['cs']);
+	});
+</script>
+
 <%-- <title><%=prop.getProperty("title")%></title> --%>
 <title>Přidat Hodnocení</title>
 </head>
@@ -62,10 +88,11 @@ table {
 				<td width="100"><label>Kategorie: </label></td>
 				<td><select id="category" name="category">
 
+						<option value="OTHER"></option>
 						<option value="NEW">New</option>
 						<option value="STABLE">Stable</option>
 						<option value="SENIOR">Senior</option>
-						<option value="OTHER">Jiné</option>
+						
 				</select></td>
 			</tr>
 			<tr>
@@ -73,11 +100,11 @@ table {
 				<td>
 					<%
 						Calendar cal = Calendar.getInstance();
-						DateFormat tipe = new SimpleDateFormat("MM/dd/YYYY");
+						DateFormat tipe = new SimpleDateFormat("dd.MM.YYYY");
 					%> 
 					
 					
-					<input id="datepicker" type="text" name="datepicker" value=<%=tipe.format(cal.getTime())%>/>
+					<input id="datepicker" type="text" name="datepicker" value="<%=tipe.format(cal.getTime())%>"/>
 
 				</td>
 			</tr>
