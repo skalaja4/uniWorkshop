@@ -45,7 +45,7 @@
 
 
 
-	<form action="/workshop/fillEvaluation" method="post">
+	<form action="/workshop/fillEvaluation" method=POST>
 		<input type="hidden" name="plan" value=<%=id%>>
 		<%
 			List<EmployeeModel> employees = (List<EmployeeModel>) request.getAttribute("plan_employees");
