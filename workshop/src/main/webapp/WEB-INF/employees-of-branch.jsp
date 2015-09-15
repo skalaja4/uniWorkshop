@@ -70,7 +70,7 @@ table {
     
 
     
-     <td> <a href="/workshop/detail?id=<%=(e.getId())%>"><button>Detail</button></a></td>
+     <td> <a href="/workshop/detail?id=<%=(e.getId())%>"><button><%= prop.get("smallDetail") %></button></a></td>
     
     </tr>
  <% } %>

@@ -16,20 +16,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Choose employee</title>
+<title><%= prop.get("titel") %></title>
 </head>
 <body>
 	<%@ include file="menu.jspf"%>
-	<h2>Výběr zaměstnanců k plánu</h2>
+	<h2><%= prop.get("strana") %></h2>
 
 	<form ACTION="/workshop/chooseEmployees" method=POST>
 
 		<h3>
-			Název plánu:
+			<%= prop.get("nameOfPlan") %>
 			<%=name%>
-			<br> Pobočka:
+			<br> <%= prop.get("branch") %>:
 			<%=branch%>
-			<br>Datum:
+			<br><%= prop.get("date") %>:
 			<%=date%>
 		</h3>
 <input type="hidden" name="name" value=<%=name%>>
@@ -37,11 +37,11 @@
 <input type="hidden" name="datepicker" value=<%=date%>>
 		<table border="1" cellpadding="5" width="800">
 			<tr>
-				<td width="200">Jméno</td>
-				<td width="200">Příjmení</td>
-				<td width="200">Datum narození</td>
-				<td width="200">Kategorie</td>
-				<td width="50">Vybrán</td>
+				<td width="200"><%= prop.get("name") %></td>
+				<td width="200"><%= prop.get("surname") %></td>
+				<td width="200"><%= prop.get("birthDate") %></td>
+				<td width="200"><%= prop.get("category") %></td>
+				<td width="50"><%= prop.get("chosen") %></td>
 			</tr>
 
 			<%

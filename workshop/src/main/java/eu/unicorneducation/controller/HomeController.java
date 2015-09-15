@@ -163,7 +163,7 @@ public class HomeController {
 		List<EvaluationModel> evList = evalfac.getEvaluations(request.getParameter("id"));
 		EmployeeModel emp = emplfacade.readByID(request.getParameter("id"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		model.addAttribute("menuProperties", loadProperties(request, "employeedetail.properties"));
+		model.addAttribute("properties", loadProperties(request, "employeedetail.properties"));
 		model.addAttribute("employee", emp);
 		model.addAttribute("evList", evList);
 		
@@ -286,7 +286,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.POST)
-	public String fillEvaluation(ModelMap model,
+	public String fillEvaluation(ModelMap model,@RequestParam(value="plan")Long id,
 			@RequestParam(value = "v1") String[] quest1,
 			@RequestParam(value = "v2") String[] quest2,
 			@RequestParam(value = "v3") String[] quest3,
@@ -299,7 +299,7 @@ public class HomeController {
 			@RequestParam(value = "info") String[] info,
 			HttpServletRequest request) throws Exception {
 		
-		Long id = Long.valueOf(request.getParameter("plan"));
+		
 		EvaluationPlanModel plan = evaluationPlanFacade.read(id);
 		
 		int count = plan.getEmployees().size();
