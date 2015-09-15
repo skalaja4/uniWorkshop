@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.facade.BranchFacade;
 import eu.unicorneducation.facade.EmployeeFacade;
 import eu.unicorneducation.facade.EvaluationFacade;
@@ -248,10 +249,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.GET)
-	public String fillEvaluation(ModelMap model, @RequestParam(value = "idofplan") String id , HttpServletRequest request) {
+	public String fillEvaluation(ModelMap model, @RequestParam(value = "idOfPlan") Long id , HttpServletRequest request) {
 		
-		Long idl = Long.valueOf(id);
-		EvaluationPlanModel plan = evaluationPlanFacade.read(idl);
+		
+		EvaluationPlanModel plan = evaluationPlanFacade.read(id);
 		DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 		Date date = plan.getExpiration();
 		
@@ -279,7 +280,7 @@ public class HomeController {
 			@RequestParam(value = "8") String[] quest8,
 			@RequestParam(value = "9") String[] quest9,
 			@RequestParam(value = "info") String[] info,
-			HttpServletRequest request) {
+			HttpServletRequest request) throws Exception {
 		
 		Long idl = Long.valueOf(id);
 		EvaluationPlanModel plan = evaluationPlanFacade.read(idl);
@@ -297,12 +298,13 @@ public class HomeController {
 						Integer.parseInt(quest2[i]), Integer.parseInt(quest3[i]), Integer.parseInt(quest4[i]),
 						Integer.parseInt(quest5[i]), Integer.parseInt(quest6[i]), Integer.parseInt(quest7[i]),
 						Integer.parseInt(quest8[i]), Integer.parseInt(quest9[i]),info[i],e);
+				evalfac.create(model1);
 			} catch (NumberFormatException exe) {
 				System.err.print("Faild parse date");
 				exe.printStackTrace();
 
 			}
-			evalfac.create(model1);
+			//evalfac.create(model1);
 		}
 
 		return "index";
