@@ -102,7 +102,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			list.add(em.createQuery("select e from Employee e where e.id=:idOfEmployee", Employee.class)
 					.setParameter("idOfEmployee", employeeId).getResultList().get(0));
 		}
-		return (List<Employee>) list.get(0);
+		return  list;
 	}
 
 	@Override

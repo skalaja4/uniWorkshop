@@ -41,7 +41,7 @@
 					for (int i = 1; i < 10; i++) {
 				%>
 				<br> Otazka<%=i%>
-				<select>
+				<select name="question" value="<%=i%>">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
