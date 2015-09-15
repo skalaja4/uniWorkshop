@@ -124,7 +124,7 @@ public class HomeController {
 	@RequestMapping(value = "/employees", method = RequestMethod.POST)
 	public String finder(ModelMap model, HttpServletRequest request) {
 
-		List<EmployeeModel> list = emplfacade.readByLastName(request.getParameter("lastname"), "branchid");
+		List<EmployeeModel> list = emplfacade.readByLastName(request.getParameter("lastname"), request.getParameter("branchid"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
 		model.addAttribute("branchid", request.getParameter("branchid"));
