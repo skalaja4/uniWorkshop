@@ -10,6 +10,8 @@ import eu.unicorneducation.entity.Branch;
 import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.entity.EvaluationPlan;
 import eu.unicorneducation.facade.EvaluationPlanFacade;
+import eu.unicorneducation.model.BranchModel;
+import eu.unicorneducation.model.EmployeeModel;
 import eu.unicorneducation.model.EvaluationPlanModel;
 import eu.unicorneducation.model.EvaluationPlanPartsModel;
 import eu.unicorneducation.service.EmployeeService;
@@ -45,8 +47,20 @@ public class EvaluationPlanFacadeImpl implements EvaluationPlanFacade {
 
 	@Override
 	public EvaluationPlanModel read(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		EvaluationPlan plan = evaPlanService.read(id);
+		List<EmployeeModel> modelList = new ArrayList<EmployeeModel>(); 
+		for (Employee emp : plan.getBranch().getEmployees()) {
+			modelList.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp.getEvaluation(), emp.getBranch(), emp.getCategory()));
+		}
+		BranchModel branch = new BranchModel(plan.getBranch().getId(), plan.getBranch().getName(),
+				plan.getBranch().getAddress(), plan.getBranch().getParrentBranch(),modelList, plan.getBranch().getManager());
+		List<EmployeeModel> employees = new ArrayList<EmployeeModel>(); 
+		for (Employee emp : plan.getBranch().getEmployees()) {
+			employees.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp.getEvaluation(), emp.getBranch(), emp.getCategory()));
+		}
+		return new EvaluationPlanModel(plan.getName(), plan.getExpiration(), branch, employees);
 	}
 
 	@Override

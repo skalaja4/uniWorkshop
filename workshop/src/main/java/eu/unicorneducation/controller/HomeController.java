@@ -280,7 +280,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.POST)
-	public String fillEvaluation(ModelMap model, @RequestParam(value = "plan") String id,
+	public String fillEvaluation(ModelMap model, @RequestParam(value = "plan") Long id,
 			@RequestParam(value = "employeeIds") String[] employeeIds,
 			@RequestParam(value = "1") String[] quest1,
 			@RequestParam(value = "2") String[] quest2,
@@ -294,8 +294,7 @@ public class HomeController {
 			@RequestParam(value = "info") String[] info,
 			HttpServletRequest request) throws Exception {
 		
-		Long idl = Long.valueOf(id);
-		EvaluationPlanModel plan = evaluationPlanFacade.read(idl);
+		EvaluationPlanModel plan = evaluationPlanFacade.read(id);
 		
 		for (int i = 0; i < employeeIds.length; i++) {
 			Date date = new Date();
@@ -316,7 +315,6 @@ public class HomeController {
 				exe.printStackTrace();
 
 			}
-			//evalfac.create(model1);
 		}
 
 		return "index";
