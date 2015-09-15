@@ -10,7 +10,6 @@ import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.facade.EmployeeFacade;
 import eu.unicorneducation.model.EmployeeModel;
-
 import eu.unicorneducation.model.EvaluationModel;
 
 
@@ -106,6 +105,19 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 				.getCategory());
 		
 		return e;
+	}
+
+	@Override
+	public List<EmployeeModel> readByLastName(String lastname) {
+		List<Employee> list = employeeserv.readByLastName(lastname);
+		List<EmployeeModel> listofmodels = new ArrayList<EmployeeModel>();
+		for (Employee emp : list) {
+			listofmodels.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
+		}
+		return listofmodels;
 	}
 
 	
