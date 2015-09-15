@@ -63,7 +63,7 @@
 					<label>
 						<%=quest.get(key)%>
 					</label>
-				<select id=<%=i%>>
+				<select id="v+<%=i%>">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>

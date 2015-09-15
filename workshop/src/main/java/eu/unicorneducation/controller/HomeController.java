@@ -282,15 +282,15 @@ public class HomeController {
 	
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.POST)
 	public String fillEvaluation(ModelMap model,
-			@RequestParam(value = "1") String[] quest1,
-			@RequestParam(value = "2") String[] quest2,
-			@RequestParam(value = "3") String[] quest3,
-			@RequestParam(value = "4") String[] quest4,
-			@RequestParam(value = "5") String[] quest5,
-			@RequestParam(value = "6") String[] quest6,
-			@RequestParam(value = "7") String[] quest7,
-			@RequestParam(value = "8") String[] quest8,
-			@RequestParam(value = "9") String[] quest9,
+			@RequestParam(value = "v1") String[] quest1,
+			@RequestParam(value = "v2") String[] quest2,
+			@RequestParam(value = "v3") String[] quest3,
+			@RequestParam(value = "v4") String[] quest4,
+			@RequestParam(value = "v5") String[] quest5,
+			@RequestParam(value = "v6") String[] quest6,
+			@RequestParam(value = "v7") String[] quest7,
+			@RequestParam(value = "v8") String[] quest8,
+			@RequestParam(value = "v9") String[] quest9,
 			@RequestParam(value = "info") String[] info,
 			HttpServletRequest request) throws Exception {
 		
