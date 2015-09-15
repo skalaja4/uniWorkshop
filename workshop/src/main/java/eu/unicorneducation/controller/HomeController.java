@@ -10,17 +10,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.Priority;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import eu.unicorneducation.entity.Employee;
 import eu.unicorneducation.facade.BranchFacade;
@@ -350,6 +355,20 @@ public class HomeController {
 	public String errorTest() {
 
 		throw new IllegalStateException("Chyba!");
+	}
+	
+	final static Logger LOGGER = Logger.getLogger(HomeController.class);
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleError(HttpServletRequest req, Exception exception) {
+
+		LOGGER.log(Priority.ERROR, exception.getMessage(), exception);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("exception", exception);
+		mav.addObject("url", req.getRequestURL());
+		mav.setViewName("error");
+		return mav;
 	}
 
 	private Properties loadProperties(HttpServletRequest request, String propertiesName) {
