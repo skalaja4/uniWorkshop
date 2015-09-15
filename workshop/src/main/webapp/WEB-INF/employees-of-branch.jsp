@@ -12,7 +12,7 @@
 	
 	String id = request.getParameter("branchid");
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
-	
+	Properties prop = (Properties) request.getAttribute("properties");
 	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
 		String lastn = (String)request.getAttribute("lastname");
 		String branchid = "";

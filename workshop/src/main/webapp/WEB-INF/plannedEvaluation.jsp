@@ -4,7 +4,7 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="eu.unicorneducation.model.EvaluationPlanPartsModel"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%Properties prop = (Properties) request.getAttribute("properties"); %>
 <html>
 <head>
 <style type="text/css">
@@ -31,6 +31,7 @@
 		</tr>
 
 		<%
+		
 			List<EvaluationPlanPartsModel> plansAfter = (List<EvaluationPlanPartsModel>) request
 					.getAttribute("plansAfter");
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
