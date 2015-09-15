@@ -35,9 +35,11 @@ table {
 
 Vyhledávání : <input type=text name=lastName value="Příjmení"></input>
  
+<%
+String last=request.getParameter("lastName");
+%>
 
-
-<a href="/workshop/employeefinder?lastname=<%=last%>"><button>Vyhledat</button></a>
+<a href="/workshop/employeefinder?lastname=<%=last%>&branchid=<%= employees.get(0).getBranch().getId() %>"><button>Vyhledat</button></a>
 <br>
 <br>
 <table border="1" cellpadding="5" width="800">
