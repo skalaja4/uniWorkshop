@@ -8,6 +8,9 @@ import eu.unicorneducation.model.EmployeeModel;
 import eu.unicorneducation.model.EmployeeRESTModel;
 import eu.unicorneducation.model.EvaluationRESTModel;
 
+/**
+ * Class with static methods used to help transfor from one object to another.
+ */
 public class ModelTransformer {
 
 	public static EmployeeRESTModel employeeModelToEmployeeRESTModel(

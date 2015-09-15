@@ -18,6 +18,6 @@ public interface EmployeeDAO {
 	public List<Employee> readByIds(String[] employeeIds);
 	Employee readByID(String employeeId);
 	
-	List<Employee> readByLastName(String lastname);
+	List<Employee> readByLastName(String lastname, String branchid);
 	
 }
