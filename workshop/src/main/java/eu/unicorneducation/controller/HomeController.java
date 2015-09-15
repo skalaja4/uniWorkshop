@@ -158,7 +158,7 @@ public class HomeController {
 		List<EvaluationModel> evList = evalfac.getEvaluations(request.getParameter("id"));
 		EmployeeModel emp = emplfacade.readByID(request.getParameter("id"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
-		model.addAttribute("menuProperties", loadProperties(request, "employeedetail.properties"));
+		model.addAttribute("properties", loadProperties(request, "employeedetail.properties"));
 		model.addAttribute("employee", emp);
 		model.addAttribute("evList", evList);
 		
