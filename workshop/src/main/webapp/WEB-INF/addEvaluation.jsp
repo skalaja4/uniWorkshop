@@ -55,12 +55,14 @@ table {
 	    $.datepicker.setDefaults($.datepicker.regional['cs']);
 	});
 </script>
-
-<title>Přidat Hodnocení</title>
+<%
+	Properties prop = (Properties) request.getAttribute("properties");
+%>
+<title><%= prop.get("title") %></title>
 </head>
 <body>
 	<%@ include file="menu.jspf"%>
-	<h2>Přidání hodnocení</h2>
+	<h2><%= prop.get("strana") %></h2>
 	<form action="/workshop/chooseEmployees" method="get">
 	
 		<table border="0" cellpadding="5" width="400">

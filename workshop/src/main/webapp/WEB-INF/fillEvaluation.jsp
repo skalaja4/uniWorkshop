@@ -10,7 +10,7 @@
 	String name =(String) request.getAttribute("plan_name");
 	String date =(String) request.getAttribute("plan_date");
 	String branch = (String) request.getAttribute("plan_branch");
-	Long id = Long.valueOf( (String)request.getAttribute("plan_id"));
+	Long id = (Long)request.getAttribute("plan_id");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
