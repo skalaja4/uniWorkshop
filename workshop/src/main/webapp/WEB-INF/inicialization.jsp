@@ -30,7 +30,8 @@
 
 
 	<hr>
-	<sf:form action="/workshop/inicializate_employees" method="post">
+	<sf:form action="/workshop/inicializate_employees" method="post"
+		enctype="multipart/form-data">
 		<p>
 			<%= prop.get("enterEmployees") %><br>
 			<input type="file" name="file" size="40">

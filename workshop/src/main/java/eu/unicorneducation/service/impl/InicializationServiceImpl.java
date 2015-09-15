@@ -18,8 +18,8 @@ import eu.unicorneducation.dao.BranchDAO;
 import eu.unicorneducation.dao.EmployeeDAO;
 import eu.unicorneducation.entity.Branch;
 import eu.unicorneducation.entity.Employee;
+import eu.unicorneducation.enumeration.Category;
 import eu.unicorneducation.service.InicializationService;
-import eu.unicroneducation.enumeration.Category;
 
 @Component
 public class InicializationServiceImpl implements InicializationService {
@@ -126,8 +126,7 @@ public class InicializationServiceImpl implements InicializationService {
 		int lastUnderscoreCharacterPosition = id.lastIndexOf('_');
 
 		// remove zeros before number
-		int zerolessId = Integer.parseInt(id
-				.substring(lastUnderscoreCharacterPosition));
+		int zerolessId = Integer.parseInt(id.substring(lastUnderscoreCharacterPosition + 1));
 		id = id.substring(0, lastUnderscoreCharacterPosition + 1) + zerolessId;
 		return id;
 	}

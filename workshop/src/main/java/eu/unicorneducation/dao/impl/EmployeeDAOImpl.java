@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.dao.EmployeeDAO;
 import eu.unicorneducation.entity.Employee;
-import eu.unicroneducation.enumeration.Category;
+import eu.unicorneducation.enumeration.Category;
 
 @Component
 public class EmployeeDAOImpl implements EmployeeDAO {

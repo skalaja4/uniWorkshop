@@ -13,39 +13,52 @@ import eu.unicorneducation.service.EmployeeService;
 
 @Component
 public class EmployeeFacadeImpl implements EmployeeFacade {
-	
+
 	@Autowired
 	private EmployeeService employeeserv;
 
 	public List<EmployeeModel> readAll() {
-	
-			List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
-		
-		for (Employee s: employeeserv.readAll()) {
-			listofserv.add(new EmployeeModel(s));
-		}
-		
-		return listofserv;
-	}
 
-	@Override
-	public List<EmployeeModel> readByBranchAndCategory(String branch, String category) {
 		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
 
-		for (Employee s : employeeserv.readByBranchAndCategory(branch, category)) {
-			listofserv.add(new EmployeeModel(s));
+		for (Employee emp : employeeserv.readAll()) {
+			listofserv.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
 		}
 
 		return listofserv;
 	}
 
 	@Override
-	public List<EmployeeModel> readByBranchWithoutCategory(String branch, String category) {
+	public List<EmployeeModel> readByBranchAndCategory(String branch,
+			String category) {
+		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
+
+		for (Employee emp : employeeserv.readByBranchAndCategory(branch,
+				category)) {
+			listofserv.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
+		}
+
+		return listofserv;
+	}
+
+	@Override
+	public List<EmployeeModel> readByBranchWithoutCategory(String branch,
+			String category) {
 
 		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
 
-		for (Employee s : employeeserv.readByBranchWithoutCategory(branch, category)) {
-			listofserv.add(new EmployeeModel(s));
+		for (Employee emp : employeeserv.readByBranchWithoutCategory(branch,
+				category)) {
+			listofserv.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
 		}
 
 		return listofserv;
@@ -55,8 +68,11 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 	public List<EmployeeModel> readByBranch(String branch) {
 		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
 
-		for (Employee s : employeeserv.readByBranch(branch)) {
-			listofserv.add(new EmployeeModel(s));
+		for (Employee emp : employeeserv.readByBranch(branch)) {
+			listofserv.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
 		}
 
 		return listofserv;
@@ -66,8 +82,11 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 	public List<EmployeeModel> readByIds(String[] employeeIds) {
 		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
 
-		for (Employee s : employeeserv.readByIds(employeeIds)) {
-			listofserv.add(new EmployeeModel(s));
+		for (Employee emp : employeeserv.readByIds(employeeIds)) {
+			listofserv.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
 		}
 
 		return listofserv;
