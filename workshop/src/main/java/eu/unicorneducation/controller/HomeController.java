@@ -122,10 +122,10 @@ public class HomeController {
 	@RequestMapping(value = "/employeefinder", method = RequestMethod.GET)
 	public String find(ModelMap model, HttpServletRequest request) {
 
-		List<EmployeeModel> list = emplfacade.readByBranch(request.getParameter("branchid"));
+		List<EmployeeModel> list = emplfacade.readByBLastName(request.getParameter("lastname"), request.getParameter("branchid"));
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("listofemployees", list);
-		model.addAttribute("lastName", request.getParameter("lastName"));
+		
 		
 
 		return "employeefinder";
