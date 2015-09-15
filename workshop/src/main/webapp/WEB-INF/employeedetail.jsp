@@ -73,7 +73,10 @@
 </table>
 
  <% } %>
-
+<form action="/workshop/exportPdf">
+<input type="hidden" name="id" value="<%=emp.getId() %>">
+<input type="submit" name="exportPdf" value="Exportovat do PDF">
+</form>
 
 
 </body>

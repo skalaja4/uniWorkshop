@@ -15,5 +15,6 @@ public interface BranchFacade {
 	BranchModel read(String id);
 	BranchModel readByName(String name);
 	List<BranchTreeModel> readStructure();
+	String readStructureById(String id);
 }
 

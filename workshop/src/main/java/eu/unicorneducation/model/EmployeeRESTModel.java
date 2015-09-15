@@ -3,26 +3,17 @@ package eu.unicorneducation.model;
 import java.util.Date;
 import java.util.List;
 
-import eu.unicorneducation.entity.Evaluation;
-import eu.unicorneducation.entity.EvaluationPlan;
 import eu.unicorneducation.enumeration.Category;
 
 public class EmployeeRESTModel {
 
 	private String id;
-
 	private String firstName;
-
 	private String lastName;
-
 	private Date birthDate;
-
 	private String evaluationPlan;
-
 	private List<EvaluationRESTModel> evaluation;
-
 	private String branchId;
-
 	private Category category;
 
 	public EmployeeRESTModel() {

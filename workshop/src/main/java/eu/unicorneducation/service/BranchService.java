@@ -10,5 +10,6 @@ public interface BranchService {
 	Branch read(String id);
 	Branch readByName(String name);
 	List<BranchTreeModel> readStructure();
+	String readStructureById(String id);
 	
 }
