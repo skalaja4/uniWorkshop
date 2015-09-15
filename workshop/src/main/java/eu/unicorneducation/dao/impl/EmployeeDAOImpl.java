@@ -101,7 +101,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				.createQuery(
 						"select e from Employee e left join e.branch b where b.id=:branchName",
 						Employee.class)
-				.setParameter("branchName", branch).setParameter("notManager", Category.MANAGER).getResultList();
+				.setParameter("branchName", branch).getResultList();
 
 	}
 
