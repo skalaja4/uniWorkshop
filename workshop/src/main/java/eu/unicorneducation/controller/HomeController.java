@@ -282,7 +282,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.POST)
 	public String fillEvaluation(ModelMap model,
-			@RequestParam(value = "employeeIds") String[] employeeIds,
 			@RequestParam(value = "1") String[] quest1,
 			@RequestParam(value = "2") String[] quest2,
 			@RequestParam(value = "3") String[] quest3,
@@ -294,11 +293,18 @@ public class HomeController {
 			@RequestParam(value = "9") String[] quest9,
 			@RequestParam(value = "info") String[] info,
 			HttpServletRequest request) throws Exception {
-		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		
 		Long id = Long.valueOf(request.getParameter("plan"));
 		EvaluationPlanModel plan = evaluationPlanFacade.read(id);
 		
-		for (int i = 0; i < employeeIds.length; i++) {
+		int count = plan.getEmployees().size();
+		String[] employeeIds = new String[count];
+		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
+		for (int i = 0; i < count; i++) {
+			employeeIds[i] = request.getParameter("employeeIds"+i);
+		}
+		
+		for (int i = 0; i < count; i++) {
 			Date date = new Date();
 			if (info[i].length()>4000){
 				throw new Exception("Chyba délky.");
@@ -315,7 +321,6 @@ public class HomeController {
 			} catch (NumberFormatException exe) {
 				System.err.print("Faild parse date");
 				exe.printStackTrace();
-
 			}
 		}
 
