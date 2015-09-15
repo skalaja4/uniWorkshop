@@ -11,25 +11,14 @@
 	
 	List<EmployeeModel> employees = (List)request.getAttribute("listofemployees");
 	DateFormat format = new SimpleDateFormat("d.MM.yyyy");
-	String branchid = (String)request.getAttribute("branchid");
-	String lastn = (String)request.getAttribute("lastname");
-	List<EmployeeModel> employeesfound = new ArrayList<>();
-	
-	
-	
-	if(lastn != null)
-	{
-		for(EmployeeModel e : employees)
+		String lastn = (String)request.getAttribute("lastname");
+		String branchid = "";
+		if(!employees.isEmpty())
 		{
-			if(e.getLastName().equals(lastn)){
-				
-				employeesfound.add(e);
-				
-			}
+			branchid = employees.get(0).getBranch().getId();
 			
 		}
-		
-	}
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -50,15 +39,13 @@ table {
 <br>
 <br>
 
-<form  method="get" action="/workshop/employees">
+<form  method="post" action="/workshop/employees">
 
-Vyhledávání : <input type=text name=lastname value="Příjmení"></input>
- 
-<%
-String last=request.getParameter("lastname");
-%>
-<input type="submit" value="Potvrdit">
-<a href="/workshop/employeefinder?lastname=<%=lastn%>"><button>Vyhledat</button></a>
+Vyhledávání :
+ <input type=text name=lastname value="Příjmení"></input>
+ <input type="hidden" name="branchid" value=<%=branchid%>>
+<input type="submit" value="Vyhledat">
+
 <br>
 <br>
 </form>
@@ -71,9 +58,8 @@ String last=request.getParameter("lastname");
 <td width="50">Detail zaměstnance</td>
 </tr>
 
-<% 
-if(employeesfound.size()>0){
-	for(EmployeeModel e : employeesfound) { %>
+<%
+	for(EmployeeModel e : employees) { %>
     <tr> <td> <%= e.getFirstName()%></td> 
     <td> <%= e.getLastName()%> </td> 
     <td> <%= format.format(e.getBirthDate())%> </td>
@@ -84,22 +70,7 @@ if(employeesfound.size()>0){
      <td> <a href="/workshop/detail?id=<%=(e.getId())%>"><button>Detail</button></a></td>
     
     </tr>
- <% }}
-	else{
-
-
-for(EmployeeModel e : employees) { %>
-           <tr> <td> <%= e.getFirstName()%></td> 
-           <td> <%= e.getLastName()%> </td> 
-           <td> <%= format.format(e.getBirthDate())%> </td>
-           <td> <%= e.getCategory()%> </td>
-           
-   
-           
-            <td> <a href="/workshop/detail?id=<%=(e.getId())%>"><button>Detail</button></a></td>
-           
-           </tr>
-        <% }} %>
+ <% } %>
 
 
 
