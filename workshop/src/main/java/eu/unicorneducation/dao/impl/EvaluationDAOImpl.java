@@ -14,10 +14,19 @@ import eu.unicorneducation.entity.Evaluation;
 public class EvaluationDAOImpl implements EvaluationDAO {
 	private EntityManager em;
 
+	
+	/**
+	 * @inheritDoc
+	 */
+	
 	public EvaluationDAOImpl() {
 		em = Persistence.createEntityManagerFactory("workshop").createEntityManager();
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	@Override
 	public boolean create(Evaluation evaluation) {
 		em.getTransaction().begin();
 		em.persist(evaluation);
@@ -25,10 +34,15 @@ public class EvaluationDAOImpl implements EvaluationDAO {
 		return true;
 	}
 
+	@Override
 	public Evaluation read(Long id) {
 		return em.find(Evaluation.class, id);
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	@Override
 	public boolean delete(Evaluation evaluation) {
 		em.getTransaction().begin();
 		em.remove(evaluation);
@@ -37,13 +51,19 @@ public class EvaluationDAOImpl implements EvaluationDAO {
 	}
 
 	
-	
+	/**
+	 * @inheritDoc
+	 */
+	@Override
 	public List readAll() {
 		return em.createQuery("select e from Employee e", Employee.class).getResultList();
 		
 	}
 	
 	
+	/**
+	 * @inheritDoc
+	 */
 	@Override
 	public List<Evaluation> getEvaluations(String empID) {
 		
