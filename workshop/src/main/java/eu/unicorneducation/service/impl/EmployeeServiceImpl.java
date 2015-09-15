@@ -55,6 +55,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return employeeDao.readByLastName(lastname,branchid);
 	}
 
+	@Override
+	public List<Employee> readByBranchAndNotPlanned(String branch) {
+		return employeeDao.readByBranchAndNotPlaned(branch);
+	}
+
 	
 
 	

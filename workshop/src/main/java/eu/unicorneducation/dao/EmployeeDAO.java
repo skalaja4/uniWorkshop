@@ -15,6 +15,7 @@ public interface EmployeeDAO {
 	public List<Employee> readByBranchAndCategory(String branch,String category);
 	public List<Employee> readByBranchWithoutCategory(String branch, String category);
 	public List<Employee> readByBranch(String branch);
+	public List<Employee> readByBranchAndNotPlaned(String branch) ;
 	public List<Employee> readByIds(String[] employeeIds);
 	Employee readByID(String employeeId);
 	

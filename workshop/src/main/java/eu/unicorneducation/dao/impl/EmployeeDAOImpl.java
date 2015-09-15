@@ -86,10 +86,20 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 
 	@Override
-	public List<Employee> readByBranch(String branch) {
+	public List<Employee> readByBranchAndNotPlaned(String branch) {
 		return em
 				.createQuery(
 						"select e from Employee e left join e.branch b where b.id=:branchName and e.plan is null and e.category<>:notManager",
+						Employee.class)
+				.setParameter("branchName", branch).setParameter("notManager", Category.MANAGER).getResultList();
+
+	}
+	
+	@Override
+	public List<Employee> readByBranch(String branch) {
+		return em
+				.createQuery(
+						"select e from Employee e left join e.branch b where b.id=:branchName",
 						Employee.class)
 				.setParameter("branchName", branch).setParameter("notManager", Category.MANAGER).getResultList();
 

@@ -7,12 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import eu.unicorneducation.entity.Employee;
-import eu.unicorneducation.entity.Evaluation;
 import eu.unicorneducation.facade.EmployeeFacade;
 import eu.unicorneducation.model.EmployeeModel;
-import eu.unicorneducation.model.EvaluationModel;
-
-
 import eu.unicorneducation.service.EmployeeService;
 
 @Component
@@ -118,6 +114,20 @@ public class EmployeeFacadeImpl implements EmployeeFacade {
 							.getCategory()));
 		}
 		return listofmodels;
+	}
+
+	@Override
+	public List<EmployeeModel> readByBranchAndNotPlanned(String branch) {
+		List<EmployeeModel> listofserv = new ArrayList<EmployeeModel>();
+
+		for (Employee emp : employeeserv.readByBranchAndNotPlanned(branch)) {
+			listofserv.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
+		}
+
+		return listofserv;
 	}
 
 	

@@ -15,5 +15,6 @@ public interface EmployeeService {
 	 List<Employee> readByIds(String[] employeeIds);
 	 Employee readByID(String employeeId);
 	 List<Employee> readByLastName(String lastname, String branchid);
+	List<Employee> readByBranchAndNotPlanned(String branch);
 	
 }

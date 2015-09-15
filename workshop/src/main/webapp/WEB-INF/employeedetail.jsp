@@ -24,7 +24,7 @@
 <%@ include file="menu.jspf" %>
 <br>
 <br>
-<%=branches %>>
+<%=branches %>
 <table border="1" cellpadding="5" width="600">
 <tr>
 <td width="120">Jméno :<br> <%= emp.getFirstName()%></td>

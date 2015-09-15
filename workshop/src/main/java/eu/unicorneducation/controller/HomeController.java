@@ -214,7 +214,7 @@ public class HomeController {
 		} else {
 			List<EmployeeModel> list = new ArrayList<>();
 			model.addAttribute("selectedEmployee", list);
-			model.addAttribute("unselectedEmployee", emplfacade.readByBranch(branch));
+			model.addAttribute("unselectedEmployee", emplfacade.readByBranchAndNotPlanned(branch));
 		}
 
 		return "chooseEmployees";

@@ -102,15 +102,16 @@ public class BranchServiceImpl implements BranchService {
 	@Override
 	public String readStructureById(String id) {
 			Branch branch = branchDAO.read(id);
-		String output = "tady <br>";
+		String output = "Poboèky:  ";
 		while(branch.getParrentBranch()!=null){
-			output += "<li>";
-			output += "<ul>";
+			
+			
 			output += branch.getName();
-			output += "</ui>";
-			output += "</li>";
+			branch=branchDAO.read(branch.getParrentBranch());
+			output += " <- ";
 		}
 		
+		output += branch.getName();
 		return output;
 	}
 }
