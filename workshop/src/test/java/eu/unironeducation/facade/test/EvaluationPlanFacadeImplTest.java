@@ -27,10 +27,8 @@ public class EvaluationPlanFacadeImplTest {
 		
 		List<EvaluationPlanPartsModel> evPlanModel = evalPlanFacade.readAllAfterDate();
 		if(evPlanModel.size()>0){
-			System.out.println(Calendar.getInstance().getTime());
 			for(EvaluationPlanPartsModel parts:evPlanModel){
-				System.out.println(parts.getExpiration());
-				if(parts.getExpiration().after(Calendar.getInstance().getTime())){
+				if(parts.getExpiration().getTime()<(Calendar.getInstance().getTime().getTime())){
 					Assert.assertTrue(true);
 				}else{
 					Assert.assertTrue(false);
