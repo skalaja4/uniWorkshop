@@ -48,19 +48,26 @@ public class EvaluationPlanFacadeImpl implements EvaluationPlanFacade {
 	@Override
 	public EvaluationPlanModel read(Long id) {
 		EvaluationPlan plan = evaPlanService.read(id);
-		List<EmployeeModel> modelList = new ArrayList<EmployeeModel>(); 
+		List<EmployeeModel> modelList = new ArrayList<EmployeeModel>();
 		for (Employee emp : plan.getBranch().getEmployees()) {
 			modelList.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
-					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp.getEvaluation(), emp.getBranch(), emp.getCategory()));
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
 		}
-		BranchModel branch = new BranchModel(plan.getBranch().getId(), plan.getBranch().getName(),
-				plan.getBranch().getAddress(), plan.getBranch().getParrentBranch(),modelList, plan.getBranch().getManager());
-		List<EmployeeModel> employees = new ArrayList<EmployeeModel>(); 
+		BranchModel branch = new BranchModel(plan.getBranch().getId(), plan
+				.getBranch().getName(), plan.getBranch().getAddress(), plan
+				.getBranch().getParrentBranch(), modelList, plan.getBranch()
+				.getManager());
+		List<EmployeeModel> employees = new ArrayList<EmployeeModel>();
 		for (Employee emp : plan.getBranch().getEmployees()) {
 			employees.add(new EmployeeModel(emp.getId(), emp.getFirstName(),
-					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp.getEvaluation(), emp.getBranch(), emp.getCategory()));
+					emp.getLastName(), emp.getBirthDate(), emp.getPlan(), emp
+							.getEvaluation(), emp.getBranch(), emp
+							.getCategory()));
 		}
-		return new EvaluationPlanModel(id,plan.getName(), plan.getExpiration(), branch, employees);
+		return new EvaluationPlanModel(id, plan.getName(),
+				plan.getExpiration(), branch, employees);
 	}
 
 	@Override
@@ -80,17 +87,18 @@ public class EvaluationPlanFacadeImpl implements EvaluationPlanFacade {
 		List<EvaluationPlan> evaPlans = evaPlanService.readAllBeforeDate();
 		List<EvaluationPlanPartsModel> returnedList = new ArrayList<>();
 		for (EvaluationPlan evaluationPlan : evaPlans) {
-			List<String> emplIds=new ArrayList<>();
-			List<String> emplFNames= new ArrayList<>();
+			List<String> emplIds = new ArrayList<>();
+			List<String> emplFNames = new ArrayList<>();
 			List<String> emplLNames = new ArrayList<>();
-			for(Employee employees:evaluationPlan.getEmployees()){
+			for (Employee employees : evaluationPlan.getEmployees()) {
 				emplIds.add(employees.getId());
 				emplFNames.add(employees.getFirstName());
 				emplLNames.add(employees.getLastName());
 			}
-			returnedList.add(new EvaluationPlanPartsModel(evaluationPlan.getId(),evaluationPlan.getName(),
-					evaluationPlan.getExpiration(),emplIds,emplFNames,emplLNames,evaluationPlan.getBranch().getName()));
-			
+			returnedList.add(new EvaluationPlanPartsModel(evaluationPlan
+					.getId(), evaluationPlan.getName(), evaluationPlan
+					.getExpiration(), emplIds, emplFNames, emplLNames,
+					evaluationPlan.getBranch().getName()));
 
 		}
 
@@ -100,25 +108,26 @@ public class EvaluationPlanFacadeImpl implements EvaluationPlanFacade {
 
 	@Override
 	public List<EvaluationPlanPartsModel> readAllAfterDate() {
-		 List<EvaluationPlan> evaPlans = evaPlanService.readAllAfterDate();
+		List<EvaluationPlan> evaPlans = evaPlanService.readAllAfterDate();
 		List<EvaluationPlanPartsModel> returnedList = new ArrayList<>();
 		for (EvaluationPlan evaluationPlan : evaPlans) {
-			List<String> emplIds=new ArrayList<>();
-			List<String> emplFNames= new ArrayList<>();
+			List<String> emplIds = new ArrayList<>();
+			List<String> emplFNames = new ArrayList<>();
 			List<String> emplLNames = new ArrayList<>();
-			for(Employee employees:evaluationPlan.getEmployees()){
+			for (Employee employees : evaluationPlan.getEmployees()) {
 				emplIds.add(employees.getId());
 				emplFNames.add(employees.getFirstName());
 				emplLNames.add(employees.getLastName());
 			}
-			returnedList.add(new EvaluationPlanPartsModel(evaluationPlan.getId(),evaluationPlan.getName(),
-					evaluationPlan.getExpiration(),emplIds,emplFNames,emplLNames,evaluationPlan.getBranch().getName()));
-			
+			returnedList.add(new EvaluationPlanPartsModel(evaluationPlan
+					.getId(), evaluationPlan.getName(), evaluationPlan
+					.getExpiration(), emplIds, emplFNames, emplLNames,
+					evaluationPlan.getBranch().getName()));
 
 		}
 
 		return returnedList;
-	
+
 	}
 
 	@Override
@@ -126,17 +135,18 @@ public class EvaluationPlanFacadeImpl implements EvaluationPlanFacade {
 		List<EvaluationPlan> evaPlans = evaPlanService.readAllCompleted();
 		List<EvaluationPlanPartsModel> returnedList = new ArrayList<>();
 		for (EvaluationPlan evaluationPlan : evaPlans) {
-			List<String> emplIds=new ArrayList<>();
-			List<String> emplFNames= new ArrayList<>();
+			List<String> emplIds = new ArrayList<>();
+			List<String> emplFNames = new ArrayList<>();
 			List<String> emplLNames = new ArrayList<>();
-			for(Employee employees:evaluationPlan.getEmployees()){
+			for (Employee employees : evaluationPlan.getEmployees()) {
 				emplIds.add(employees.getId());
 				emplFNames.add(employees.getFirstName());
 				emplLNames.add(employees.getLastName());
 			}
-			returnedList.add(new EvaluationPlanPartsModel(evaluationPlan.getId(),evaluationPlan.getName(),
-					evaluationPlan.getExpiration(),emplIds,emplFNames,emplLNames,evaluationPlan.getBranch().getName()));
-			
+			returnedList.add(new EvaluationPlanPartsModel(evaluationPlan
+					.getId(), evaluationPlan.getName(), evaluationPlan
+					.getExpiration(), emplIds, emplFNames, emplLNames,
+					evaluationPlan.getBranch().getName()));
 
 		}
 
@@ -144,7 +154,7 @@ public class EvaluationPlanFacadeImpl implements EvaluationPlanFacade {
 	}
 
 	@Override
-	public boolean setCompleted(Long id) {		
+	public boolean setCompleted(Long id) {
 		return evaPlanService.setCompleted(id);
 	}
 

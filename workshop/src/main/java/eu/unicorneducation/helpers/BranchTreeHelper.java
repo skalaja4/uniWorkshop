@@ -2,8 +2,18 @@ package eu.unicorneducation.helpers;
 
 import eu.unicorneducation.model.BranchTreeModel;
 
-
+/**
+ * Class for generating tree structure.
+ *
+ */
 public class BranchTreeHelper {
+	
+	/**
+	 * Method generating tree structure.
+	 * @param html string from page
+	 * @param branchTreeModel model of branches
+	 * @return html tree branch model
+	 */
 	public static String getTreeForBranch(String html,BranchTreeModel branchTreeModel){
 		html += "<li>";
 		html += "<ul>";
