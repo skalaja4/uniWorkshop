@@ -182,9 +182,76 @@ public class Evaluation {
 		this.question10 = question10;
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((employee == null) ? 0 : employee.hashCode());
+		result = prime * result
+				+ ((fill_date == null) ? 0 : fill_date.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + question1;
+		result = prime * result
+				+ ((question10 == null) ? 0 : question10.hashCode());
+		result = prime * result + question2;
+		result = prime * result + question3;
+		result = prime * result + question4;
+		result = prime * result + question5;
+		result = prime * result + question6;
+		result = prime * result + question7;
+		result = prime * result + question8;
+		result = prime * result + question9;
+		return result;
+	}
 	
-	
-	
-	
-		
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Evaluation other = (Evaluation) obj;
+		if (employee == null) {
+			if (other.employee != null)
+				return false;
+		} else if (!employee.equals(other.employee))
+			return false;
+		if (fill_date == null) {
+			if (other.fill_date != null)
+				return false;
+		} else if (!fill_date.equals(other.fill_date))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (question1 != other.question1)
+			return false;
+		if (question10 == null) {
+			if (other.question10 != null)
+				return false;
+		} else if (!question10.equals(other.question10))
+			return false;
+		if (question2 != other.question2)
+			return false;
+		if (question3 != other.question3)
+			return false;
+		if (question4 != other.question4)
+			return false;
+		if (question5 != other.question5)
+			return false;
+		if (question6 != other.question6)
+			return false;
+		if (question7 != other.question7)
+			return false;
+		if (question8 != other.question8)
+			return false;
+		if (question9 != other.question9)
+			return false;
+		return true;
+	}
 }
