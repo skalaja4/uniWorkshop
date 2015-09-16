@@ -128,8 +128,9 @@ public class HomeController {
 		
 		model.addAttribute("menuProperties", loadProperties(request, "menu.properties"));
 		model.addAttribute("properties", loadProperties(request, "import.properties"));
+		model.addAttribute("message", "Import probìhl úspìšnì.");
 		
-		return "import";
+		return "feedback";
 	}
 
 	/**

@@ -18,7 +18,7 @@
 	<%@ include file="menu.jspf"%>
 	<h2><%= prop.get("addEmpl") %></h2>
 
-	<sf:form action="/workshop/inicializate_branches" method="post"
+	<sf:form action="/workshop/import_employees" method="post"
 		enctype="multipart/form-data">
 		<p>
 			<%= prop.get("enterEmployees") %><br>
