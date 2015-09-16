@@ -73,9 +73,9 @@ public class HomeController {
 	private EvaluationFacade evalfac;
 
 	/**
-	 * 
+	 * Method for showing main page.
 	 * @param model build model of data for use with UI build model of data for use with UI 
-	 * @param request provide request information for HTTP servlets provide request information for HTTP servlets 
+	 * @param request provide request information for HTTP servlets 
 	 * @return page index
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -86,10 +86,10 @@ public class HomeController {
 	}
 	
 	/**
-	 * 
+	 * Method for showing response on some actions such as operation was successful etc.
 	 * @param model build model of data for use with UI build model of data for use with UI 
 	 * @param request provide request information for HTTP servlets
-	 * @return
+	 * @return feedback
 	 */
 	@RequestMapping(value = "/feedback", method = RequestMethod.GET)
 	public String feedback(ModelMap model, HttpServletRequest request) {
@@ -99,10 +99,10 @@ public class HomeController {
 	}
 
 	/**
-	 * 
+	 * Method showing loading filled with data.
 	 * @param model build model of data for use with UI build model of data for use with UI 
 	 * @param request provide request information for HTTP servlets
-	 * @return
+	 * @return import
 	 */
 	@RequestMapping(value = "/import", method = RequestMethod.GET)
 	public String importForm(ModelMap model, HttpServletRequest request) {
@@ -113,16 +113,14 @@ public class HomeController {
 	}
 
 	/**
-	 * 
-	 * @param file
+	 * Method for loading filling data.
+	 * @param file that is imported.
 	 * @param model build model of data for use with UI build model of data for use with UI 
 	 * @param request provide request information for HTTP servlets
-	 * @return
-	 * @throws ParseException 
-	 * @throws IOException 
+	 * @return import
 	 */
 	@RequestMapping(value = "/import_employees", method = RequestMethod.POST)
-	public String importEmployees(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) throws IOException, ParseException {
+	public String importEmployees(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) {
 
 		importFacade.importEmployees(file);
 		
@@ -133,7 +131,7 @@ public class HomeController {
 	}
 
 	/**
-	 * 
+	 * Method for showing init loading data fot the app.
 	 * @param model build model of data for use with UI data for use with UI 
 	 * @param request provide request information for HTTP servlets
 	 * @return
@@ -147,18 +145,16 @@ public class HomeController {
 	}
 
 	/**
-	 * 
-	 * @param branchesFile
-	 * @param employeesFile
+	 * Method for importing files with data to the app.
+	 * @param branchesFile file of branch informations with specific format
+	 * @param employeesFile file of employees with specific format
 	 * @param model build model of data for use with UI data for use with UI 
 	 * @param request provide request information for HTTP servlets
-	 * @return
-	 * @throws ParseException 
-	 * @throws IOException 
+	 * @return feedback
 	 */
 	@RequestMapping(value = "/inicializate", method = RequestMethod.POST)
 	public String inicializateBranches(@RequestParam("branchesFile") MultipartFile branchesFile,
-			@RequestParam("employeesFile") MultipartFile employeesFile, ModelMap model, HttpServletRequest request) throws IOException, ParseException {
+			@RequestParam("employeesFile") MultipartFile employeesFile, ModelMap model, HttpServletRequest request) {
 
 		iniFacade.inicializate(branchesFile, employeesFile);
 
@@ -170,7 +166,7 @@ public class HomeController {
 	}
 
 	/**
-	 * 
+	 * Method for showing employees of branch.
 	 * @param model build model of data for use with UI data for use with UI 
 	 * @param request provide request information for HTTP servlets
 	 * @return
@@ -193,7 +189,7 @@ public class HomeController {
 	}
 	
 	/**
-	 * 
+	 * Employees for given branch.
 	 * @param model build model of data for use with UI
 	 * @param request provide request information for HTTP servlets
 	 * @return
@@ -213,10 +209,10 @@ public class HomeController {
 	}
 
 	/**
-	 * 
+	 * Method for showing branches structure.
 	 * @param model build model of data for use with UI
 	 * @param request provide request information for HTTP servlets
-	 * @return
+	 * @return branches
 	 */
 	@RequestMapping(value = "/branches", method = RequestMethod.GET)
 	public String branches(ModelMap model, HttpServletRequest request) {
@@ -231,10 +227,10 @@ public class HomeController {
 	}
 
 	/**
-	 * 
+	 * Method for showing employee detail.
 	 * @param model build model of data for use with UI
 	 * @param request provide request information for HTTP servlets
-	 * @return
+	 * @return employee detail
 	 */
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(ModelMap model, HttpServletRequest request) {
@@ -250,10 +246,10 @@ public class HomeController {
 	}
 
 	/**
-	 * 
+	 * Method for showing planed evaluations.
 	 * @param model build model of data for use with UI
 	 * @param request provide request information for HTTP servlets
-	 * @return
+	 * @return plan evaluation
 	 */
 	@RequestMapping(value = "/plannedEvaluation", method = RequestMethod.GET)
 	public String plannedEvaluation(ModelMap model, HttpServletRequest request) {
@@ -270,10 +266,10 @@ public class HomeController {
 	}
 
 	/**
-	 * 
+	 * Method for showing addition of new evaluation to the plan.
 	 * @param model build model of data for use with UI
 	 * @param request provide request information for HTTP servlets
-	 * @return
+	 * @return add evaluation
 	 */
 	@RequestMapping(value = "/addEvaluation", method = RequestMethod.GET)
 	public String addEvaluation(ModelMap model, HttpServletRequest request) {
@@ -290,11 +286,11 @@ public class HomeController {
 	}
 
 	/**
-	 * 
-	 * @param category
+	 * Method for adding new Evaluation to the plan.
+	 * @param category of employees that should be evaluated
 	 * @param model build model of data for use with UI
 	 * @param request provide request information for HTTP servlets
-	 * @return
+	 * @return choose employees
 	 */
 	@RequestMapping(value = "/addEvaluation", method = RequestMethod.POST)
 	public String chooseEvaluation(@RequestParam(value = "category") String category, ModelMap model, HttpServletRequest request) {
@@ -306,12 +302,12 @@ public class HomeController {
 	}
 
 	/**
-	 * 
+	 * Method for showing evaluation plan.
 	 * @param model build model of data for use with UI
-	 * @param branch
-	 * @param category
-	 * @param datepicker
-	 * @param name
+	 * @param branch given branch for evaluating
+	 * @param category given category of employees for evaluation
+	 * @param datepicker date of evaluation
+	 * @param name name of evaluation
 	 * @param request provide request information for HTTP servlets
 	 * @return
 	 */
@@ -340,14 +336,14 @@ public class HomeController {
 	}
 
 	/**
-	 * 
+	 * Method for creating evaluation plan.
 	 * @param model build model of data for use with UI
-	 * @param employeeIds
-	 * @param datepicker
-	 * @param name
-	 * @param branch
+	 * @param employeeIds employee ids 
+	 * @param datepicker date when it will be evaluated
+	 * @param name for planned evaluating
+	 * @param branch parameter is chosen for
 	 * @param request provide request information for HTTP servlets
-	 * @return
+	 * @return feedback
 	 */
 	@RequestMapping(value = "/chooseEmployees", method = RequestMethod.POST)
 	public String createEvaluationPlan(ModelMap model, @RequestParam(value = "id") String[] employeeIds,
@@ -382,11 +378,11 @@ public class HomeController {
 	}
 
 	/**
-	 * 
+	 * Method showing new filling form for given plan.
 	 * @param model build model of data for use with UI
-	 * @param id
+	 * @param id parameter of plan to be shown
 	 * @param request provide request information for HTTP servlets
-	 * @return
+	 * @return fillevaluation
 	 */
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.GET)
 	public String fillEvaluation(ModelMap model, @RequestParam(value = "idOfPlan") Long id , HttpServletRequest request) {
@@ -410,23 +406,23 @@ public class HomeController {
 	}
 	
 	/**
-	 * 
+	 * Method for filling evaluations.
 	 * @param model build model of data for use with UI
-	 * @param id
-	 * @param employeeIds
-	 * @param quest1
-	 * @param quest2
-	 * @param quest3
-	 * @param quest4
-	 * @param quest5
-	 * @param quest6
-	 * @param quest7
-	 * @param quest8
-	 * @param quest9
-	 * @param info
+	 * @param id of type Long identifying evaluation plan
+	 * @param employeeIds is an array of string values of employees PK 
+	 * @param quest1 is an array of values for question NO.1
+	 * @param quest2 is an array of values for question NO.2
+	 * @param quest3 is an array of values for question NO.3
+	 * @param quest4 is an array of values for question NO.4
+	 * @param quest5 is an array of values for question NO.5
+	 * @param quest6 is an array of values for question NO.6
+	 * @param quest7 is an array of values for question NO.7
+	 * @param quest8 is an array of values for question NO.8
+	 * @param quest9 is an array of values for question NO.9
+	 * @param info is an array of values for addition information
 	 * @param request provide request information for HTTP servlets
-	 * @return
-	 * @throws Exception
+	 * @return feedback
+	 * @throws Exception throws exception if something goes wrong
 	 */
 	@RequestMapping(value = "/fillEvaluation", method = RequestMethod.POST)
 	public String fillEvaluation(ModelMap model,@RequestParam(value="plan")Long id,
@@ -480,8 +476,8 @@ public class HomeController {
 	}
 	
 	/**
-	 * 
-	 * @param id
+	 * Method for generating pdf.
+	 * @param id parameter for generating pdf
 	 * @param model build model of data for use with UI
 	 * @param request provide request information for HTTP servlets
 	 * @param response
@@ -507,8 +503,8 @@ public class HomeController {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Method for testing catching exception.
+	 * @throws exception  
 	 */
 	@RequestMapping(value = "/errorTest", method = RequestMethod.GET)
 	public String errorTest() {
@@ -519,10 +515,10 @@ public class HomeController {
 	final static Logger LOGGER = Logger.getLogger(HomeController.class);
 	
 	/**
-	 * 
+	 * Method for covering exception.
 	 * @param req provide request information for HTTP servlets
 	 * @param exception
-	 * @return
+	 * @return model and view
 	 */
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleError(HttpServletRequest req, Exception exception) {
@@ -539,8 +535,8 @@ public class HomeController {
 	/**
 	 * Method for loading properties from given file.
 	 * @param request provide request information for HTTP servlets
-	 * @param propertiesName Nem
-	 * @return
+	 * @param propertiesName Name of file that should be read.
+	 * @return properties
 	 */
 	private Properties loadProperties(HttpServletRequest request, String propertiesName) {
 		Properties prop = new Properties();
