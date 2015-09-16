@@ -118,9 +118,11 @@ public class HomeController {
 	 * @param model build model of data for use with UI build model of data for use with UI 
 	 * @param request provide request information for HTTP servlets
 	 * @return
+	 * @throws ParseException 
+	 * @throws IOException 
 	 */
 	@RequestMapping(value = "/import_employees", method = RequestMethod.POST)
-	public String importEmployees(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) {
+	public String importEmployees(@RequestParam("file") MultipartFile file, ModelMap model, HttpServletRequest request) throws IOException, ParseException {
 
 		importFacade.importEmployees(file);
 		
@@ -151,10 +153,12 @@ public class HomeController {
 	 * @param model build model of data for use with UI data for use with UI 
 	 * @param request provide request information for HTTP servlets
 	 * @return
+	 * @throws ParseException 
+	 * @throws IOException 
 	 */
 	@RequestMapping(value = "/inicializate", method = RequestMethod.POST)
 	public String inicializateBranches(@RequestParam("branchesFile") MultipartFile branchesFile,
-			@RequestParam("employeesFile") MultipartFile employeesFile, ModelMap model, HttpServletRequest request) {
+			@RequestParam("employeesFile") MultipartFile employeesFile, ModelMap model, HttpServletRequest request) throws IOException, ParseException {
 
 		iniFacade.inicializate(branchesFile, employeesFile);
 
