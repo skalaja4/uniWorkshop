@@ -33,19 +33,23 @@ public class InicializationServiceImpl implements InicializationService {
 	EmployeeDAO employeeDao;
 
 	/**
-	 * Thid method serves for inicialization of databaze of branches. First we enter all branches without 
-	 * references to their mothers. Then we fill in these refereces.
+	 * Thid method serves for inicialization of databaze. First we enter all branches without 
+	 * references to their mothers. Then we fill in these refereces. And at the end we will 
+	 * enter parsed employees and add them as managers in coresponding branches.
 	 * 
-	 * @param file file from which the branches will be parsed
+	 * @param branchesFile file from which the branches will be parsed
+	 * @param employeesFile file from which the employees will be parsed
+	 * @throws IOException when inicialization of parser or InputStream occurs
+	 * @throws ParseException when parsing date fails
 	 */
-	public void inicializate(MultipartFile branchesFile, MultipartFile employeesFile) {
+	public void inicializate(MultipartFile branchesFile, MultipartFile employeesFile) throws IOException, ParseException {
 		List<Branch> branches = new ArrayList<>();
 		List<Employee> employees = new ArrayList<>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Map<String, String> branchToEmployeeeMap = new HashMap<>();
 		Map<String, String> employeeeToBranchMap = new HashMap<>();
 
-		try {
+		
 			CSVParser parser = CSVFormat.DEFAULT.parse(new InputStreamReader(
 					branchesFile.getInputStream()));
 
@@ -74,7 +78,7 @@ public class InicializationServiceImpl implements InicializationService {
 			//now we will inicializate employees
 			parser = CSVFormat.DEFAULT.parse(new InputStreamReader(employeesFile.getInputStream()));
 			for (CSVRecord r : parser) {
-				try {
+				
 					Branch branch = branchDao.read(removeZeros(r.get(3)));
 					Employee emp = new Employee(
 							r.get(0),
@@ -103,35 +107,27 @@ public class InicializationServiceImpl implements InicializationService {
 					}
 					
 					employees.add(emp);
-				} catch (ParseException e) {
-					// TODO add error logger
-					e.printStackTrace();
-				}
+				
 			}
-			
-		} catch (IOException e) {
-			// TODO add error logger
-			e.printStackTrace();
-		}
 	}
 
 	/**
 	 * Method for adding new employees.
 	 * 
 	 * @param file file from which the employees will be parsed
+	 * @throws IOException when inicialization of parser or InputStream occurs
+	 * @throws ParseException when parsing date fails
 	 */
-	public void addEmployees(MultipartFile file) {
+	public void addEmployees(MultipartFile file) throws IOException, ParseException {
 		List<Employee> employees = new ArrayList<>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-		try {
 			CSVParser parser = CSVFormat.DEFAULT.parse(new InputStreamReader(
 					file.getInputStream()));
 			for (CSVRecord r : parser) {
 				//if employee is already in database, then skip to next record
 				if(employeeDao.read(r.get(0)) != null) continue;
 				
-				try {
 					Branch branch = branchDao.read(removeZeros(r.get(3)));
 					Employee emp = new Employee(
 							r.get(0),
@@ -150,16 +146,8 @@ public class InicializationServiceImpl implements InicializationService {
 					}
 					
 					employees.add(emp);
-				} catch (ParseException e) {
-					// TODO add error logger
-					e.printStackTrace();
-				}
+
 			}
-			
-		} catch (IOException e) {
-			// TODO add error logger
-			e.printStackTrace();
-		}
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package workshop;
+package eu.unicorneducation.dao.test;
 
 import java.util.ArrayList;
 import java.util.Calendar;
