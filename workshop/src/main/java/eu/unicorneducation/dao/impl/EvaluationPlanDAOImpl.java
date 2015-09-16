@@ -27,7 +27,6 @@ public class EvaluationPlanDAOImpl implements EvaluationPlanDAO {
 
 		em.getTransaction().begin();
 		for (Employee empl : evaluationPlan.getEmployees()) {
-			// Employee employee = employeeDAO.read(empl.getId());
 			Employee employee = (Employee) em
 					.find(Employee.class, empl.getId());
 
