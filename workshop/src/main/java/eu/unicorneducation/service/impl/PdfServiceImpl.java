@@ -29,28 +29,16 @@ public class PdfServiceImpl implements PdfService {
 	@Override
 	public InputStream generatePdf(String id) {
 
-//		String sourceFileName = "pdfSchema.jasper";
-//		String sourceFileName = "C:/Users/Student/uniWorkshop/workshop/src/main/resources/pdfSchema.jasper";
-		
-//		String printFileName = null;
 		JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(Arrays.asList(employeeDao.read(id)));
-//		JRBeanCollectionDataSource beanColDataSource =
-//		         new JRBeanCollectionDataSource(DataForJasperFactory.getList());
 		
 		Map parameters = new HashMap();
 		InputStream in = null;
 		try {
 			File temp = File.createTempFile("tempPdf", ".pdf");
-//			printFileName = JasperFillManager.fillReportToFile(sourceFileName,
-//					parameters, beanColDataSource);
 			JasperPrint print = JasperFillManager.fillReport(new FileInputStream("pdfSchema.jasper"),
 					parameters, beanColDataSource);
 			
-				/**
-				 * 1- export to PDF
-				 */
 			JasperExportManager.exportReportToPdfFile(print, temp.getAbsolutePath());
-//				JasperExportManager.exportReportToPdfFile(printFileName, temp.getAbsolutePath());
 				in = new FileInputStream(temp);
 			
 		} catch (JRException | IOException e) {

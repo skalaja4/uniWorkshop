@@ -550,7 +550,6 @@ public class HomeController {
 			prop.load(in);
 		} catch (IOException e) {
 			prop = null;
-			e.printStackTrace();
 		}
 		return prop;
 	}
