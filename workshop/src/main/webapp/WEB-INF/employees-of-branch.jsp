@@ -41,7 +41,7 @@ table {
 <h2><%= prop.get("employees") %></h2>
 <br>
 <br>
-
+<h3><%=employees.get(0).getBranch().getName() %></h3>
 <form  method="post" action="/workshop/employees">
 
 <%= prop.get("enterNameOrSurname") %> :

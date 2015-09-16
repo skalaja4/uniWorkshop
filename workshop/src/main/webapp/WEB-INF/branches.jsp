@@ -24,6 +24,7 @@ Properties prop = (Properties) request.getAttribute("properties");
 	<div id="header">
 		<%@ include file="menu.jspf"%>
 		<h2><%= prop.get("strana") %></h2>
+		
 		<%for(int i=0;i<size;i++){ %>
 <%= request.getAttribute("branche"+i) %>
 <%} %>
